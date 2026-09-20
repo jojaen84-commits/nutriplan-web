@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Nutriplan</title>
+<meta name="theme-color" content="#315b42">
+<meta name="application-name" content="Nutriplan">
+<meta name="description" content="Planificador nutricional de los perfiles: menús, recetas, evolución, macros e informes.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Nutriplan">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+  <div class="topinner">
+    <div class="brand"><div class="logo">🥗</div><div>Nutriplan</div></div>
+    <nav>
+      <button class="navbtn active" data-view="plannerView">Menú</button>
+      <button class="navbtn" data-view="weekView">Semana</button>
+      <button class="navbtn" data-view="evolutionView">Evolución</button>
+      <button class="navbtn" data-view="recipesView">Recetas</button>
+      <button class="navbtn" data-view="shoppingView">Compra</button>
+      <button class="navbtn" data-view="configView">Configuración</button>
+    </nav>
+  </div>
+</header>
+<main>
+<section id="plannerView" class="view active">
+  <div class="hero">
+    <div><h1>Menú diario</h1><p class="sub">Selecciona un día y planifica sus comidas.</p></div>
+    <button class="btn soft no-print" id="resetMenu">Limpiar día</button>
+  </div>
+
+  <div class="panel calendar-panel" style="margin-bottom:16px">
+    <div class="calendar-head">
+      <div>
+        <h2 style="margin:0 0 3px">Calendario</h2>
+        <span class="date-title" id="selectedDateTitle"></span>
+      </div>
+      <div class="calendar-nav no-print">
+        <button class="btn" id="prevMonth">←</button>
+        <button class="btn soft" id="todayBtn">Hoy</button>
+        <button class="btn" id="nextMonth">→</button>
+      </div>
+    </div>
+    <div class="calendar-month-title" id="calendarMonthTitle"></div>
+    <div class="calendar-weekdays">
+      <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+    </div>
+    <div class="calendar-grid" id="monthCalendar"></div>
+  </div>
+
+  <div id="trainingTomorrow"></div>
+
+  <div class="two" id="dailySwipeArea">
+    <div class="panel">
+      <h2>Plan del día</h2>
+      <div id="menuSlots"></div>
+      <div id="coffeePanel"></div>
+      <p class="small">Las mismas recetas se aplican a los perfiles, pero con sus cantidades individuales. Los cafés se registran aparte.</p>
+      <div class="small swipe-hint no-print">← Desliza para cambiar de día →</div>
+    </div>
+    <div class="panel">
+      <div class="report-head">
+        <h2>Totales del día</h2>
+        <div class="report-open-actions no-print">
+          <button class="btn soft" type="button" id="openDailyReport">Resumen</button>
+          <button class="btn soft" type="button" id="openDetailedDailyReport">Detallado</button>
+        </div>
+      </div>
+      <div id="dayTotals"></div>
+    </div>
+  </div>
+
+  <div id="routeNutrition" style="margin-top:16px"></div>
+</section>
+
+<section id="weekView" class="view">
+  <div class="hero">
+    <div>
+      <h1>Semana completa</h1>
+      <p class="sub">Vista semanal del menú de los perfiles.</p>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="week-head">
+      <div>
+        <h2 style="margin-bottom:3px">Plan semanal</h2>
+        <div class="small" id="weekRange"></div>
+      </div>
+      <div class="week-nav no-print">
+        <button class="btn" id="prevWeek">← Semana</button>
+        <button class="btn" id="nextWeek">Semana →</button>
+      </div>
+    </div>
+    <div class="week-grid" id="weekGrid"></div>
+  </div>
+</section>
+
+<section id="evolutionView" class="view">
+  <div class="hero">
+    <div>
+      <h1>Evolución</h1>
+      <p class="sub">Registra peso y composición corporal. El peso alimenta automáticamente el cálculo de calorías, macros y raciones.</p>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-bottom:16px">
+    <p class="small" style="line-height:1.55;margin:0">
+      Se conserva todo el histórico corporal: peso, grasa, grasa visceral, IMC, músculo, proteína, agua, metabolismo basal y masa ósea.
+      El <b>peso</b> de cada registro entra en vigor desde su fecha hasta el siguiente pesaje y es el que utiliza Nutriplan
+      automáticamente para calcular calorías, macros y raciones.
+    </p>
+  </div>
+
+  <div class="evolution-grid" id="evolutionCards"></div>
+</section>
+
+<section id="recipesView" class="view">
+  <div class="hero"><div><h1>Recetario</h1><p class="sub">Las recetas actuales de la base de datos.</p></div></div>
+  <div class="controls"><input id="search" class="search" placeholder="Buscar receta o ingrediente…"></div>
+  <div class="pills" id="typeFilters"></div>
+  <div class="grid cards" id="recipeCards"></div>
+</section>
+
+<section id="shoppingView" class="view">
+  <div class="hero"><div><h1>Lista de la compra</h1><p class="sub">Se genera con todas las recetas planificadas en la semana seleccionada.</p></div>
+  <button id="clearChecks" class="btn soft no-print">Desmarcar</button></div>
+  <div class="panel" id="shoppingList"></div>
+</section>
+
+
+<section id="configView" class="view">
+  <div class="hero">
+    <div>
+      <h1>Configuración</h1>
+      <p class="sub">Calcula las necesidades energéticas y los macros de los perfiles.</p>
+    </div>
+    <button class="btn soft no-print" id="resetConfig">Restaurar valores actuales</button>
+  </div>
+
+  <div class="panel pwa-manage-panel" style="margin-bottom:16px">
+    <div class="pwa-manage-head">
+      <div>
+        <h2 style="margin-bottom:3px">Aplicación y datos</h2>
+        <div class="small">PWA instalable, recetario actualizable y copia de seguridad local.</div>
+      </div>
+      <span class="pwa-status-badge" id="pwaInstallState">Web</span>
+    </div>
+    <div class="pwa-manage-grid">
+      <div class="pwa-info-box"><b>Base de recetas</b><span id="pwaDataVersion">—</span></div>
+      <div class="pwa-info-box"><b>Modo</b><span id="pwaModeText">Navegador</span></div>
+    </div>
+    <div class="config-actions no-print">
+      <button class="btn primary" id="installPwaBtn" type="button" hidden>Instalar Nutriplan</button>
+      <button class="btn soft" id="exportBackupBtn" type="button">Exportar copia</button>
+      <label class="btn soft backup-import-label">Importar copia<input id="importBackupInput" type="file" accept="application/json,.json"></label>
+      <button class="btn" id="checkPwaUpdateBtn" type="button">Buscar actualización</button>
+    </div>
+    <div class="small pwa-manage-help">
+      Las recetas viven en <b>nutriplan-data.js</b>. Al publicar una versión nueva de ese archivo, la PWA la consulta de nuevo al abrirse.
+      Los menús, evolución, cafés y ajustes personales se guardan localmente y no se sustituyen al actualizar el recetario.
+    </div>
+  </div>
+
+  <div class="panel" style="margin-bottom:16px">
+    <h2>Cómo calcula Nutriplan</h2>
+    <p class="small" style="line-height:1.55;margin:0">
+      Metabolismo basal mediante Mifflin-St Jeor → factor de actividad → gasto de mantenimiento estimado.
+      Después se aplica el déficit elegido. La proteína y la grasa se fijan en g/kg y los hidratos completan las calorías restantes. <b>Las raciones del recetario se adaptan automáticamente</b> a estos nuevos objetivos:
+      las fuentes principales de proteína, hidratos y grasa cambian de cantidad según corresponda.
+    </p>
+  </div>
+
+  <div class="config-grid" id="configCards"></div>
+</section>
+
+<section id="detailView" class="view">
+  <div class="hero no-print"><button class="btn" id="backRecipes">← Volver</button><button class="btn" onclick="window.print()">Imprimir ficha</button></div>
+  <div id="recipeDetail"></div>
+</section>
+
+<div class="footer-note">Nutriplan · PWA · Menú, semana, evolución, recetario e informes con datos locales.</div>
+
+<div id="dailyReportModal" class="report-modal" aria-hidden="true">
+  <div class="report-backdrop" data-close-report></div>
+  <section class="report-dialog" role="dialog" aria-modal="true" aria-labelledby="dailyReportTitle">
+    <div class="report-toolbar no-print">
+      <button class="btn soft" type="button" data-close-report>← Volver</button>
+      <div class="report-toolbar-actions">
+        <div class="report-mode-switch">
+          <button class="btn soft report-mode-btn" type="button" data-report-mode="summary">Resumen</button>
+          <button class="btn soft report-mode-btn" type="button" data-report-mode="detailed">Detallado</button>
+        </div>
+        <button class="btn soft" type="button" id="copyDailyReport">Copiar</button>
+        <button class="btn primary" type="button" id="printDailyReport">Imprimir / PDF</button>
+      </div>
+    </div>
+    <div id="dailyReportContent" class="daily-report"></div>
+  </section>
+</div>
+
+</main>
+</div>
+
+<script src="nutriplan-data.js"></script>
+<script src="nutriplan-entrenamientos-data.js"></script>
+<script src="nutrition-engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
