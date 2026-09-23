@@ -4044,6 +4044,97 @@ window.NUTRIPLAN_DATA = {
         "A021"
       ],
       "calculation_mode": "INGREDIENT_SUM"
+    },
+    "R039": {
+      "id": "R039",
+      "code": "REC-039",
+      "version": "1.0",
+      "name": "Napolitana crujiente de chocolate 85%",
+      "type": "MERIENDA",
+      "status": "ACTIVA",
+      "tags": [
+        "MERIENDA",
+        "CHOCOLATE",
+        "AIR_FRYER",
+        "RAPIDA",
+        "RACION_FIJA"
+      ],
+      "notes": "Ración individual para Persona 1 y Persona 2. Batir 35 g de huevo y humedecer las 2 hojas de papel de arroz. Colocar 2 onzas de chocolate negro 85% (16 g) en el centro, cerrar formando una napolitana y cocinar en Air Fryer 9 minutos a 180 °C. Sin aceite añadido. Los tres ingredientes son cantidades fijas y no se escalan.",
+      "image": null,
+      "image_status": "PENDIENTE",
+      "summary": {
+        "P01": {
+          "kcal": 211.01999999999998,
+          "protein": 5.795,
+          "carbs": 20.55,
+          "fat": 11.031666666655,
+          "p_pct": 0.11325825128874939,
+          "c_pct": 0.4016319351136842,
+          "f_pct": 0.4851098135975665,
+          "goal_pct": 0.1082153846153846
+        },
+        "P02": {
+          "kcal": 211.01999999999998,
+          "protein": 5.795,
+          "carbs": 20.55,
+          "fat": 11.031666666655,
+          "p_pct": 0.11325825128874939,
+          "c_pct": 0.4016319351136842,
+          "f_pct": 0.4851098135975665,
+          "goal_pct": 0.1507285714285714
+        }
+      },
+      "portions": {
+        "P01": [
+          {
+            "food_id": "A068",
+            "food": "Papel de arroz",
+            "grams": 20,
+            "note": "2 hojas aprox. · cantidad fija",
+            "state": "producto"
+          },
+          {
+            "food_id": "A016",
+            "food": "Huevo entero",
+            "grams": 35,
+            "note": "batido · cantidad fija",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A067",
+            "food": "Chocolate negro 85%",
+            "grams": 16,
+            "note": "2 onzas de 8 g · cantidad fija",
+            "state": "producto"
+          }
+        ],
+        "P02": [
+          {
+            "food_id": "A068",
+            "food": "Papel de arroz",
+            "grams": 20,
+            "note": "2 hojas aprox. · cantidad fija",
+            "state": "producto"
+          },
+          {
+            "food_id": "A016",
+            "food": "Huevo entero",
+            "grams": 35,
+            "note": "batido · cantidad fija",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A067",
+            "food": "Chocolate negro 85%",
+            "grams": 16,
+            "note": "2 onzas de 8 g · cantidad fija",
+            "state": "producto"
+          }
+        ]
+      },
+      "locked_portion_P01": true,
+      "locked_portion_P02": true,
+      "calculation_mode": "INGREDIENT_SUM"
     }
   },
   "foods": {
@@ -4700,7 +4791,35 @@ window.NUTRIPLAN_DATA = {
         "carbs": 9.5,
         "fat": 3.5
       }
+    },
+    "A067": {
+      "name": "Chocolate negro 85%",
+      "source": "Mercadona / etiqueta aportada",
+      "pack_g": 100,
+      "pack_unit": "tableta",
+      "pack_notes": "Etiqueta aportada: 597 kcal · 12 g proteína · 20 g HC · 49 g grasa · 14 g fibra · 14 g azúcares · 0,03 g sal por 100 g. 2 onzas = 16 g (8 g por onza).",
+      "state": "producto",
+      "nutrition_100": {
+        "kcal": 597,
+        "protein": 12,
+        "carbs": 20,
+        "fat": 49
+      }
+    },
+    "A068": {
+      "name": "Papel de arroz",
+      "source": "Etiqueta aportada",
+      "pack_g": null,
+      "pack_unit": "paquete",
+      "pack_notes": "Etiqueta aportada: 350 kcal · 1,0 g proteína · 85 g HC · 0,5 g grasa · 0 g azúcares · 0,83 g sal por 100 g. 2 hojas ≈ 20 g.",
+      "state": "producto",
+      "nutrition_100": {
+        "kcal": 350,
+        "protein": 1,
+        "carbs": 85,
+        "fat": 0.5
+      }
     }
   },
-  "version": "4.9 REC-037 y REC-038 pizzas de avena + base 60 g bloqueada"
+  "version": "5.0 REC-039 napolitana crujiente de chocolate 85%"
 };
