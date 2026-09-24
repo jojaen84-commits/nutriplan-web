@@ -48,7 +48,7 @@ function sumNutrition(ingredients,foods){
 }
 function createEngine(input){
   const DATA=input.data,defaultDate=input.dateKey;
-  const ensureMenu=()=>input.menu||{};
+  const ensureMenu=pid=>input.menusByPerson?.[pid] || input.menu || {};
   const recipeLocks=recipeId=>input.locks?.[recipeId]||[];
   const getRecipeAdjustment=(recipeId,pid)=>input.adjustments?.[recipeId]?.[pid]||{mode:'simple',targetKcal:null,pPct:null,cPct:null,fPct:null};
   const goalsForDate=pid=>input.goalsByPerson[pid];
@@ -167,13 +167,13 @@ function adjustedIngredientFactor(recipeId,foodId,pid,dateKey=defaultDate){
   return mf.kcal;
 }
 
-function dayCoreMenuComplete(dateKey=defaultDate){
-  const m=ensureMenu(dateKey);
+function dayCoreMenuComplete(dateKey=defaultDate,pid="P01"){
+  const m=ensureMenu(pid);
   return Boolean((m.desayuno||m.desayunoTrabajo) && m.comida && m.merienda && m.cena);
 }
 
-function recipeSelectedOnDay(recipeId,dateKey=defaultDate){
-  return Object.values(ensureMenu(dateKey)).some(rid=>rid===recipeId);
+function recipeSelectedOnDay(recipeId,dateKey=defaultDate,pid="P01"){
+  return Object.values(ensureMenu(pid)).some(rid=>rid===recipeId);
 }
 
 function rawRecipeSummaryForBalance(recipe,pid,dateKey=defaultDate){
@@ -224,7 +224,7 @@ function simulateDayTotalsForBalance(pid,dateKey,f){
   const coffee=coffeeTotalsFor(pid,dateKey);
   t.kcal+=coffee.kcal;t.protein+=coffee.protein;t.carbs+=coffee.carbs;t.fat+=coffee.fat;
 
-  const menu=ensureMenu(dateKey);
+  const menu=ensureMenu(pid);
   Object.values(menu).filter(Boolean).forEach(rid=>{
     const recipe=DATA.recipes[rid];if(!recipe)return;
     let s;
@@ -256,9 +256,9 @@ function solveBalanceFactor(current,key,lo,hi,target,metric,pid,dateKey){
 
 function dayBalanceFactors(pid,dateKey=defaultDate){
   const neutral={active:false,protein:1,carbs:1,fat:1,kcal:1,estimatedKcal:null};
-  if(!dayCoreMenuComplete(dateKey))return neutral;
+  if(!dayCoreMenuComplete(dateKey,pid))return neutral;
 
-  const menu=ensureMenu(dateKey);
+  const menu=ensureMenu(pid);
   const recipes=Object.values(menu).filter(Boolean).map(rid=>DATA.recipes[rid]).filter(Boolean);
   if(!recipes.length)return neutral;
   const hasFlex=recipes.some(r=>!isRecipePortionLocked(r,pid) && !isJointMixRecipe(r));

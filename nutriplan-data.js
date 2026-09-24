@@ -63,42 +63,42 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A001",
             "food": "Pechuga de pollo",
-            "grams": 150.0,
+            "grams": 150,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A002",
             "food": "Patata",
-            "grams": 400.0,
+            "grams": 400,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A003",
             "food": "Champiñones laminados",
-            "grams": 49.0,
+            "grams": 49,
             "note": "parte proporcional de 85 g totales escurridos",
             "state": "peso escurrido"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 50.0,
+            "grams": 50,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A005",
             "food": "Leche evaporada parcialmente desnatada",
-            "grams": 116.0,
+            "grams": 116,
             "note": "parte proporcional de 200 ml totales",
             "state": "producto"
           },
           {
             "food_id": "A006",
             "food": "Aceite de oliva virgen extra",
-            "grams": 7.0,
+            "grams": 7,
             "note": "",
             "state": "producto"
           }
@@ -107,42 +107,42 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A001",
             "food": "Pechuga de pollo",
-            "grams": 105.0,
+            "grams": 105,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A002",
             "food": "Patata",
-            "grams": 300.0,
+            "grams": 300,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A003",
             "food": "Champiñones laminados",
-            "grams": 36.0,
+            "grams": 36,
             "note": "parte proporcional de 85 g totales escurridos",
             "state": "peso escurrido"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 35.0,
+            "grams": 35,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A005",
             "food": "Leche evaporada parcialmente desnatada",
-            "grams": 84.0,
+            "grams": 84,
             "note": "parte proporcional de 200 ml totales",
             "state": "producto"
           },
           {
             "food_id": "A006",
             "food": "Aceite de oliva virgen extra",
-            "grams": 5.0,
+            "grams": 5,
             "note": "",
             "state": "producto"
           }
@@ -195,21 +195,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A007",
             "food": "Yogur griego ligero natural Hacendado",
-            "grams": 250.0,
+            "grams": 250,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A042",
             "food": "Melocotón",
-            "grams": 150.0,
+            "grams": 150,
             "note": "peso sin hueso",
             "state": "crudo"
           },
           {
             "food_id": "A010",
             "food": "Gotas de chocolate para fundir Hacendado",
-            "grams": 5.0,
+            "grams": 5,
             "note": "",
             "state": "producto"
           }
@@ -218,21 +218,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A007",
             "food": "Yogur griego ligero natural Hacendado",
-            "grams": 200.0,
+            "grams": 200,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A042",
             "food": "Melocotón",
-            "grams": 120.0,
+            "grams": 120,
             "note": "peso sin hueso",
             "state": "crudo"
           },
           {
             "food_id": "A010",
             "food": "Gotas de chocolate para fundir Hacendado",
-            "grams": 4.0,
+            "grams": 4,
             "note": "",
             "state": "producto"
           }
@@ -283,21 +283,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A017",
             "food": "Salmón en lomos",
-            "grams": 150.0,
+            "grams": 150,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A018",
             "food": "Arroz ultracongelado",
-            "grams": 167.0,
+            "grams": 167,
             "note": "1 porción aprox.",
             "state": "producto"
           },
           {
             "food_id": "A019",
             "food": "Salteado de verduras asadas ultracongeladas",
-            "grams": 250.0,
+            "grams": 250,
             "note": "",
             "state": "producto"
           }
@@ -306,21 +306,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A017",
             "food": "Salmón en lomos",
-            "grams": 90.0,
+            "grams": 90,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A018",
             "food": "Arroz ultracongelado",
-            "grams": 150.0,
+            "grams": 150,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A019",
             "food": "Salteado de verduras asadas ultracongeladas",
-            "grams": 180.0,
+            "grams": 180,
             "note": "",
             "state": "producto"
           }
@@ -373,28 +373,28 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A001",
             "food": "Pechuga de pollo",
-            "grams": 170.0,
+            "grams": 170,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A002",
             "food": "Patata",
-            "grams": 400.0,
+            "grams": 400,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A020",
             "food": "Fritada pisto Hacendado",
-            "grams": 220.0,
+            "grams": 220,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A006",
             "food": "Aceite de oliva virgen extra",
-            "grams": 3.0,
+            "grams": 3,
             "note": "spray para patatas",
             "state": "producto"
           }
@@ -403,28 +403,28 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A001",
             "food": "Pechuga de pollo",
-            "grams": 110.0,
+            "grams": 110,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A002",
             "food": "Patata",
-            "grams": 300.0,
+            "grams": 300,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A020",
             "food": "Fritada pisto Hacendado",
-            "grams": 160.0,
+            "grams": 160,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A006",
             "food": "Aceite de oliva virgen extra",
-            "grams": 2.0,
+            "grams": 2,
             "note": "spray para patatas",
             "state": "producto"
           }
@@ -479,42 +479,42 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A021",
             "food": "Tortillas de avena 51% Hacendado",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 tortilla de 60 g",
             "state": "producto"
           },
           {
             "food_id": "A012",
             "food": "Pechuga de pavo en lonchas",
-            "grams": 100.0,
+            "grams": 100,
             "note": "4 lonchas aprox.",
             "state": "producto"
           },
           {
             "food_id": "A016",
             "food": "Huevo entero",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 huevo; tortilla francesa fina",
             "state": "crudo"
           },
           {
             "food_id": "A013",
             "food": "Queso Havarti light",
-            "grams": 25.0,
+            "grams": 25,
             "note": "1 loncha",
             "state": "producto"
           },
           {
             "food_id": "A007",
             "food": "Yogur griego natural",
-            "grams": 30.0,
+            "grams": 30,
             "note": "salsa de yogur con especias",
             "state": "producto"
           },
           {
             "food_id": "A006",
             "food": "Aceite de oliva virgen extra",
-            "grams": 1.0,
+            "grams": 1,
             "note": "spray para tortilla de huevo",
             "state": "producto"
           }
@@ -523,42 +523,42 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A021",
             "food": "Tortillas de avena 51% Hacendado",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 tortilla de 60 g",
             "state": "producto"
           },
           {
             "food_id": "A012",
             "food": "Pechuga de pavo en lonchas",
-            "grams": 75.0,
+            "grams": 75,
             "note": "3 lonchas aprox.",
             "state": "producto"
           },
           {
             "food_id": "A016",
             "food": "Huevo entero",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 huevo; tortilla francesa fina",
             "state": "crudo"
           },
           {
             "food_id": "A013",
             "food": "Queso Havarti light",
-            "grams": 25.0,
+            "grams": 25,
             "note": "1 loncha",
             "state": "producto"
           },
           {
             "food_id": "A007",
             "food": "Yogur griego natural",
-            "grams": 30.0,
+            "grams": 30,
             "note": "salsa de yogur con especias",
             "state": "producto"
           },
           {
             "food_id": "A006",
             "food": "Aceite de oliva virgen extra",
-            "grams": 1.0,
+            "grams": 1,
             "note": "spray para tortilla de huevo",
             "state": "producto"
           }
@@ -587,7 +587,7 @@ window.NUTRIPLAN_DATA = {
       "image_status": "PENDIENTE",
       "summary": {
         "P01": {
-          "kcal": 265.0,
+          "kcal": 265,
           "protein": 26.886297376093292,
           "carbs": 32.91253644314869,
           "fat": 2.317784256559767,
@@ -612,35 +612,35 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A008",
             "food": "Plátano",
-            "grams": 58.0,
+            "grams": 58,
             "note": "",
             "state": "parte comestible"
           },
           {
             "food_id": "A022",
             "food": "Harina de avena Hacendado",
-            "grams": 23.0,
+            "grams": 23,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A023",
             "food": "Evolate 2.0 Chocolate",
-            "grams": 23.0,
+            "grams": 23,
             "note": "",
             "state": "polvo"
           },
           {
             "food_id": "A024",
             "food": "Leche desnatada Covap",
-            "grams": 97.0,
+            "grams": 97,
             "note": "≈97 ml",
             "state": "producto"
           },
           {
             "food_id": "A025",
             "food": "Hielo",
-            "grams": 97.0,
+            "grams": 97,
             "note": "reducido proporcionalmente",
             "state": "producto"
           }
@@ -702,10 +702,10 @@ window.NUTRIPLAN_DATA = {
       "image_status": "PENDIENTE",
       "summary": {
         "P01": {
-          "kcal": 343.0,
+          "kcal": 343,
           "protein": 34.8,
           "carbs": 42.6,
-          "fat": 3.0,
+          "fat": 3,
           "p_pct": 0.41354723707664875,
           "c_pct": 0.5062388591800356,
           "f_pct": 0.08021390374331551,
@@ -727,35 +727,35 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A008",
             "food": "Plátano",
-            "grams": 75.0,
+            "grams": 75,
             "note": "",
             "state": "parte comestible"
           },
           {
             "food_id": "A022",
             "food": "Harina de avena Hacendado",
-            "grams": 30.0,
+            "grams": 30,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A023",
             "food": "Evolate 2.0 Chocolate",
-            "grams": 30.0,
+            "grams": 30,
             "note": "1 scoop",
             "state": "polvo"
           },
           {
             "food_id": "A024",
             "food": "Leche desnatada Covap",
-            "grams": 125.0,
+            "grams": 125,
             "note": "125 ml",
             "state": "producto"
           },
           {
             "food_id": "A025",
             "food": "Hielo",
-            "grams": 125.0,
+            "grams": 125,
             "note": "",
             "state": "producto"
           }
@@ -843,21 +843,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A024",
             "food": "Leche desnatada Covap",
-            "grams": 250.0,
+            "grams": 250,
             "note": "≈250 ml",
             "state": "producto"
           },
           {
             "food_id": "A009",
             "food": "Impact Whey Protein sin sabor",
-            "grams": 30.0,
+            "grams": 30,
             "note": "1 scoop aprox.",
             "state": "polvo"
           },
           {
             "food_id": "A026",
             "food": "Cacao desgrasado en polvo",
-            "grams": 5.0,
+            "grams": 5,
             "note": "",
             "state": "producto"
           }
@@ -866,21 +866,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A024",
             "food": "Leche desnatada Covap",
-            "grams": 180.0,
+            "grams": 180,
             "note": "≈180 ml",
             "state": "producto"
           },
           {
             "food_id": "A009",
             "food": "Impact Whey Protein sin sabor",
-            "grams": 22.0,
+            "grams": 22,
             "note": "",
             "state": "polvo"
           },
           {
             "food_id": "A026",
             "food": "Cacao desgrasado en polvo",
-            "grams": 4.0,
+            "grams": 4,
             "note": "",
             "state": "producto"
           }
@@ -931,28 +931,28 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A027",
             "food": "Pan baguette",
-            "grams": 75.0,
+            "grams": 75,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A028",
             "food": "Pechuga de pavo 92%",
-            "grams": 75.0,
+            "grams": 75,
             "note": "Mercadona",
             "state": "producto"
           },
           {
             "food_id": "A006",
             "food": "Aceite de oliva virgen extra",
-            "grams": 3.0,
+            "grams": 3,
             "note": "≈3 ml",
             "state": "producto"
           },
           {
             "food_id": "A029",
             "food": "Tomate rallado",
-            "grams": 100.0,
+            "grams": 100,
             "note": "tomate natural rallado",
             "state": "crudo"
           }
@@ -961,28 +961,28 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A027",
             "food": "Pan baguette",
-            "grams": 55.0,
+            "grams": 55,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A028",
             "food": "Pechuga de pavo 92%",
-            "grams": 55.0,
+            "grams": 55,
             "note": "Mercadona",
             "state": "producto"
           },
           {
             "food_id": "A006",
             "food": "Aceite de oliva virgen extra",
-            "grams": 2.0,
+            "grams": 2,
             "note": "≈2 ml",
             "state": "producto"
           },
           {
             "food_id": "A029",
             "food": "Tomate rallado",
-            "grams": 75.0,
+            "grams": 75,
             "note": "tomate natural rallado",
             "state": "crudo"
           }
@@ -1034,49 +1034,49 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A059",
             "food": "Pan integral 100% espelta",
-            "grams": 70.0,
+            "grams": 70,
             "note": "2 rebanadas de 35 g · cantidad fija",
             "state": "producto"
           },
           {
             "food_id": "A028",
             "food": "Pechuga 92% Hacendado",
-            "grams": 50.0,
+            "grams": 50,
             "note": "Hacendado",
             "state": "producto"
           },
           {
             "food_id": "A013",
             "food": "Queso Havarti light",
-            "grams": 25.0,
+            "grams": 25,
             "note": "1 loncha",
             "state": "producto"
           },
           {
             "food_id": "A016",
             "food": "Huevo entero",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 huevo",
             "state": "crudo"
           },
           {
             "food_id": "A029",
             "food": "Tomate",
-            "grams": 100.0,
+            "grams": 100,
             "note": "rodajas o rallado",
             "state": "crudo"
           },
           {
             "food_id": "A030",
             "food": "Lechuga",
-            "grams": 50.0,
+            "grams": 50,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A007",
             "food": "Yogur griego natural",
-            "grams": 30.0,
+            "grams": 30,
             "note": "salsa de yogur con especias",
             "state": "producto"
           }
@@ -1085,49 +1085,49 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A059",
             "food": "Pan integral 100% espelta",
-            "grams": 70.0,
+            "grams": 70,
             "note": "2 rebanadas de 35 g · cantidad fija",
             "state": "producto"
           },
           {
             "food_id": "A028",
             "food": "Pechuga 92% Hacendado",
-            "grams": 40.0,
+            "grams": 40,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A013",
             "food": "Queso Havarti light",
-            "grams": 20.0,
+            "grams": 20,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A016",
             "food": "Huevo entero",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 huevo",
             "state": "crudo"
           },
           {
             "food_id": "A029",
             "food": "Tomate",
-            "grams": 80.0,
+            "grams": 80,
             "note": "rodajas o rallado",
             "state": "crudo"
           },
           {
             "food_id": "A030",
             "food": "Lechuga",
-            "grams": 40.0,
+            "grams": 40,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A007",
             "food": "Yogur griego natural",
-            "grams": 30.0,
+            "grams": 30,
             "note": "salsa de yogur con especias",
             "state": "producto"
           }
@@ -1158,7 +1158,7 @@ window.NUTRIPLAN_DATA = {
       "image_status": "PENDIENTE",
       "summary": {
         "P01": {
-          "kcal": 567.0,
+          "kcal": 567,
           "protein": 46.7,
           "carbs": 76.4,
           "fat": 9.7,
@@ -1168,7 +1168,7 @@ window.NUTRIPLAN_DATA = {
           "goal_pct": 0.33076923076923076
         },
         "P02": {
-          "kcal": 407.0,
+          "kcal": 407,
           "protein": 33.7,
           "carbs": 57.4,
           "fat": 5.7,
@@ -1197,7 +1197,7 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A005",
             "food": "Leche evaporada parcialmente desnatada",
-            "grams": 114.0,
+            "grams": 114,
             "note": "≈200 ml",
             "state": "producto"
           },
@@ -1255,7 +1255,7 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A005",
             "food": "Leche evaporada parcialmente desnatada",
-            "grams": 86.0,
+            "grams": 86,
             "note": "≈200 ml",
             "state": "producto"
           },
@@ -1344,42 +1344,42 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 30.0,
+            "grams": 30,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A021",
             "food": "Tortillas de avena 51% Hacendado",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 tortilla completa de 60 g · indivisible",
             "state": "producto"
           },
           {
             "food_id": "A001",
             "food": "Pechuga de pollo",
-            "grams": 75.0,
+            "grams": 75,
             "note": "sustituye al pavo de la receta original",
             "state": "crudo"
           },
           {
             "food_id": "A013",
             "food": "Queso Havarti light",
-            "grams": 25.0,
+            "grams": 25,
             "note": "1 loncha",
             "state": "producto"
           },
           {
             "food_id": "A030",
             "food": "Lechuga",
-            "grams": 20.0,
+            "grams": 20,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A007",
             "food": "Yogur griego natural",
-            "grams": 60.0,
+            "grams": 60,
             "note": "salsa de yogur con especias",
             "state": "producto"
           }
@@ -1388,42 +1388,42 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 25.0,
+            "grams": 25,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A021",
             "food": "Tortillas de avena 51% Hacendado",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 tortilla completa de 60 g · indivisible",
             "state": "producto"
           },
           {
             "food_id": "A001",
             "food": "Pechuga de pollo",
-            "grams": 60.0,
+            "grams": 60,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A013",
             "food": "Queso Havarti light",
-            "grams": 20.0,
+            "grams": 20,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A030",
             "food": "Lechuga",
-            "grams": 20.0,
+            "grams": 20,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A007",
             "food": "Yogur griego natural",
-            "grams": 45.0,
+            "grams": 45,
             "note": "salsa de yogur con especias",
             "state": "producto"
           }
@@ -1457,7 +1457,7 @@ window.NUTRIPLAN_DATA = {
         "P01": {
           "kcal": 266.2,
           "protein": 17.645,
-          "carbs": 27.0,
+          "carbs": 27,
           "fat": 8.149999999999999,
           "p_pct": 0.2801571865200651,
           "c_pct": 0.4286905092684476,
@@ -1480,42 +1480,42 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A021",
             "food": "Copos de avena",
-            "grams": 25.0,
+            "grams": 25,
             "note": "",
             "state": "seco"
           },
           {
             "food_id": "A036",
             "food": "Semillas de chía Hacendado",
-            "grams": 10.0,
+            "grams": 10,
             "note": "",
             "state": "seco"
           },
           {
             "food_id": "A037",
             "food": "Cacahuete desgrasado en polvo",
-            "grams": 5.0,
+            "grams": 5,
             "note": "",
             "state": "polvo"
           },
           {
             "food_id": "A007",
             "food": "Yogur griego ligero natural",
-            "grams": 60.0,
+            "grams": 60,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A005",
             "food": "Leche desnatada",
-            "grams": 150.0,
+            "grams": 150,
             "note": "150 ml dentro del overnight",
             "state": "producto"
           },
           {
             "food_id": "A026",
             "food": "Cacao puro desgrasado en polvo",
-            "grams": 4.0,
+            "grams": 4,
             "note": "",
             "state": "producto"
           }
@@ -1524,42 +1524,42 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A021",
             "food": "Copos de avena",
-            "grams": 20.0,
+            "grams": 20,
             "note": "",
             "state": "seco"
           },
           {
             "food_id": "A036",
             "food": "Semillas de chía Hacendado",
-            "grams": 8.0,
+            "grams": 8,
             "note": "",
             "state": "seco"
           },
           {
             "food_id": "A037",
             "food": "Cacahuete desgrasado en polvo",
-            "grams": 4.0,
+            "grams": 4,
             "note": "",
             "state": "polvo"
           },
           {
             "food_id": "A007",
             "food": "Yogur griego ligero natural",
-            "grams": 50.0,
+            "grams": 50,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A005",
             "food": "Leche desnatada",
-            "grams": 120.0,
+            "grams": 120,
             "note": "120 ml dentro del overnight",
             "state": "producto"
           },
           {
             "food_id": "A026",
             "food": "Cacao puro desgrasado en polvo",
-            "grams": 3.0,
+            "grams": 3,
             "note": "",
             "state": "producto"
           }
@@ -1612,42 +1612,42 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A017",
             "food": "Salmón en lomos",
-            "grams": 130.0,
+            "grams": 130,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A031",
             "food": "Tallarines secos",
-            "grams": 65.0,
+            "grams": 65,
             "note": "pesar en seco",
             "state": "seco"
           },
           {
             "food_id": "A035",
             "food": "Pimiento",
-            "grams": 80.0,
+            "grams": 80,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A038",
             "food": "Calabacín",
-            "grams": 120.0,
+            "grams": 120,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 60.0,
+            "grams": 60,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A049",
             "food": "Salsa de soja Hacendado",
-            "grams": 25.0,
+            "grams": 25,
             "note": "añadir al final; no añadir sal",
             "state": "producto"
           }
@@ -1656,35 +1656,35 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A017",
             "food": "Salmón en lomos",
-            "grams": 100.0,
+            "grams": 100,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A031",
             "food": "Tallarines secos",
-            "grams": 50.0,
+            "grams": 50,
             "note": "pesar en seco",
             "state": "seco"
           },
           {
             "food_id": "A035",
             "food": "Pimiento",
-            "grams": 60.0,
+            "grams": 60,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A038",
             "food": "Calabacín",
-            "grams": 90.0,
+            "grams": 90,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 45.0,
+            "grams": 45,
             "note": "",
             "state": "crudo"
           },
@@ -1730,7 +1730,7 @@ window.NUTRIPLAN_DATA = {
         "P02": {
           "kcal": 476.90000000000003,
           "protein": 28.419999999999998,
-          "carbs": 72.0,
+          "carbs": 72,
           "fat": 7.41,
           "p_pct": 0.24271409355851142,
           "c_pct": 0.6148984776992549,
@@ -1743,21 +1743,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A031",
             "food": "Tallarines secos",
-            "grams": 100.0,
+            "grams": 100,
             "note": "pesar en seco",
             "state": "seco"
           },
           {
             "food_id": "A041",
             "food": "Atún al natural Hacendado",
-            "grams": 100.0,
+            "grams": 100,
             "note": "peso escurrido",
             "state": "peso escurrido"
           },
           {
             "food_id": "A040",
             "food": "Tomate frito Hacendado",
-            "grams": 220.0,
+            "grams": 220,
             "note": "",
             "state": "producto"
           }
@@ -1766,21 +1766,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A031",
             "food": "Tallarines secos",
-            "grams": 70.0,
+            "grams": 70,
             "note": "pesar en seco",
             "state": "seco"
           },
           {
             "food_id": "A041",
             "food": "Atún al natural Hacendado",
-            "grams": 80.0,
+            "grams": 80,
             "note": "peso escurrido",
             "state": "peso escurrido"
           },
           {
             "food_id": "A040",
             "food": "Tomate frito Hacendado",
-            "grams": 180.0,
+            "grams": 180,
             "note": "",
             "state": "producto"
           }
@@ -1842,14 +1842,14 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A011",
             "food": "Pan de molde Hacendado",
-            "grams": 56.0,
+            "grams": 56,
             "note": "2 rebanadas de 28 g",
             "state": "producto"
           },
           {
             "food_id": "A042",
             "food": "Mermelada de melocotón Hacendado",
-            "grams": 60.0,
+            "grams": 60,
             "note": "30 g por rebanada",
             "state": "producto"
           }
@@ -1858,14 +1858,14 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A011",
             "food": "Pan de molde grueso",
-            "grams": 51.0,
+            "grams": 51,
             "note": "1 rebanada",
             "state": "producto"
           },
           {
             "food_id": "A042",
             "food": "Mermelada de fresa Hacendado",
-            "grams": 30.0,
+            "grams": 30,
             "note": "30 g",
             "state": "producto"
           }
@@ -1920,7 +1920,7 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A043",
             "food": "Melocotón",
-            "grams": 150.0,
+            "grams": 150,
             "note": "≈ 1 pieza mediana; peso comestible",
             "state": "crudo"
           }
@@ -1929,7 +1929,7 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A043",
             "food": "Melocotón",
-            "grams": 130.0,
+            "grams": 130,
             "note": "peso comestible",
             "state": "crudo"
           }
@@ -1963,7 +1963,7 @@ window.NUTRIPLAN_DATA = {
           "goal_pct": 0.054769230769230764
         },
         "P02": {
-          "kcal": 89.0,
+          "kcal": 89,
           "protein": 1.1,
           "carbs": 22.8,
           "fat": 0.3,
@@ -1978,7 +1978,7 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A008",
             "food": "Plátano",
-            "grams": 120.0,
+            "grams": 120,
             "note": "≈ 1 plátano mediano; sin piel",
             "state": "crudo"
           }
@@ -1987,7 +1987,7 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A008",
             "food": "Plátano",
-            "grams": 100.0,
+            "grams": 100,
             "note": "sin piel",
             "state": "crudo"
           }
@@ -2011,9 +2011,9 @@ window.NUTRIPLAN_DATA = {
       "image_status": "PENDIENTE",
       "summary": {
         "P01": {
-          "kcal": 75.0,
+          "kcal": 75,
           "protein": 1.5,
-          "carbs": 19.0,
+          "carbs": 19,
           "fat": 0.5,
           "p_pct": 0.06936416184971098,
           "c_pct": 0.8786127167630058,
@@ -2021,7 +2021,7 @@ window.NUTRIPLAN_DATA = {
           "goal_pct": 0.038461538461538464
         },
         "P02": {
-          "kcal": 60.0,
+          "kcal": 60,
           "protein": 1.2,
           "carbs": 15.2,
           "fat": 0.4,
@@ -2036,7 +2036,7 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A044",
             "food": "Sandía",
-            "grams": 250.0,
+            "grams": 250,
             "note": "peso de la pulpa",
             "state": "crudo"
           }
@@ -2045,7 +2045,7 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A044",
             "food": "Sandía",
-            "grams": 200.0,
+            "grams": 200,
             "note": "peso de la pulpa",
             "state": "crudo"
           }
@@ -2072,7 +2072,7 @@ window.NUTRIPLAN_DATA = {
       "image_status": "PENDIENTE",
       "summary": {
         "P01": {
-          "kcal": 267.0,
+          "kcal": 267,
           "protein": 32.4,
           "carbs": 27.3,
           "fat": 2.9,
@@ -2082,7 +2082,7 @@ window.NUTRIPLAN_DATA = {
           "goal_pct": 0.13692307692307693
         },
         "P02": {
-          "kcal": 267.0,
+          "kcal": 267,
           "protein": 32.4,
           "carbs": 27.3,
           "fat": 2.9,
@@ -2097,35 +2097,35 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A005",
             "food": "Leche desnatada",
-            "grams": 200.0,
+            "grams": 200,
             "note": "200 ml",
             "state": "producto"
           },
           {
             "food_id": "A009",
             "food": "Impact Whey Protein MyProtein sin sabor",
-            "grams": 30.0,
+            "grams": 30,
             "note": "",
             "state": "polvo"
           },
           {
             "food_id": "A026",
             "food": "Cacao puro desgrasado en polvo",
-            "grams": 3.0,
+            "grams": 3,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A045",
             "food": "Gelatina neutra en hojas",
-            "grams": 2.0,
+            "grams": 2,
             "note": "2 hojas",
             "state": "producto"
           },
           {
             "food_id": "A046",
             "food": "Copos de cereales sin azúcares añadidos Mercadona",
-            "grams": 20.0,
+            "grams": 20,
             "note": "añadir al servir",
             "state": "producto"
           }
@@ -2134,35 +2134,35 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A005",
             "food": "Leche desnatada",
-            "grams": 200.0,
+            "grams": 200,
             "note": "200 ml",
             "state": "producto"
           },
           {
             "food_id": "A009",
             "food": "Impact Whey Protein MyProtein sin sabor",
-            "grams": 30.0,
+            "grams": 30,
             "note": "",
             "state": "polvo"
           },
           {
             "food_id": "A026",
             "food": "Cacao puro desgrasado en polvo",
-            "grams": 3.0,
+            "grams": 3,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A045",
             "food": "Gelatina neutra en hojas",
-            "grams": 2.0,
+            "grams": 2,
             "note": "2 hojas",
             "state": "producto"
           },
           {
             "food_id": "A046",
             "food": "Copos de cereales sin azúcares añadidos Mercadona",
-            "grams": 20.0,
+            "grams": 20,
             "note": "añadir al servir",
             "state": "producto"
           }
@@ -2230,49 +2230,49 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A047",
             "food": "Lomos de merluza",
-            "grams": 200.0,
+            "grams": 200,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A048",
             "food": "Arroz cocido Hacendado",
-            "grams": 250.0,
+            "grams": 250,
             "note": "peso ya cocido",
             "state": "cocido"
           },
           {
             "food_id": "A038",
             "food": "Calabacín",
-            "grams": 120.0,
+            "grams": 120,
             "note": "verdura asada",
             "state": "crudo"
           },
           {
             "food_id": "A035",
             "food": "Pimiento",
-            "grams": 80.0,
+            "grams": 80,
             "note": "verdura asada",
             "state": "crudo"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 50.0,
+            "grams": 50,
             "note": "verdura asada",
             "state": "crudo"
           },
           {
             "food_id": "A006",
             "food": "Aceite de oliva virgen extra",
-            "grams": 5.0,
+            "grams": 5,
             "note": "para las verduras",
             "state": "producto"
           },
           {
             "food_id": "A049",
             "food": "Salsa de soja Hacendado",
-            "grams": 25.0,
+            "grams": 25,
             "note": "añadir al final; no añadir sal extra",
             "state": "producto"
           }
@@ -2281,49 +2281,49 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A047",
             "food": "Lomos de merluza",
-            "grams": 150.0,
+            "grams": 150,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A048",
             "food": "Arroz cocido Hacendado",
-            "grams": 180.0,
+            "grams": 180,
             "note": "peso ya cocido",
             "state": "cocido"
           },
           {
             "food_id": "A038",
             "food": "Calabacín",
-            "grams": 100.0,
+            "grams": 100,
             "note": "verdura asada",
             "state": "crudo"
           },
           {
             "food_id": "A035",
             "food": "Pimiento",
-            "grams": 60.0,
+            "grams": 60,
             "note": "verdura asada",
             "state": "crudo"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 40.0,
+            "grams": 40,
             "note": "verdura asada",
             "state": "crudo"
           },
           {
             "food_id": "A006",
             "food": "Aceite de oliva virgen extra",
-            "grams": 4.0,
+            "grams": 4,
             "note": "para las verduras",
             "state": "producto"
           },
           {
             "food_id": "A049",
             "food": "Salsa de soja Hacendado",
-            "grams": 19.0,
+            "grams": 19,
             "note": "añadir al final; no añadir sal extra",
             "state": "producto"
           }
@@ -2374,21 +2374,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A050",
             "food": "Queso fresco batido 0% Hacendado",
-            "grams": 250.0,
+            "grams": 250,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A043",
             "food": "Melocotón",
-            "grams": 150.0,
+            "grams": 150,
             "note": "≈ 1 pieza mediana; peso comestible",
             "state": "crudo"
           },
           {
             "food_id": "A062",
             "food": "Otra fruta",
-            "grams": 150.0,
+            "grams": 150,
             "note": "1 pieza aprox.; elegir la fruta disponible",
             "state": "crudo"
           }
@@ -2397,14 +2397,14 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A050",
             "food": "Queso fresco batido 0% Hacendado",
-            "grams": 150.0,
+            "grams": 150,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A043",
             "food": "Melocotón",
-            "grams": 120.0,
+            "grams": 120,
             "note": "peso comestible",
             "state": "crudo"
           }
@@ -2457,21 +2457,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A051",
             "food": "Pasta de hélices seca",
-            "grams": 60.0,
+            "grams": 60,
             "note": "pesar en seco",
             "state": "seco"
           },
           {
             "food_id": "A001",
             "food": "Pechuga de pollo cocinada",
-            "grams": 110.0,
+            "grams": 110,
             "note": "peso ya cocinado",
             "state": "cocinado"
           },
           {
             "food_id": "A016",
             "food": "Huevo cocido",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 unidad",
             "state": "cocido"
           },
@@ -2506,7 +2506,7 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A007",
             "food": "Yogur griego ligero natural Hacendado",
-            "grams": 60.0,
+            "grams": 60,
             "note": "salsa de yogur con especias",
             "state": "producto"
           }
@@ -2515,56 +2515,56 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A051",
             "food": "Pasta de hélices seca",
-            "grams": 45.0,
+            "grams": 45,
             "note": "pesar en seco",
             "state": "seco"
           },
           {
             "food_id": "A001",
             "food": "Pechuga de pollo cocinada",
-            "grams": 85.0,
+            "grams": 85,
             "note": "peso ya cocinado",
             "state": "cocinado"
           },
           {
             "food_id": "A016",
             "food": "Huevo cocido",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 unidad",
             "state": "cocido"
           },
           {
             "food_id": "A030",
             "food": "Lechuga",
-            "grams": 50.0,
+            "grams": 50,
             "note": "parte de la mezcla de verduras",
             "state": "crudo"
           },
           {
             "food_id": "A029",
             "food": "Tomate",
-            "grams": 50.0,
+            "grams": 50,
             "note": "parte de la mezcla de verduras",
             "state": "crudo"
           },
           {
             "food_id": "A052",
             "food": "Pepino",
-            "grams": 50.0,
+            "grams": 50,
             "note": "parte de la mezcla de verduras",
             "state": "crudo"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 50.0,
+            "grams": 50,
             "note": "parte de la mezcla de verduras",
             "state": "crudo"
           },
           {
             "food_id": "A007",
             "food": "Yogur griego ligero natural Hacendado",
-            "grams": 45.0,
+            "grams": 45,
             "note": "salsa de yogur con especias",
             "state": "producto"
           }
@@ -2617,21 +2617,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A051",
             "food": "Pasta de hélices seca",
-            "grams": 60.0,
+            "grams": 60,
             "note": "pesar en seco",
             "state": "seco"
           },
           {
             "food_id": "A001",
             "food": "Pechuga de pollo cocinada",
-            "grams": 110.0,
+            "grams": 110,
             "note": "peso ya cocinado",
             "state": "cocinado"
           },
           {
             "food_id": "A016",
             "food": "Huevo cocido",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 unidad",
             "state": "cocido"
           },
@@ -2666,7 +2666,7 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A007",
             "food": "Yogur griego ligero natural Hacendado",
-            "grams": 60.0,
+            "grams": 60,
             "note": "salsa de yogur con especias",
             "state": "producto"
           }
@@ -2675,56 +2675,56 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A051",
             "food": "Pasta de hélices seca",
-            "grams": 45.0,
+            "grams": 45,
             "note": "pesar en seco",
             "state": "seco"
           },
           {
             "food_id": "A001",
             "food": "Pechuga de pollo cocinada",
-            "grams": 85.0,
+            "grams": 85,
             "note": "peso ya cocinado",
             "state": "cocinado"
           },
           {
             "food_id": "A016",
             "food": "Huevo cocido",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 unidad",
             "state": "cocido"
           },
           {
             "food_id": "A030",
             "food": "Lechuga",
-            "grams": 50.0,
+            "grams": 50,
             "note": "parte de la mezcla de verduras",
             "state": "crudo"
           },
           {
             "food_id": "A029",
             "food": "Tomate",
-            "grams": 50.0,
+            "grams": 50,
             "note": "parte de la mezcla de verduras",
             "state": "crudo"
           },
           {
             "food_id": "A052",
             "food": "Pepino",
-            "grams": 50.0,
+            "grams": 50,
             "note": "parte de la mezcla de verduras",
             "state": "crudo"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 50.0,
+            "grams": 50,
             "note": "parte de la mezcla de verduras",
             "state": "crudo"
           },
           {
             "food_id": "A007",
             "food": "Yogur griego ligero natural Hacendado",
-            "grams": 45.0,
+            "grams": 45,
             "note": "salsa de yogur con especias",
             "state": "producto"
           }
@@ -2776,49 +2776,49 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A047",
             "food": "Lomos de merluza",
-            "grams": 200.0,
+            "grams": 200,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A031",
             "food": "Tallarines secos",
-            "grams": 80.0,
+            "grams": 80,
             "note": "pesar en seco",
             "state": "seco"
           },
           {
             "food_id": "A038",
             "food": "Calabacín",
-            "grams": 120.0,
+            "grams": 120,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A035",
             "food": "Pimiento",
-            "grams": 80.0,
+            "grams": 80,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 60.0,
+            "grams": 60,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A049",
             "food": "Salsa de soja Hacendado",
-            "grams": 25.0,
+            "grams": 25,
             "note": "añadir al final; no añadir sal",
             "state": "producto"
           },
           {
             "food_id": "A006",
             "food": "Aceite de oliva virgen extra",
-            "grams": 5.0,
+            "grams": 5,
             "note": "para saltear las verduras",
             "state": "producto"
           }
@@ -2827,49 +2827,49 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A047",
             "food": "Lomos de merluza",
-            "grams": 150.0,
+            "grams": 150,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A031",
             "food": "Tallarines secos",
-            "grams": 60.0,
+            "grams": 60,
             "note": "pesar en seco",
             "state": "seco"
           },
           {
             "food_id": "A038",
             "food": "Calabacín",
-            "grams": 90.0,
+            "grams": 90,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A035",
             "food": "Pimiento",
-            "grams": 60.0,
+            "grams": 60,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 45.0,
+            "grams": 45,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A049",
             "food": "Salsa de soja Hacendado",
-            "grams": 19.0,
+            "grams": 19,
             "note": "añadir al final; no añadir sal",
             "state": "producto"
           },
           {
             "food_id": "A006",
             "food": "Aceite de oliva virgen extra",
-            "grams": 4.0,
+            "grams": 4,
             "note": "para saltear las verduras",
             "state": "producto"
           }
@@ -2921,42 +2921,42 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A017",
             "food": "Salmón en lomos",
-            "grams": 130.0,
+            "grams": 130,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A048",
             "food": "Arroz ultracongelado Hacendado",
-            "grams": 167.0,
+            "grams": 167,
             "note": "peso preparado; Persona 1 = 1 bolsita de 167 g",
             "state": "cocido"
           },
           {
             "food_id": "A035",
             "food": "Pimiento",
-            "grams": 80.0,
+            "grams": 80,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A038",
             "food": "Calabacín",
-            "grams": 120.0,
+            "grams": 120,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 60.0,
+            "grams": 60,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A049",
             "food": "Salsa de soja Hacendado",
-            "grams": 25.0,
+            "grams": 25,
             "note": "añadir al final; no añadir sal",
             "state": "producto"
           }
@@ -2965,35 +2965,35 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A017",
             "food": "Salmón en lomos",
-            "grams": 100.0,
+            "grams": 100,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A048",
             "food": "Arroz ultracongelado Hacendado",
-            "grams": 125.0,
+            "grams": 125,
             "note": "aprox. 3/4 de bolsita",
             "state": "cocido"
           },
           {
             "food_id": "A035",
             "food": "Pimiento",
-            "grams": 60.0,
+            "grams": 60,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A038",
             "food": "Calabacín",
-            "grams": 90.0,
+            "grams": 90,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 45.0,
+            "grams": 45,
             "note": "",
             "state": "crudo"
           },
@@ -3055,28 +3055,28 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A027",
             "food": "Pan baguette",
-            "grams": 80.0,
+            "grams": 80,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A029",
             "food": "Tomate natural rallado",
-            "grams": 100.0,
+            "grams": 100,
             "note": "bien escurrido",
             "state": "crudo"
           },
           {
             "food_id": "A001",
             "food": "Pechuga de pollo cocinada",
-            "grams": 75.0,
+            "grams": 75,
             "note": "peso ya cocinado",
             "state": "cocinado"
           },
           {
             "food_id": "A053",
             "food": "Mozzarella rallada",
-            "grams": 10.0,
+            "grams": 10,
             "note": "",
             "state": "producto"
           }
@@ -3085,28 +3085,28 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A027",
             "food": "Pan baguette",
-            "grams": 60.0,
+            "grams": 60,
             "note": "",
             "state": "producto"
           },
           {
             "food_id": "A029",
             "food": "Tomate natural rallado",
-            "grams": 75.0,
+            "grams": 75,
             "note": "bien escurrido",
             "state": "crudo"
           },
           {
             "food_id": "A001",
             "food": "Pechuga de pollo cocinada",
-            "grams": 55.0,
+            "grams": 55,
             "note": "peso ya cocinado",
             "state": "cocinado"
           },
           {
             "food_id": "A053",
             "food": "Mozzarella rallada",
-            "grams": 8.0,
+            "grams": 8,
             "note": "",
             "state": "producto"
           }
@@ -3166,7 +3166,7 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 57.0,
+            "grams": 57,
             "note": "57 % de la salsa",
             "state": "crudo"
           },
@@ -3187,7 +3187,7 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A054",
             "food": "Salsa de tomate datterino con albahaca",
-            "grams": 114.0,
+            "grams": 114,
             "note": "57 % de la salsa",
             "state": "producto"
           },
@@ -3201,14 +3201,14 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A002",
             "food": "Patata",
-            "grams": 400.0,
+            "grams": 400,
             "note": "peso crudo; microondas",
             "state": "crudo"
           },
           {
             "food_id": "A058",
             "food": "Caldo de pollo Hacendado",
-            "grams": 57.0,
+            "grams": 57,
             "note": "parte proporcional de los 100 ml del lote",
             "state": "producto"
           }
@@ -3224,7 +3224,7 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 43.0,
+            "grams": 43,
             "note": "43 % de la salsa",
             "state": "crudo"
           },
@@ -3245,7 +3245,7 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A054",
             "food": "Salsa de tomate datterino con albahaca",
-            "grams": 86.0,
+            "grams": 86,
             "note": "43 % de la salsa",
             "state": "producto"
           },
@@ -3259,14 +3259,14 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A002",
             "food": "Patata",
-            "grams": 300.0,
+            "grams": 300,
             "note": "peso crudo; microondas",
             "state": "crudo"
           },
           {
             "food_id": "A058",
             "food": "Caldo de pollo Hacendado",
-            "grams": 43.0,
+            "grams": 43,
             "note": "parte proporcional de los 100 ml del lote",
             "state": "producto"
           }
@@ -3298,7 +3298,7 @@ window.NUTRIPLAN_DATA = {
       "image_status": "PENDIENTE",
       "summary": {
         "P01": {
-          "kcal": 568.0,
+          "kcal": 568,
           "protein": 52.067499999999995,
           "carbs": 62.732499999999995,
           "fat": 11.334999999999999,
@@ -3323,21 +3323,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A057",
             "food": "Ñoquis de patata Hacendado",
-            "grams": 125.0,
+            "grams": 125,
             "note": "air fryer 180 °C, 5–8 min",
             "state": "producto"
           },
           {
             "food_id": "A001",
             "food": "Pechuga de pollo cocinada",
-            "grams": 110.0,
+            "grams": 110,
             "note": "peso ya cocinado",
             "state": "cocinado"
           },
           {
             "food_id": "A016",
             "food": "Huevo cocido",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 unidad",
             "state": "cocido"
           },
@@ -3372,7 +3372,7 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A007",
             "food": "Yogur griego ligero natural Hacendado",
-            "grams": 60.0,
+            "grams": 60,
             "note": "salsa de yogur",
             "state": "producto"
           }
@@ -3381,56 +3381,56 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A057",
             "food": "Ñoquis de patata Hacendado",
-            "grams": 95.0,
+            "grams": 95,
             "note": "air fryer 180 °C, 5–8 min",
             "state": "producto"
           },
           {
             "food_id": "A001",
             "food": "Pechuga de pollo cocinada",
-            "grams": 85.0,
+            "grams": 85,
             "note": "peso ya cocinado",
             "state": "cocinado"
           },
           {
             "food_id": "A016",
             "food": "Huevo cocido",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 unidad",
             "state": "cocido"
           },
           {
             "food_id": "A030",
             "food": "Lechuga",
-            "grams": 50.0,
+            "grams": 50,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A029",
             "food": "Tomate",
-            "grams": 50.0,
+            "grams": 50,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A052",
             "food": "Pepino",
-            "grams": 50.0,
+            "grams": 50,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 50.0,
+            "grams": 50,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A007",
             "food": "Yogur griego ligero natural Hacendado",
-            "grams": 45.0,
+            "grams": 45,
             "note": "salsa de yogur",
             "state": "producto"
           }
@@ -3483,42 +3483,42 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A060",
             "food": "Pan de cristal redondo 100% natural",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 unidad",
             "state": "producto"
           },
           {
             "food_id": "A001",
             "food": "Pechuga de pollo",
-            "grams": 100.0,
+            "grams": 100,
             "note": "picar y formar la hamburguesa",
             "state": "crudo"
           },
           {
             "food_id": "A061",
             "food": "Preparado crujiente Hacendado",
-            "grams": 15.0,
+            "grams": 15,
             "note": "para el rebozado",
             "state": "producto"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 30.0,
+            "grams": 30,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A063",
             "food": "Salsa de yogur casera",
-            "grams": 30.0,
+            "grams": 30,
             "note": "usar la salsa reutilizable ya preparada",
             "state": "preparado"
           },
           {
             "food_id": "A013",
             "food": "Queso Havarti light",
-            "grams": 25.0,
+            "grams": 25,
             "note": "1 loncha",
             "state": "producto"
           }
@@ -3527,42 +3527,42 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A060",
             "food": "Pan de cristal redondo 100% natural",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 unidad",
             "state": "producto"
           },
           {
             "food_id": "A001",
             "food": "Pechuga de pollo",
-            "grams": 100.0,
+            "grams": 100,
             "note": "picar y formar la hamburguesa",
             "state": "crudo"
           },
           {
             "food_id": "A061",
             "food": "Preparado crujiente Hacendado",
-            "grams": 15.0,
+            "grams": 15,
             "note": "para el rebozado",
             "state": "producto"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 30.0,
+            "grams": 30,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A063",
             "food": "Salsa de yogur casera",
-            "grams": 30.0,
+            "grams": 30,
             "note": "usar la salsa reutilizable ya preparada",
             "state": "preparado"
           },
           {
             "food_id": "A013",
             "food": "Queso Havarti light",
-            "grams": 25.0,
+            "grams": 25,
             "note": "1 loncha",
             "state": "producto"
           }
@@ -3592,9 +3592,9 @@ window.NUTRIPLAN_DATA = {
       "image_status": "PENDIENTE",
       "summary": {
         "P01": {
-          "kcal": 519.0,
-          "protein": 46.0,
-          "carbs": 62.0,
+          "kcal": 519,
+          "protein": 46,
+          "carbs": 62,
           "fat": 9.8,
           "p_pct": 0.3602,
           "c_pct": 0.4855,
@@ -3602,7 +3602,7 @@ window.NUTRIPLAN_DATA = {
           "goal_pct": 0.26615384615384613
         },
         "P02": {
-          "kcal": 401.0,
+          "kcal": 401,
           "protein": 35.5,
           "carbs": 47.5,
           "fat": 7.7,
@@ -3617,21 +3617,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A064",
             "food": "Solomillo de pavo",
-            "grams": 180.0,
+            "grams": 180,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A048",
             "food": "Arroz ultracongelado Hacendado",
-            "grams": 167.0,
+            "grams": 167,
             "note": "1 bolsita",
             "state": "cocido"
           },
           {
             "food_id": "A020",
             "food": "Fritada pisto Hacendado",
-            "grams": 150.0,
+            "grams": 150,
             "note": "",
             "state": "producto"
           }
@@ -3640,21 +3640,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A064",
             "food": "Solomillo de pavo",
-            "grams": 140.0,
+            "grams": 140,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A048",
             "food": "Arroz ultracongelado Hacendado",
-            "grams": 125.0,
+            "grams": 125,
             "note": "",
             "state": "cocido"
           },
           {
             "food_id": "A020",
             "food": "Fritada pisto Hacendado",
-            "grams": 120.0,
+            "grams": 120,
             "note": "",
             "state": "producto"
           }
@@ -3707,21 +3707,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A047",
             "food": "Lomos de merluza",
-            "grams": 200.0,
+            "grams": 200,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A048",
             "food": "Arroz ultracongelado Hacendado",
-            "grams": 167.0,
+            "grams": 167,
             "note": "1 bolsita",
             "state": "cocido"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 55.0,
+            "grams": 55,
             "note": "55 % de la salsa",
             "state": "crudo"
           },
@@ -3742,14 +3742,14 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A054",
             "food": "Salsa de tomate datterino con albahaca",
-            "grams": 110.0,
+            "grams": 110,
             "note": "55 % de la salsa",
             "state": "producto"
           },
           {
             "food_id": "A058",
             "food": "Caldo de pollo Hacendado",
-            "grams": 55.0,
+            "grams": 55,
             "note": "55 % de los 100 ml del lote",
             "state": "producto"
           },
@@ -3765,21 +3765,21 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A047",
             "food": "Lomos de merluza",
-            "grams": 150.0,
+            "grams": 150,
             "note": "",
             "state": "crudo"
           },
           {
             "food_id": "A048",
             "food": "Arroz ultracongelado Hacendado",
-            "grams": 125.0,
+            "grams": 125,
             "note": "",
             "state": "cocido"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
-            "grams": 45.0,
+            "grams": 45,
             "note": "45 % de la salsa",
             "state": "crudo"
           },
@@ -3800,14 +3800,14 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A054",
             "food": "Salsa de tomate datterino con albahaca",
-            "grams": 90.0,
+            "grams": 90,
             "note": "45 % de la salsa",
             "state": "producto"
           },
           {
             "food_id": "A058",
             "food": "Caldo de pollo Hacendado",
-            "grams": 45.0,
+            "grams": 45,
             "note": "45 % de los 100 ml del lote",
             "state": "producto"
           },
@@ -3868,28 +3868,28 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A021",
             "food": "Tortilla de avena 51% Hacendado",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 tortilla completa de 60 g · BASE BLOQUEADA",
             "state": "producto"
           },
           {
             "food_id": "A066",
             "food": "Tomate frito con aceite de oliva",
-            "grams": 50.0,
+            "grams": 50,
             "note": "capa fina para evitar humedecer la base",
             "state": "producto"
           },
           {
             "food_id": "A001",
             "food": "Pechuga de pollo cocinada",
-            "grams": 100.0,
+            "grams": 100,
             "note": "peso ya cocinado; repartir sobre la pizza",
             "state": "cocinado"
           },
           {
             "food_id": "A053",
             "food": "Mozzarella rallada",
-            "grams": 30.0,
+            "grams": 30,
             "note": "",
             "state": "producto"
           }
@@ -3898,28 +3898,28 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A021",
             "food": "Tortilla de avena 51% Hacendado",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 tortilla completa de 60 g · BASE BLOQUEADA",
             "state": "producto"
           },
           {
             "food_id": "A066",
             "food": "Tomate frito con aceite de oliva",
-            "grams": 45.0,
+            "grams": 45,
             "note": "capa fina para evitar humedecer la base",
             "state": "producto"
           },
           {
             "food_id": "A001",
             "food": "Pechuga de pollo cocinada",
-            "grams": 80.0,
+            "grams": 80,
             "note": "peso ya cocinado; repartir sobre la pizza",
             "state": "cocinado"
           },
           {
             "food_id": "A053",
             "food": "Mozzarella rallada",
-            "grams": 25.0,
+            "grams": 25,
             "note": "",
             "state": "producto"
           }
@@ -3980,28 +3980,28 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A021",
             "food": "Tortilla de avena 51% Hacendado",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 tortilla completa de 60 g · BASE BLOQUEADA",
             "state": "producto"
           },
           {
             "food_id": "A066",
             "food": "Tomate frito con aceite de oliva",
-            "grams": 50.0,
+            "grams": 50,
             "note": "capa fina para evitar humedecer la base",
             "state": "producto"
           },
           {
             "food_id": "A065",
             "food": "Jamón cocido extra 92%",
-            "grams": 130.0,
+            "grams": 130,
             "note": "repartir bien para no cargar el centro",
             "state": "producto"
           },
           {
             "food_id": "A053",
             "food": "Mozzarella rallada",
-            "grams": 30.0,
+            "grams": 30,
             "note": "",
             "state": "producto"
           }
@@ -4010,28 +4010,28 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A021",
             "food": "Tortilla de avena 51% Hacendado",
-            "grams": 60.0,
+            "grams": 60,
             "note": "1 tortilla completa de 60 g · BASE BLOQUEADA",
             "state": "producto"
           },
           {
             "food_id": "A066",
             "food": "Tomate frito con aceite de oliva",
-            "grams": 45.0,
+            "grams": 45,
             "note": "capa fina para evitar humedecer la base",
             "state": "producto"
           },
           {
             "food_id": "A065",
             "food": "Jamón cocido extra 92%",
-            "grams": 100.0,
+            "grams": 100,
             "note": "repartir bien para no cargar el centro",
             "state": "producto"
           },
           {
             "food_id": "A053",
             "food": "Mozzarella rallada",
-            "grams": 25.0,
+            "grams": 25,
             "note": "",
             "state": "producto"
           }
@@ -4135,6 +4135,114 @@ window.NUTRIPLAN_DATA = {
       "locked_portion_P01": true,
       "locked_portion_P02": true,
       "calculation_mode": "INGREDIENT_SUM"
+    },
+    "R041": {
+      "id": "R041",
+      "code": "REC-041",
+      "version": "1.0",
+      "name": "Tostadas de espelta con margarina light + café descafeinado",
+      "type": "DESAYUNO",
+      "status": "ACTIVA",
+      "available_for": [
+        "P02"
+      ],
+      "tags": [
+        "DESAYUNO",
+        "P02",
+        "ESPELTA",
+        "CAFE",
+        "RACION_FIJA"
+      ],
+      "notes": "Desayuno habitual de Persona 2. Tostar 2 rebanadas de pan de espelta (74 g en total), untar 18 g de margarina light entre ambas y acompañar con café soluble descafeinado Nescafé preparado con 260 ml de leche desnatada. La receta ya incluye ese café con leche; el contador de cafés debe usarse solo para cafés adicionales.",
+      "image": null,
+      "image_status": "PENDIENTE",
+      "summary": {
+        "P01": {
+          "kcal": 335.35999999999996,
+          "protein": 17.532,
+          "carbs": 38.982,
+          "fat": 10.754,
+          "p_pct": 0.21722080770160018,
+          "c_pct": 0.48298548515992346,
+          "f_pct": 0.2997937071384764,
+          "goal_pct": 0.17197948717948716
+        },
+        "P02": {
+          "kcal": 335.35999999999996,
+          "protein": 17.532,
+          "carbs": 38.982,
+          "fat": 10.754,
+          "p_pct": 0.21722080770160018,
+          "c_pct": 0.48298548515992346,
+          "f_pct": 0.2997937071384764,
+          "goal_pct": 0.2395428571428571
+        }
+      },
+      "portions": {
+        "P01": [
+          {
+            "food_id": "A069",
+            "food": "Pan de molde integral de espelta",
+            "grams": 74,
+            "note": "2 rebanadas · peso real",
+            "state": "producto"
+          },
+          {
+            "food_id": "A070",
+            "food": "Margarina light",
+            "grams": 18,
+            "note": "repartida entre las 2 tostadas",
+            "state": "producto"
+          },
+          {
+            "food_id": "A071",
+            "food": "Leche desnatada",
+            "grams": 260,
+            "note": "260 ml para el café",
+            "state": "producto"
+          },
+          {
+            "food_id": "A072",
+            "food": "Café soluble descafeinado Nescafé",
+            "grams": 2,
+            "note": "1 cucharadita aprox.",
+            "state": "producto"
+          }
+        ],
+        "P02": [
+          {
+            "food_id": "A069",
+            "food": "Pan de molde integral de espelta",
+            "grams": 74,
+            "note": "2 rebanadas · peso real",
+            "state": "producto"
+          },
+          {
+            "food_id": "A070",
+            "food": "Margarina light",
+            "grams": 18,
+            "note": "repartida entre las 2 tostadas",
+            "state": "producto"
+          },
+          {
+            "food_id": "A071",
+            "food": "Leche desnatada",
+            "grams": 260,
+            "note": "260 ml para el café",
+            "state": "producto"
+          },
+          {
+            "food_id": "A072",
+            "food": "Café soluble descafeinado Nescafé",
+            "grams": 2,
+            "note": "1 cucharadita aprox.",
+            "state": "producto"
+          }
+        ]
+      },
+      "locked_portion_P01": true,
+      "locked_portion_P02": true,
+      "calculation_mode": "INGREDIENT_SUM"
     }
   },
   "foods": {
@@ -4146,9 +4254,9 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": null,
       "state": "crudo",
       "nutrition_100": {
-        "kcal": 165.0,
-        "protein": 31.0,
-        "carbs": 0.0,
+        "kcal": 165,
+        "protein": 31,
+        "carbs": 0,
         "fat": 3.6
       }
     },
@@ -4176,7 +4284,7 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": null,
       "state": "crudo",
       "nutrition_100": {
-        "kcal": 40.0,
+        "kcal": 40,
         "protein": 1.1,
         "carbs": 9.3,
         "fat": 0.1
@@ -4198,10 +4306,10 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": null,
       "state": "producto",
       "nutrition_100": {
-        "kcal": 900.0,
-        "protein": 0.0,
-        "carbs": 0.0,
-        "fat": 100.0
+        "kcal": 900,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 100
       }
     },
     "A007": {
@@ -4212,10 +4320,10 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": "Vasito individual de 125 g",
       "state": "producto",
       "nutrition_100": {
-        "kcal": 60.0,
+        "kcal": 60,
         "protein": 5.8,
         "carbs": 4.7,
-        "fat": 2.0
+        "fat": 2
       }
     },
     "A008": {
@@ -4258,9 +4366,9 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": "Paquete 200 g. Aproximadamente 25 g por loncha (6 lonchas ≈150 g).",
       "state": "producto",
       "nutrition_100": {
-        "kcal": 89.0,
+        "kcal": 89,
         "protein": 19.5,
-        "carbs": 1.0,
+        "carbs": 1,
         "fat": 1.3
       }
     },
@@ -4272,10 +4380,10 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": "1 loncha ≈25 g",
       "state": "producto",
       "nutrition_100": {
-        "kcal": 267.0,
-        "protein": 27.0,
+        "kcal": 267,
+        "protein": 27,
         "carbs": 1.6,
-        "fat": 17.0
+        "fat": 17
       }
     },
     "A014": {
@@ -4302,9 +4410,9 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": null,
       "state": "crudo",
       "nutrition_100": {
-        "kcal": 130.0,
+        "kcal": 130,
         "protein": 10.5,
-        "carbs": 1.0,
+        "carbs": 1,
         "fat": 8.8333333333
       }
     },
@@ -4348,10 +4456,10 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": "Paquete 6 ud. (360 g); 60 g por tortilla",
       "state": "producto",
       "nutrition_100": {
-        "kcal": 287.0,
-        "protein": 15.0,
-        "carbs": 40.0,
-        "fat": 6.0
+        "kcal": 287,
+        "protein": 15,
+        "carbs": 40,
+        "fat": 6
       }
     },
     "A022": {
@@ -4410,9 +4518,9 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": "75 g = 67 kcal según la captura de la pauta",
       "state": "producto",
       "nutrition_100": {
-        "kcal": 89.0,
+        "kcal": 89,
         "protein": 19.5,
-        "carbs": 1.0,
+        "carbs": 1,
         "fat": 1.3
       }
     },
@@ -4424,7 +4532,7 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": "Tomate natural rallado; 100 g ≈ 18 kcal",
       "state": "crudo",
       "nutrition_100": {
-        "kcal": 18.0,
+        "kcal": 18,
         "protein": 0.9,
         "carbs": 3.9,
         "fat": 0.2
@@ -4438,7 +4546,7 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": "Valores orientativos de lechuga fresca",
       "state": "crudo",
       "nutrition_100": {
-        "kcal": 15.0,
+        "kcal": 15,
         "protein": 1.4,
         "carbs": 2.9,
         "fat": 0.2
@@ -4548,7 +4656,7 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": "Valores estándar de fruta fresca; peso comestible.",
       "state": "crudo",
       "nutrition_100": {
-        "kcal": 39.0,
+        "kcal": 39,
         "protein": 0.9,
         "carbs": 9.5,
         "fat": 0.3
@@ -4610,8 +4718,8 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": "46 kcal · 8,0 g proteína · 3,5 g HC · <0,5 g grasa por 100 g. Etiqueta aportada.",
       "state": "producto",
       "nutrition_100": {
-        "kcal": 46.0,
-        "protein": 8.0,
+        "kcal": 46,
+        "protein": 8,
         "carbs": 3.5,
         "fat": 0.3
       }
@@ -4640,10 +4748,10 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": "283 kcal · 21 g proteína · 2,5 g HC · 21 g grasa por 100 g.",
       "state": "producto",
       "nutrition_100": {
-        "kcal": 283.0,
-        "protein": 21.0,
+        "kcal": 283,
+        "protein": 21,
         "carbs": 2.5,
-        "fat": 21.0
+        "fat": 21
       }
     },
     "A054": {
@@ -4710,7 +4818,7 @@ window.NUTRIPLAN_DATA = {
       "nutrition_100": {
         "kcal": 228.3,
         "protein": 7.3,
-        "carbs": 43.0,
+        "carbs": 43,
         "fat": 2.3
       }
     },
@@ -4722,7 +4830,7 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": "368 kcal · 8,5 g proteína · 79,9 g HC · 0,9 g grasa por 100 g.",
       "state": "producto",
       "nutrition_100": {
-        "kcal": 368.0,
+        "kcal": 368,
         "protein": 8.5,
         "carbs": 79.9,
         "fat": 0.9
@@ -4736,7 +4844,7 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": "Para REC-024: 1 pieza de fruta adicional. Se contabilizan 150 g con un valor medio orientativo; los macros reales dependen de la fruta elegida.",
       "state": "crudo",
       "nutrition_100": {
-        "kcal": 50.0,
+        "kcal": 50,
         "protein": 0.5,
         "carbs": 12.5,
         "fat": 0.2
@@ -4772,8 +4880,8 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": "102 kcal · 19 g proteína · 0,9 g HC · 2,5 g grasa por 100 g. 92% jamón.",
       "state": "producto",
       "nutrition_100": {
-        "kcal": 102.0,
-        "protein": 19.0,
+        "kcal": 102,
+        "protein": 19,
         "carbs": 0.9,
         "fat": 2.5
       }
@@ -4786,7 +4894,7 @@ window.NUTRIPLAN_DATA = {
       "pack_notes": "77 kcal · 1,5 g proteína · 9,5 g HC · 3,5 g grasa por 100 g.",
       "state": "producto",
       "nutrition_100": {
-        "kcal": 77.0,
+        "kcal": 77,
         "protein": 1.5,
         "carbs": 9.5,
         "fat": 3.5
@@ -4819,7 +4927,63 @@ window.NUTRIPLAN_DATA = {
         "carbs": 85,
         "fat": 0.5
       }
+    },
+    "A069": {
+      "name": "Pan de molde integral de espelta",
+      "source": "Etiqueta aportada",
+      "pack_g": 550,
+      "pack_unit": "paquete",
+      "pack_notes": "240 kcal · 12 g proteína · 35 g HC · 4,1 g grasa · 7,4 g fibra por 100 g. 2 rebanadas usadas en la ración = 74 g.",
+      "state": "producto",
+      "nutrition_100": {
+        "kcal": 240,
+        "protein": 12,
+        "carbs": 35,
+        "fat": 4.1
+      }
+    },
+    "A070": {
+      "name": "Margarina light",
+      "source": "Etiqueta aportada",
+      "pack_g": 500,
+      "pack_unit": "tarrina",
+      "pack_notes": "368 kcal · 40 g grasa · 1,9 g HC · <0,5 g proteína por 100 g.",
+      "state": "producto",
+      "nutrition_100": {
+        "kcal": 368,
+        "protein": 0.4,
+        "carbs": 1.9,
+        "fat": 40
+      }
+    },
+    "A071": {
+      "name": "Leche desnatada",
+      "source": "Nutriplan / valor usado en café con leche",
+      "pack_g": 1000,
+      "pack_unit": "ml",
+      "pack_notes": "35,2 kcal · 3,3 g proteína · 4,9 g HC · 0,2 g grasa por 100 ml.",
+      "state": "producto",
+      "nutrition_100": {
+        "kcal": 35.2,
+        "protein": 3.3,
+        "carbs": 4.9,
+        "fat": 0.2
+      }
+    },
+    "A072": {
+      "name": "Café soluble descafeinado Nescafé",
+      "source": "Nescafé / aporte despreciable en la ración",
+      "pack_g": null,
+      "pack_unit": "bote",
+      "pack_notes": "Se registra 1 cucharadita aprox. La energía del café solo se considera despreciable; las kcal de la bebida proceden de la leche.",
+      "state": "producto",
+      "nutrition_100": {
+        "kcal": 0,
+        "protein": 0,
+        "carbs": 0,
+        "fat": 0
+      }
     }
   },
-  "version": "5.0 REC-039 napolitana crujiente de chocolate 85%"
+  "version": "5.1 REC-041 desayuno P02 + menús separados"
 };

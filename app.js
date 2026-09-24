@@ -11,7 +11,10 @@ const DATA = window.NUTRIPLAN_DATA;
 
 // Adapter: profile/training policy and mutable application state stay outside the engine.
 function nutritionEngineInput(dateKey=state.selectedDate){
-  return {data:DATA,dateKey,menu:ensureMenu(dateKey),locks:state.recipeLocks,
+  return {data:DATA,dateKey,
+    menu:ensureMenu(dateKey,"P01"),
+    menusByPerson:{P01:ensureMenu(dateKey,"P01"),P02:ensureMenu(dateKey,"P02")},
+    locks:state.recipeLocks,
     adjustments:state.recipeAdjustments?.[dateKey]||{},
     goalsByPerson:{P01:goalsForDate('P01',dateKey),P02:goalsForDate('P02',dateKey)},
     scalingGoalsByPerson:{P01:recipeScalingGoalsForDate('P01',dateKey),P02:recipeScalingGoalsForDate('P02',dateKey)},
@@ -41,6 +44,12 @@ const DEFAULT_PROFILE_SETTINGS = {
 const RECIPE_REFERENCE_GOALS=JSON.parse(JSON.stringify(DATA.profiles));
 function profileName(pid){
   return state.profileSettings?.[pid]?.name || DEFAULT_PROFILE_SETTINGS[pid].name;
+}
+function recipeAvailableFor(recipe,pid){
+  return !Array.isArray(recipe?.available_for) || recipe.available_for.includes(pid);
+}
+function recipePreviewPerson(recipe){
+  return recipeAvailableFor(recipe,"P01") ? "P01" : "P02";
 }
 
 // Adaptadores de compatibilidad: las reglas y constantes viven en nutrition-engine.js.
@@ -237,11 +246,11 @@ function renderCoffeePanel(){
   });
 }
 
-function dayCoreMenuComplete(dateKey=state.selectedDate){
-  return nutritionEngineForDate(dateKey).dayCoreMenuComplete(dateKey);
+function dayCoreMenuComplete(dateKey=state.selectedDate,pid="P01"){
+  return nutritionEngineForDate(dateKey).dayCoreMenuComplete(dateKey,pid);
 }
-function recipeSelectedOnDay(recipeId,dateKey=state.selectedDate){
-  return nutritionEngineForDate(dateKey).recipeSelectedOnDay(recipeId,dateKey);
+function recipeSelectedOnDay(recipeId,dateKey=state.selectedDate,pid="P01"){
+  return nutritionEngineForDate(dateKey).recipeSelectedOnDay(recipeId,dateKey,pid);
 }
 function clampNum(v,min,max){return Math.max(min,Math.min(max,v));}
 function rawRecipeSummaryForBalance(recipe,pid,dateKey=state.selectedDate){
@@ -354,6 +363,26 @@ function normalizeOldMenu(menu){
   x.suplementacion=menu.suplementacion||menu.extra||"";
   return x;
 }
+function isMenusByPerson(value){
+  return Boolean(value && typeof value==="object" && !Array.isArray(value) && (value.P01 || value.P02));
+}
+function normalizeMenusByPerson(value){
+  if(isMenusByPerson(value)){
+    return {P01:normalizeOldMenu(value.P01),P02:normalizeOldMenu(value.P02)};
+  }
+  const legacy=normalizeOldMenu(value);
+  return {P01:{...legacy},P02:{...legacy}};
+}
+function ensureMenusForDate(key=state.selectedDate){
+  if(!state.menusByDate) state.menusByDate={};
+  const normalized=normalizeMenusByPerson(state.menusByDate[key]);
+  state.menusByDate[key]=normalized;
+  return normalized;
+}
+function ensureMenu(key=state.selectedDate,pid="P01"){
+  return ensureMenusForDate(key)[pid];
+}
+function currentMenu(pid="P01"){ return ensureMenu(state.selectedDate,pid); }
 
 // Si el JSON principal está dañado, conservarlo intacto y usar una clave de
 // recuperación independiente. Nunca sobrescribir tampoco recuperaciones dañadas.
@@ -459,8 +488,12 @@ if(!state.coffeeMigrationV1){
   Object.entries(state.menusByDate||{}).forEach(([date,menu])=>{
     if(state.coffeesByDate[date])return;
     const legacyCoffeeRecipes=["R011","R015","R018"];
-    const count=Math.min(3,Object.values(menu||{}).filter(rid=>legacyCoffeeRecipes.includes(rid)).length);
-    if(count>0) state.coffeesByDate[date]={P01:count,P02:count};
+    const menus=normalizeMenusByPerson(menu);
+    const counts={};
+    ["P01","P02"].forEach(pid=>{
+      counts[pid]=Math.min(3,Object.values(menus[pid]).filter(rid=>legacyCoffeeRecipes.includes(rid)).length);
+    });
+    if(counts.P01||counts.P02) state.coffeesByDate[date]=counts;
   });
   state.coffeeMigrationV1=true;
   save();
@@ -536,7 +569,15 @@ Object.values(DATA.recipes).forEach(r=>{
   }
 });
 
-Object.keys(state.menusByDate).forEach(k=>state.menusByDate[k]=normalizeOldMenu(state.menusByDate[k]));
+Object.keys(state.menusByDate).forEach(k=>state.menusByDate[k]=normalizeMenusByPerson(state.menusByDate[k]));
+
+// Ajuste moderado solicitado para Persona 2: si la instalación sigue exactamente en
+// 25 % de déficit, pasar a 27 %. No toca valores que el usuario ya haya cambiado.
+if(!state.evaDeficit27MigrationV1){
+  const person2=state.profileSettings?.P02;
+  if(person2 && Number(person2.deficit)===25) person2.deficit=27;
+  state.evaDeficit27MigrationV1=true;
+}
 
 let activeType="TODAS";
 let activeRecipe=null;
@@ -667,23 +708,6 @@ function formatLongDate(key){
 function formatShortDate(key){
   return parseDateKey(key).toLocaleDateString("es-ES",{weekday:"short",day:"2-digit",month:"2-digit"});
 }
-function ensureMenu(key=state.selectedDate){
-  if(!state.menusByDate[key]) state.menusByDate[key]=emptyMenu();
-
-  // Normaliza el menú SIN sustituir el objeto existente.
-  // Esto es importante porque los desplegables conservan una referencia
-  // al objeto del día. Si lo reemplazamos al dibujar la semana, la selección
-  // se escribiría sobre una referencia antigua y se perdería al refrescar.
-  const menu=state.menusByDate[key];
-  const normalized=normalizeOldMenu(menu);
-  Object.keys(emptyMenu()).forEach(slot=>{
-    menu[slot]=normalized[slot];
-  });
-  if(Object.prototype.hasOwnProperty.call(menu,"extra")) delete menu.extra;
-  return menu;
-}
-function currentMenu(){ return ensureMenu(state.selectedDate); }
-
 function daysInMonth(year,monthIndex){
   return new Date(year,monthIndex+1,0).getDate();
 }
@@ -714,9 +738,9 @@ function renderMonthCalendar(){
   for(let i=0;i<offset;i++)cells.push('<button class="calendar-day empty" tabindex="-1"></button>');
   for(let day=1;day<=count;day++){
     const key=dateKeyLocal(new Date(year,month,day));
-    const menu=state.menusByDate?.[key];
+    const menus=state.menusByDate?.[key];
     const hasCoffee=Boolean(state.coffeesByDate?.[key]?.P01 || state.coffeesByDate?.[key]?.P02);
-    const hasMenu=(menu && Object.values(normalizeOldMenu(menu)).some(Boolean)) || hasCoffee;
+    const hasMenu=(menus && ["P01","P02"].some(pid=>Object.values(normalizeMenusByPerson(menus)[pid]).some(Boolean))) || hasCoffee;
     cells.push(`<button type="button" class="calendar-day ${key===today?"today":""} ${key===state.selectedDate?"selected":""} ${hasMenu?"has-menu":""}" data-calendar-date="${key}">
       <span class="daynum">${day}</span>
     </button>`);
@@ -1017,43 +1041,68 @@ function renderPlanner(){
     cena:"CENA",
     suplementacion:"SUPLEMENTACION"
   };
-  const menu=currentMenu();
 
   el.innerHTML=menuSlotDefs.map(([key,label])=>{
     const wantedType=slotType[key];
-    const filtered=Object.values(DATA.recipes).filter(r=>r.type===wantedType || (Array.isArray(r.types)&&r.types.includes(wantedType)));
-    const options=filtered.map(r=>`<option value="${r.id}">${escapeHtml(r.name)} · ${escapeHtml(r.code||r.id)}</option>`).join("");
-    const rid=menu[key]||"";
-    const info=rid&&DATA.recipes[rid] ? (()=>{
-      const sj=scaledRecipeSummary(DATA.recipes[rid],"P01");
-      const se=scaledRecipeSummary(DATA.recipes[rid],"P02");
-      return `<div class="small" style="margin-top:5px">
-        ${escapeHtml(profileName("P01"))} ${fmt(sj.kcal)} kcal · ${escapeHtml(profileName("P02"))} ${fmt(se.kcal)} kcal · <b>${escapeHtml(DATA.recipes[rid].code||rid)}</b>
-        · <button type="button" class="btn soft" style="padding:4px 7px;font-size:11px" onclick="openRecipe('${rid}')">Ver cantidades</button>
-      </div>`;
-    })() : "";
-    return `<div class="menu-row"><label>${label}</label>
-      <div>
-        <select data-slot="${key}">
+    const cells=["P01","P02"].map(pid=>{
+      const menu=currentMenu(pid);
+      const filtered=Object.values(DATA.recipes).filter(r=>
+        recipeAvailableFor(r,pid) && (r.type===wantedType || (Array.isArray(r.types)&&r.types.includes(wantedType)))
+      );
+      const options=filtered.map(r=>`<option value="${r.id}">${escapeHtml(r.name)} · ${escapeHtml(r.code||r.id)}</option>`).join("");
+      const rid=menu[key]||"";
+      const info=rid&&DATA.recipes[rid] ? (()=>{
+        const sr=scaledRecipeSummary(DATA.recipes[rid],pid);
+        return `<div class="small" style="margin-top:5px">
+          ${fmt(sr.kcal)} kcal · <b>${escapeHtml(DATA.recipes[rid].code||rid)}</b>
+          · <button type="button" class="btn soft" style="padding:4px 7px;font-size:11px" onclick="openRecipe('${rid}')">Ver cantidades</button>
+        </div>`;
+      })() : "";
+      return `<div class="menu-person-cell">
+        <div class="menu-person-name">${escapeHtml(profileName(pid))}</div>
+        <select data-slot="${key}" data-pid="${pid}">
           <option value="">— Sin receta —</option>
           ${options}
         </select>
         ${info}
-      </div>
-    </div>`;
+      </div>`;
+    }).join("");
+    return `<div class="menu-row menu-row-split"><label>${label}</label><div class="menu-person-grid">${cells}</div></div>`;
   }).join("");
 
-  el.querySelectorAll("select[data-slot]").forEach(s=>{
-    const saved=menu[s.dataset.slot]||"";
-    const valid=[...s.options].some(o=>o.value===saved);
-    s.value=valid?saved:"";
+  el.querySelectorAll("select[data-slot][data-pid]").forEach(sel=>{
+    const pid=sel.dataset.pid,slot=sel.dataset.slot;
+    const menu=ensureMenu(state.selectedDate,pid);
+    const saved=menu[slot]||"";
+    const valid=[...sel.options].some(o=>o.value===saved);
+    sel.value=valid?saved:"";
     if(!valid && saved){
-      menu[s.dataset.slot]="";
+      menu[slot]="";
       save();
     }
-    s.onchange=()=>{
-      const dayMenu=ensureMenu(state.selectedDate);
-      dayMenu[s.dataset.slot]=s.value;
+    sel.onchange=()=>{
+      const dayMenu=ensureMenu(state.selectedDate,pid);
+      const otherPid=pid==="P01"?"P02":"P01";
+      const otherMenu=ensureMenu(state.selectedDate,otherPid);
+      const previous=dayMenu[slot]||"";
+      const next=sel.value;
+      dayMenu[slot]=next;
+
+      // Una receta de mezcla conjunta solo tiene sentido si ambos comen la
+      // misma preparación: al seleccionarla se sincroniza ese hueco.
+      if(next && isJointMixRecipe(DATA.recipes[next])){
+        otherMenu[slot]=next;
+      }else if(previous && isJointMixRecipe(DATA.recipes[previous]) && otherMenu[slot]===previous){
+        otherMenu[slot]="";
+      }
+
+      // REC-041 ya incluye el café con 260 ml de leche de Persona 2. Si existía un
+      // café registrado aparte, se descuenta uno para evitar duplicarlo.
+      if(pid==="P02" && next==="R041" && previous!=="R041"){
+        const counts=coffeeCountsForDate(state.selectedDate);
+        if(counts.P02>0) counts.P02=Math.max(0,counts.P02-1);
+      }
+
       save();
       renderPlanner();
     };
@@ -1064,11 +1113,11 @@ function renderPlanner(){
 
 function totalsFor(pid,dateKey=state.selectedDate){
   const t={kcal:0,protein:0,carbs:0,fat:0};
-  const menu=ensureMenu(dateKey);
+  const menu=ensureMenu(dateKey,pid);
   Object.values(menu).filter(Boolean).forEach(rid=>{
     const recipe=DATA.recipes[rid]; if(!recipe)return;
-    const s=scaledRecipeSummary(recipe,pid,dateKey);
-    t.kcal+=s.kcal;t.protein+=s.protein;t.carbs+=s.carbs;t.fat+=s.fat;
+    const sr=scaledRecipeSummary(recipe,pid,dateKey);
+    t.kcal+=sr.kcal;t.protein+=sr.protein;t.carbs+=sr.carbs;t.fat+=sr.fat;
   });
   const coffee=coffeeTotalsFor(pid,dateKey);
   t.kcal+=coffee.kcal;
@@ -1082,14 +1131,15 @@ function renderTotals(){
   const el=document.getElementById("dayTotals");
   const tadj=nutritionTrainingAdjustment("P01",state.selectedDate);
   const route=routeNutritionCalc(state.selectedDate);
-  const dayBalanced=dayCoreMenuComplete(state.selectedDate);
+  const balancedPeople=["P01","P02"].filter(pid=>dayCoreMenuComplete(state.selectedDate,pid));
+  const dayBalanced=balancedPeople.length>0;
   const trainingNote=tadj?`<div class="training-day-note">
     🚴 <b>Preparación para mañana:</b> ${fmt(tadj.training.duration,1).replace(",0","")} h · ${tadj.training.intensity==="hard"?"Intenso":"Suave / Z2"}<br>
     Objetivo de ${escapeHtml(profileName("P01"))}: <b>${fmt(tadj.targetGkg,1)} g HC/kg ≈ ${fmt(tadj.targetCarbs)} g HC</b>.
   </div>`:"";
   const routeNote=route.totalCarbs?`<div class="training-day-note" style="background:#eef4fb;color:#385475">🚴 <b>Nutrición en ruta:</b> ${formatDurationMinutes(route.durationMin)} · ${fmt(route.totalCarbs,1)} g HC · ${route.durationH?fmt(route.carbsPerHour,1):"—"} g/h · ≈ ${fmt(route.kcal)} kcal.</div>`:"";
   const balanceNote=dayBalanced?`<div class="training-day-note" style="background:#f3f7f3">
-    ⚖️ <b>Ajuste automático del menú activo.</b> Nutriplan mantiene la proteína si ya está cubierta y ajusta principalmente hidratos y grasa para acercarse al objetivo energético. Las recetas de mezcla conjunta conservan un único reparto ${escapeHtml(profileName("P01"))}/${escapeHtml(profileName("P02"))} y el descuadre se compensa con las demás comidas. Las recetas de ración fija no se modifican.
+    ⚖️ <b>Ajuste automático de los menús activos.</b> Cada persona se calcula con su propio menú. Nutriplan mantiene la proteína si ya está cubierta y ajusta principalmente hidratos y grasa para acercarse al objetivo energético. Las recetas de mezcla conjunta conservan un único reparto ${escapeHtml(profileName("P01"))}/${escapeHtml(profileName("P02"))}; el resto se compensa con las comidas individuales. Las recetas de ración fija no se modifican.
   </div>`:"";
   el.innerHTML=trainingNote+balanceNote+routeNote+Object.keys(DATA.profiles).map(pid=>{
     const p=DATA.profiles[pid];
@@ -1132,7 +1182,7 @@ function dailyReportRecipeIngredients(recipe,pid,dateKey=state.selectedDate){
 }
 
 function dailyReportMealRows(pid,dateKey=state.selectedDate){
-  const menu=ensureMenu(dateKey);
+  const menu=ensureMenu(dateKey,pid);
   const rows=[];
   menuSlotDefs.forEach(([slot,label])=>{
     const rid=menu[slot];
@@ -1276,7 +1326,7 @@ function renderDailyReport(dateKey=state.selectedDate,mode=dailyReportMode){
   const dateLabel=date.toLocaleDateString("es-ES",{
     weekday:"long",day:"numeric",month:"long",year:"numeric"
   });
-  const hasAnything=Object.values(ensureMenu(dateKey)).some(Boolean)
+  const hasAnything=["P01","P02"].some(pid=>Object.values(ensureMenu(dateKey,pid)).some(Boolean))
     || coffeeCountsForDate(dateKey).P01
     || coffeeCountsForDate(dateKey).P02
     || routeNutritionCalc(dateKey).totalCarbs
@@ -1474,21 +1524,26 @@ function renderWeek(){
 
   const today=dateKeyLocal();
   grid.innerHTML=keys.map(key=>{
-    const menu=ensureMenu(key);
-    const meals=menuSlotDefs.map(([slot,label])=>{
-      const rid=menu[slot], rr=rid?DATA.recipes[rid]:null, name=rr?`${rr.name} · ${rr.code||rr.id}`:"";
-      return `<div class="week-meal"><b>${escapeHtml(label)}</b>${name?escapeHtml(name):'<span class="week-empty">—</span>'}</div>`;
-    }).join("");
+    const mealsFor=pid=>{
+      const menu=ensureMenu(key,pid);
+      const rows=menuSlotDefs.map(([slot,label])=>{
+        const rid=menu[slot], rr=rid?DATA.recipes[rid]:null;
+        if(!rr)return "";
+        return `<div class="week-meal"><b>${escapeHtml(label)}</b>${escapeHtml(rr.name)} · ${escapeHtml(rr.code||rr.id)}</div>`;
+      }).filter(Boolean).join("");
+      return `<div class="week-person-menu"><strong>${escapeHtml(profileName(pid))}</strong>${rows||'<span class="week-empty">Sin menú</span>'}</div>`;
+    };
     const coffees=coffeeCountsForDate(key);
     const coffeeLine=(coffees.P01||coffees.P02)
-      ? `<div class="week-meal"><b>☕ Cafés</b>${escapeHtml(profileName("P01"))} ${coffees.P01} · ${escapeHtml(profileName("P02"))} ${coffees.P02}</div>`
+      ? `<div class="week-meal"><b>☕ Cafés extra</b>${escapeHtml(profileName("P01"))} ${coffees.P01} · ${escapeHtml(profileName("P02"))} ${coffees.P02}</div>`
       : "";
     const j=totalsFor("P01",key), e=totalsFor("P02",key);
     const jw=effectiveWeight("P01",key).weight, ew=effectiveWeight("P02",key).weight;
     const jg=goalsForDate("P01",key), eg=goalsForDate("P02",key);
     return `<div class="week-day ${key===state.selectedDate?"selected":""} ${key===today?"today":""}" data-date="${key}">
       <div class="week-date">${escapeHtml(formatShortDate(key))}</div>
-      ${meals}
+      ${mealsFor("P01")}
+      ${mealsFor("P02")}
       ${coffeeLine}
       <div class="week-kcal">
         <strong>${escapeHtml(profileName("P01"))} ${fmt(j.kcal)}/${fmt(jg.kcal)}</strong> · ${fmt(jw,1)} kg<br>
@@ -1504,7 +1559,7 @@ function renderWeek(){
 
 function selectDate(key){
   state.selectedDate=key;
-  ensureMenu(key);
+  ensureMenusForDate(key);
   syncProfilesFromSettings(key);
   save();
   renderPlanner();
@@ -1668,7 +1723,7 @@ document.addEventListener("keydown",e=>{
 });
 
 document.getElementById("resetMenu").onclick=()=>{
-  state.menusByDate[state.selectedDate]=emptyMenu();
+  state.menusByDate[state.selectedDate]={P01:emptyMenu(),P02:emptyMenu()};
   state.coffeesByDate[state.selectedDate]={P01:0,P02:0};
   save();renderPlanner();
 };
@@ -1889,8 +1944,8 @@ function renderConfig(){
         <div class="field full">
           <label>Déficit energético: <b>${fmt(s.deficit)} %</b></label>
           <div class="range-row">
-            <input type="range" min="0" max="25" step="1" data-pid="${pid}" data-field="deficit" value="${s.deficit}">
-            <input type="number" min="0" max="25" step="1" data-pid="${pid}" data-field="deficit" value="${s.deficit}">
+            <input type="range" min="0" max="30" step="1" data-pid="${pid}" data-field="deficit" value="${s.deficit}">
+            <input type="number" min="0" max="30" step="1" data-pid="${pid}" data-field="deficit" value="${s.deficit}">
           </div>
         </div>
 
@@ -1968,19 +2023,20 @@ function renderCards(){
   const q=document.getElementById("search").value.trim().toLowerCase();
   const rs=Object.values(DATA.recipes).filter(r=>{
     if(activeType!=="TODAS"&&r.type!==activeType)return false;
-    const ingredientText=(r.portions.P01||[]).map(x=>x.food).join(" ");
+    const ingredientText=(r.portions.P01||[]).concat(r.portions.P02||[]).map(x=>x.food).join(" ");
     return !q || ((r.code||r.id)+" "+r.name+" "+r.tags.join(" ")+" "+ingredientText).toLowerCase().includes(q);
   });
   const el=document.getElementById("recipeCards");
   el.innerHTML=rs.length?rs.map(r=>{
-    const s=scaledRecipeSummary(r,"P01"), img=getRecipeImg(r.id);
+    const previewPid=recipePreviewPerson(r),sr=scaledRecipeSummary(r,previewPid), img=getRecipeImg(r.id);
+    const onlyFor=Array.isArray(r.available_for)&&r.available_for.length===1?`<span class="tag">${escapeHtml(profileName(r.available_for[0]))}</span>`:"";
     return `<article class="card recipe-card">
       <div class="recipe-cover">${img?`<img src="${img}" alt="">`:`<div class="recipe-placeholder">🍽️</div>`}</div>
       <div class="cardbody">
-        <span class="tag">${r.type}</span>${r.tags.slice(0,2).map(t=>`<span class="tag">${t}</span>`).join("")}
+        <span class="tag">${r.type}</span>${onlyFor}${r.tags.slice(0,2).map(t=>`<span class="tag">${t}</span>`).join("")}
         <div class="recipe-title">${escapeHtml(r.name)} <span class="recipe-code">${escapeHtml(r.code||r.id)}</span></div>
-        ${macroBoxes(s)}
-        ${macroBar(s)}
+        ${macroBoxes(sr)}
+        ${macroBar(sr)}
         <div style="margin-top:13px"><button class="btn primary" onclick="openRecipe('${r.id}')">Ver receta</button></div>
       </div>
     </article>`;
@@ -1999,7 +2055,7 @@ function alignedIngredients(r){
   return [...map.values()];
 }
 function openRecipe(id){
-  activeRecipe=id;activePerson="P01";renderDetail();showView("detailView");
+  activeRecipe=id;activePerson=recipePreviewPerson(DATA.recipes[id]);renderDetail();showView("detailView");
 }
 window.openRecipe=openRecipe;
 
@@ -2030,22 +2086,25 @@ function renderDetail(){
         <span class="tag">${r.type}</span>${r.tags.slice(0,4).map(t=>`<span class="tag">${t}</span>`).join("")}
         <h1>${escapeHtml(r.name)} <span class="recipe-code">${escapeHtml(r.code||r.id)}</span></h1>
         <div class="person-tabs no-print">
-          <button data-p="P01" class="${activePerson==="P01"?"active":""}">${escapeHtml(profileName("P01"))}</button>
-          <button data-p="P02" class="${activePerson==="P02"?"active":""}">${escapeHtml(profileName("P02"))}</button>
+          ${["P01","P02"].filter(pid=>recipeAvailableFor(r,pid)).map(pid=>`<button data-p="${pid}" class="${activePerson===pid?"active":""}">${escapeHtml(profileName(pid))}</button>`).join("")}
         </div>
         ${macroBoxes(s)}
         ${macroBar(s)}
         ${recipeAdjustmentControls(r,activePerson)}
-        <h2 style="margin-top:22px">Ingredientes · ${who}</h2>
+        <h2 style="margin-top:22px">${isJointMixRecipe(r)?"Ingredientes · mezcla completa":`Ingredientes · ${who}`}</h2>
         <table class="ingredient-table"><thead><tr><th>Ingrediente</th><th>Cantidad</th><th>Nota</th><th>Fijo</th></tr></thead>
         <tbody>${rows.map(row=>{
-          const x=activePerson==="P01"?row.p1:row.p2;
-          return x?`<tr>
+          const x=isJointMixRecipe(r)?(row.p1||row.p2):(activePerson==="P01"?row.p1:row.p2);
+          if(!x)return "";
+          const grams=isJointMixRecipe(r)
+            ? jointMixBatchIngredientGrams(r,x.food_id,state.selectedDate)
+            : scaledIngredientGrams(x,activePerson,state.selectedDate,r.id);
+          return `<tr>
             <td data-label="Ingrediente">${escapeHtml(x.food)}</td>
-            <td data-label="Cantidad"><b>${fmt(scaledIngredientGrams(x,activePerson,state.selectedDate,r.id),1).replace(",0","")} g</b></td>
+            <td data-label="Cantidad"><b>${fmt(grams,1).replace(",0","")} g</b></td>
             <td data-label="Nota">${escapeHtml(x.note||"")}</td>
             <td data-label="Fijo" class="lock-cell"><label class="lock-wrap"><input type="checkbox" data-lock-food="${x.food_id}" ${isFoodLocked(r.id,x.food_id)?"checked":""} ${isHardLockedFood(r.id,x.food_id)?"disabled title=\"Unidad indivisible\"":""}> ${isHardLockedFood(r.id,x.food_id)?"🔐":"🔒"}</label></td>
-          </tr>`:"";
+          </tr>`;
         }).join("")}</tbody></table>
         <div class="note" style="margin-top:18px">
           ${(()=>{
@@ -2066,53 +2125,47 @@ function renderDetail(){
         <h2>Cantidades para los dos${isJointMixRecipe(r)?" · mezcla conjunta":" · reparto individual"}</h2>
         ${(()=>{
           const joint=isJointMixRecipe(r);
+          if(joint){
+            const batchRows=rows.map(row=>{
+              const x=row.p1||row.p2;
+              return {food:row.food,total:x?jointMixBatchIngredientGrams(r,x.food_id,state.selectedDate):0};
+            });
+            const shareJ=jointMixShare(r,"P01",state.selectedDate)*100;
+            const shareE=100-shareJ;
+            return `<div class="mix-table-wrap">
+              <table class="ingredient-table mix-table">
+                <thead><tr><th>Ingrediente</th><th>Total a cocinar</th></tr></thead>
+                <tbody>${batchRows.map(x=>`<tr>
+                  <td data-label="Ingrediente">${escapeHtml(x.food)}</td>
+                  <td data-label="Total a cocinar"><b>${fmt(x.total,1).replace(",0","")} g</b></td>
+                </tr>`).join("")}</tbody>
+              </table>
+            </div>
+            <div class="mix-final-share">
+              <strong>Reparto del peso final cocinado</strong>
+              <span>${escapeHtml(profileName("P01"))}: <b>${fmt(shareJ,1).replace(",0","")}%</b></span>
+              <span>${escapeHtml(profileName("P02"))}: <b>${fmt(shareE,1).replace(",0","")}%</b></span>
+            </div>
+            <div class="mix-help"><b>Mezcla conjunta.</b> Cocina todos los ingredientes juntos, incluida la fuente de hidratos, la proteína y la salsa. Al terminar, pesa toda la preparación y sirve esos porcentajes del peso final. No hay que separar ingredientes por persona.</div>`;
+          }
+
           const mixRows=rows.map(row=>{
             const g1=row.p1?scaledIngredientGrams(row.p1,"P01",state.selectedDate,r.id):0;
             const g2=row.p2?scaledIngredientGrams(row.p2,"P02",state.selectedDate,r.id):0;
-            const total=g1+g2;
-            const p1=total>0?g1/total*100:0;
-            const p2=total>0?g2/total*100:0;
-            return {food:row.food,g1,g2,total,p1,p2};
+            return {food:row.food,g1,g2,total:g1+g2};
           });
-          const sumJ=mixRows.reduce((a,x)=>a+x.g1,0);
-          const sumE=mixRows.reduce((a,x)=>a+x.g2,0);
-          const sumT=sumJ+sumE;
-          const shareJ=sumT>0?sumJ/sumT*100:0;
-          const shareE=sumT>0?sumE/sumT*100:0;
-
           return `<div class="mix-table-wrap">
             <table class="ingredient-table mix-table">
-              <thead><tr>
-                <th>Ingrediente</th>
-                <th>${escapeHtml(profileName("P01"))}</th><th>%</th>
-                <th>${escapeHtml(profileName("P02"))}</th><th>%</th>
-                <th>Total</th>
-              </tr></thead>
-              <tbody>
-                ${mixRows.map(x=>`<tr>
-                  <td data-label="Ingrediente">${escapeHtml(x.food)}</td>
-                  <td data-label="${escapeHtml(profileName("P01"))}"><b>${fmt(x.g1,1).replace(",0","")} g</b></td>
-                  <td data-label="% ${escapeHtml(profileName("P01"))}">${fmt(x.p1,1).replace(",0","")}%</td>
-                  <td data-label="${escapeHtml(profileName("P02"))}"><b>${fmt(x.g2,1).replace(",0","")} g</b></td>
-                  <td data-label="% ${escapeHtml(profileName("P02"))}">${fmt(x.p2,1).replace(",0","")}%</td>
-                  <td data-label="Total"><b>${fmt(x.total,1).replace(",0","")} g</b></td>
-                </tr>`).join("")}
-                ${joint?`<tr class="mix-total">
-                  <td data-label="Reparto">TOTAL / REPARTO DE LA MEZCLA</td>
-                  <td data-label="${escapeHtml(profileName("P01"))}">${fmt(sumJ,1).replace(",0","")} g</td>
-                  <td data-label="% ${escapeHtml(profileName("P01"))}" class="mix-share">${fmt(shareJ,1).replace(",0","")}%</td>
-                  <td data-label="${escapeHtml(profileName("P02"))}">${fmt(sumE,1).replace(",0","")} g</td>
-                  <td data-label="% ${escapeHtml(profileName("P02"))}" class="mix-share">${fmt(shareE,1).replace(",0","")}%</td>
-                  <td data-label="Total">${fmt(sumT,1).replace(",0","")} g</td>
-                </tr>`:""}
-              </tbody>
+              <thead><tr><th>Ingrediente</th><th>${escapeHtml(profileName("P01"))}</th><th>${escapeHtml(profileName("P02"))}</th><th>Total</th></tr></thead>
+              <tbody>${mixRows.map(x=>`<tr>
+                <td data-label="Ingrediente">${escapeHtml(x.food)}</td>
+                <td data-label="${escapeHtml(profileName("P01"))}"><b>${fmt(x.g1,1).replace(",0","")} g</b></td>
+                <td data-label="${escapeHtml(profileName("P02"))}"><b>${fmt(x.g2,1).replace(",0","")} g</b></td>
+                <td data-label="Total"><b>${fmt(x.total,1).replace(",0","")} g</b></td>
+              </tr>`).join("")}</tbody>
             </table>
           </div>
-          ${joint?`<div class="mix-help">
-            <b>Mezcla conjunta activa.</b> Cocina todo junto, pesa el resultado final y reparte <b>${fmt(shareJ,1).replace(",0","")}% para ${escapeHtml(profileName("P01"))}</b> y <b>${fmt(shareE,1).replace(",0","")}% para ${escapeHtml(profileName("P02"))}</b>. Todos los ingredientes y macros usan este mismo reparto. Si cambia el déficit o el objetivo, Nutriplan recalcula el porcentaje y compensa el resto del día con las comidas individuales.
-          </div>`:`<div class="mix-help">
-            <b>Reparto individual.</b> Sirve a cada uno las cantidades indicadas por ingrediente. El porcentaje de cada fila es solo informativo; no uses un porcentaje global de la receta.
-          </div>`}`;
+          <div class="mix-help"><b>Reparto individual.</b> Sirve a cada uno las cantidades indicadas por ingrediente.</div>`;
         })()}
       </div>
     </aside>
@@ -2157,15 +2210,28 @@ document.getElementById("backRecipes").onclick=()=>showView("recipesView");
 
 function aggregateShopping(){
   const agg={};
+  const add=(foodId,name,grams)=>{
+    const a=agg[foodId] ||= {food_id:foodId,name,grams:0};
+    a.grams+=Number(grams)||0;
+  };
   weekKeys().forEach(dateKey=>{
-    const menu=ensureMenu(dateKey);
-    Object.values(menu).filter(Boolean).forEach(rid=>{
-      const r=DATA.recipes[rid];
-      if(!r)return;
-      ["P01","P02"].forEach(pid=>(r.portions[pid]||[]).forEach(x=>{
-        const a=agg[x.food_id] ||= {food_id:x.food_id,name:x.food,grams:0};
-        a.grams+=scaledIngredientGrams(x,pid,dateKey,r.id);
-      }));
+    const menus={P01:ensureMenu(dateKey,"P01"),P02:ensureMenu(dateKey,"P02")};
+    menuSlotDefs.forEach(([slot])=>{
+      const jointAdded=new Set();
+      ["P01","P02"].forEach(pid=>{
+        const rid=menus[pid][slot];
+        const r=rid?DATA.recipes[rid]:null;
+        if(!r)return;
+        if(isJointMixRecipe(r)){
+          if(jointAdded.has(rid))return;
+          jointAdded.add(rid);
+          const byFood=new Map();
+          ["P01","P02"].forEach(p=>(r.portions[p]||[]).forEach(x=>byFood.set(x.food_id,x)));
+          byFood.forEach((x,foodId)=>add(foodId,x.food,jointMixBatchIngredientGrams(r,foodId,dateKey)));
+          return;
+        }
+        (r.portions[pid]||[]).forEach(x=>add(x.food_id,x.food,scaledIngredientGrams(x,pid,dateKey,r.id)));
+      });
     });
   });
   return Object.values(agg).sort((a,b)=>a.name.localeCompare(b.name,"es"));
@@ -2191,7 +2257,7 @@ function renderShopping(){
 document.getElementById("clearChecks").onclick=()=>{state.checks={};save();renderShopping();};
 
 syncProfilesFromSettings(state.selectedDate);
-ensureMenu(state.selectedDate);
+ensureMenusForDate(state.selectedDate);
 save();
 renderPlanner();renderFilters();renderCards();renderConfig();renderEvolution();
 
