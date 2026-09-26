@@ -375,9 +375,28 @@ function normalizeMenusByPerson(value){
 }
 function ensureMenusForDate(key=state.selectedDate){
   if(!state.menusByDate) state.menusByDate={};
-  const normalized=normalizeMenusByPerson(state.menusByDate[key]);
-  state.menusByDate[key]=normalized;
-  return normalized;
+  const current=state.menusByDate[key];
+
+  // Migrar una sola vez los menús antiguos compartidos al modelo por persona.
+  // Después se normaliza EN EL MISMO objeto para no invalidar referencias que
+  // estén usando los selectores del planificador.
+  if(!isMenusByPerson(current)){
+    state.menusByDate[key]=normalizeMenusByPerson(current);
+    return state.menusByDate[key];
+  }
+
+  ["P01","P02"].forEach(pid=>{
+    if(!current[pid] || typeof current[pid]!=="object" || Array.isArray(current[pid])){
+      current[pid]=emptyMenu();
+      return;
+    }
+    const normalized=normalizeOldMenu(current[pid]);
+    Object.keys(emptyMenu()).forEach(slot=>{
+      current[pid][slot]=normalized[slot];
+    });
+    if(Object.prototype.hasOwnProperty.call(current[pid],"extra")) delete current[pid].extra;
+  });
+  return current;
 }
 function ensureMenu(key=state.selectedDate,pid="P01"){
   return ensureMenusForDate(key)[pid];
