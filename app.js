@@ -8,6 +8,7 @@ if(!window.NUTRIPLAN_DATA){
   throw new Error("Falta nutriplan-data.js");
 }
 const DATA = window.NUTRIPLAN_DATA;
+const BASE_RECIPES = JSON.parse(JSON.stringify(DATA.recipes));
 
 // Adapter: profile/training policy and mutable application state stay outside the engine.
 function nutritionEngineInput(dateKey=state.selectedDate){
@@ -50,6 +51,173 @@ function recipeAvailableFor(recipe,pid){
 }
 function recipePreviewPerson(recipe){
   return recipeAvailableFor(recipe,"P01") ? "P01" : "P02";
+}
+
+function cloneRecipeValue(value){
+  return JSON.parse(JSON.stringify(value));
+}
+function localRecipeVariant(recipeId){
+  return Boolean(state?.recipeVariants?.[recipeId]);
+}
+function recipeCustomization(recipeId){
+  return state?.recipeEdits?.[recipeId] || null;
+}
+function applyRecipeCustomizationToData(recipeId){
+  if(state?.recipeVariants?.[recipeId]){
+    DATA.recipes[recipeId]=cloneRecipeValue(state.recipeVariants[recipeId]);
+    return DATA.recipes[recipeId];
+  }
+  const base=BASE_RECIPES[recipeId];
+  if(!base)return DATA.recipes[recipeId]||null;
+  const recipe=cloneRecipeValue(base);
+  const edit=state?.recipeEdits?.[recipeId];
+  if(edit){
+    if(typeof edit.name==="string" && edit.name.trim())recipe.name=edit.name.trim();
+    if(typeof edit.notes==="string")recipe.notes=edit.notes;
+    if(edit.portions && typeof edit.portions==="object"){
+      recipe.portions=recipe.portions||{};
+      ["P01","P02"].forEach(pid=>{
+        if(Array.isArray(edit.portions[pid])) recipe.portions[pid]=cloneRecipeValue(edit.portions[pid]);
+      });
+    }
+  }
+  DATA.recipes[recipeId]=recipe;
+  return recipe;
+}
+function applyAllRecipeCustomizations(){
+  Object.keys(BASE_RECIPES).forEach(applyRecipeCustomizationToData);
+  Object.keys(state?.recipeVariants||{}).forEach(id=>{
+    if(!BASE_RECIPES[id]) DATA.recipes[id]=cloneRecipeValue(state.recipeVariants[id]);
+  });
+}
+function normalizeEditableIngredient(item){
+  const food=DATA.foods?.[item?.food_id];
+  if(!food)throw new Error("Selecciona un alimento válido.");
+  const grams=Number(item.grams);
+  if(!Number.isFinite(grams) || grams<=0)throw new Error("Todos los ingredientes deben tener una cantidad mayor que 0 g.");
+  return {
+    food_id:item.food_id,
+    food:food.name||item.food_id,
+    grams,
+    note:String(item.note||""),
+    state:food.state||item.state||"producto"
+  };
+}
+function validateEditableIngredients(items){
+  if(!Array.isArray(items) || !items.length)throw new Error("La receta debe conservar al menos un ingrediente.");
+  const normalized=items.map(normalizeEditableIngredient);
+  const seen=new Set();
+  normalized.forEach(item=>{
+    if(seen.has(item.food_id))throw new Error("No puede aparecer el mismo alimento dos veces. Ajusta los gramos en una sola fila.");
+    seen.add(item.food_id);
+  });
+  return normalized;
+}
+function trimRecipeLocksToIngredients(recipeId){
+  const recipe=DATA.recipes[recipeId];
+  if(!recipe)return;
+  const valid=new Set(Object.values(recipe.portions||{}).flat().map(x=>x.food_id));
+  state.recipeLocks[recipeId]=(state.recipeLocks[recipeId]||[]).filter(fid=>valid.has(fid));
+}
+function saveRecipeCustomization(recipeId,pid,draft,applyOther=false){
+  if(!BASE_RECIPES[recipeId])throw new Error("Las variantes locales se actualizan con saveRecipeVariantCustomization.");
+  if(!["P01","P02"].includes(pid))throw new Error("Perfil no válido.");
+  const name=String(draft?.name||"").trim();
+  if(!name)throw new Error("La receta necesita un nombre.");
+  const items=validateEditableIngredients(draft?.items||[]);
+  const previous=state.recipeEdits[recipeId]||{portions:{}};
+  const portions={...(previous.portions||{}),[pid]:cloneRecipeValue(items)};
+  if(applyOther){
+    const other=pid==="P01"?"P02":"P01";
+    if(recipeAvailableFor(DATA.recipes[recipeId],other))portions[other]=cloneRecipeValue(items);
+  }
+  state.recipeEdits[recipeId]={
+    ...previous,
+    name,
+    notes:String(draft?.notes||""),
+    portions
+  };
+  applyRecipeCustomizationToData(recipeId);
+  trimRecipeLocksToIngredients(recipeId);
+  save();
+  return DATA.recipes[recipeId];
+}
+function saveRecipeVariantCustomization(recipeId,pid,draft,applyOther=false){
+  const recipe=state.recipeVariants?.[recipeId];
+  if(!recipe)throw new Error("La variante local no existe.");
+  const name=String(draft?.name||"").trim();
+  if(!name)throw new Error("La receta necesita un nombre.");
+  const items=validateEditableIngredients(draft?.items||[]);
+  recipe.name=name;
+  recipe.notes=String(draft?.notes||"");
+  recipe.portions=recipe.portions||{};
+  recipe.portions[pid]=cloneRecipeValue(items);
+  if(applyOther){
+    const other=pid==="P01"?"P02":"P01";
+    if(recipeAvailableFor(recipe,other))recipe.portions[other]=cloneRecipeValue(items);
+  }
+  state.recipeVariants[recipeId]=cloneRecipeValue(recipe);
+  applyRecipeCustomizationToData(recipeId);
+  trimRecipeLocksToIngredients(recipeId);
+  save();
+  return DATA.recipes[recipeId];
+}
+function nextRecipeVariantId(){
+  let n=1,id;
+  do{id=`U${String(n++).padStart(3,"0")}`;}while(DATA.recipes[id]||state.recipeVariants[id]);
+  return id;
+}
+function createRecipeVariantFromDraft(sourceId,pid,draft,applyOther=false){
+  const source=DATA.recipes[sourceId];
+  if(!source)throw new Error("No se encuentra la receta de origen.");
+  const id=nextRecipeVariantId();
+  const recipe=cloneRecipeValue(source);
+  const seq=Number(id.slice(1));
+  recipe.id=id;
+  recipe.code=`VAR-${String(seq).padStart(3,"0")}`;
+  recipe.name=String(draft?.name||"").trim() || `${source.name} (variante)`;
+  recipe.notes=String(draft?.notes||"");
+  recipe.portions=recipe.portions||{};
+  recipe.portions[pid]=cloneRecipeValue(validateEditableIngredients(draft?.items||[]));
+  if(applyOther){
+    const other=pid==="P01"?"P02":"P01";
+    if(recipeAvailableFor(recipe,other))recipe.portions[other]=cloneRecipeValue(recipe.portions[pid]);
+  }
+  const valid=new Set(Object.values(recipe.portions||{}).flat().map(x=>x.food_id));
+  if(Array.isArray(recipe.locked_food_ids))recipe.locked_food_ids=recipe.locked_food_ids.filter(fid=>valid.has(fid));
+  if(Array.isArray(recipe.hard_locked_food_ids))recipe.hard_locked_food_ids=recipe.hard_locked_food_ids.filter(fid=>valid.has(fid));
+  recipe.image=null;
+  recipe.image_status="PENDIENTE";
+  state.recipeVariants[id]=cloneRecipeValue(recipe);
+  DATA.recipes[id]=cloneRecipeValue(recipe);
+  state.recipeLocks[id]=(state.recipeLocks[sourceId]||[]).filter(fid=>valid.has(fid));
+  save();
+  return id;
+}
+function restoreRecipeCatalogRecipe(recipeId){
+  if(!BASE_RECIPES[recipeId])return false;
+  delete state.recipeEdits[recipeId];
+  DATA.recipes[recipeId]=cloneRecipeValue(BASE_RECIPES[recipeId]);
+  state.recipeLocks[recipeId]=Array.isArray(DATA.recipes[recipeId].locked_food_ids)
+    ? [...DATA.recipes[recipeId].locked_food_ids] : [];
+  save();
+  return true;
+}
+function deleteLocalRecipeVariant(recipeId){
+  if(!state.recipeVariants?.[recipeId])return false;
+  delete state.recipeVariants[recipeId];
+  delete DATA.recipes[recipeId];
+  delete state.recipeLocks[recipeId];
+  Object.keys(state.menusByDate||{}).forEach(date=>{
+    const menus=ensureMenusForDate(date);
+    ["P01","P02"].forEach(pid=>menuSlotDefs.forEach(([slot])=>{
+      if(menus[pid][slot]===recipeId)menus[pid][slot]="";
+    }));
+  });
+  Object.values(state.recipeAdjustments||{}).forEach(day=>{if(day?.[recipeId])delete day[recipeId];});
+  try{localStorage.removeItem(recipeImgKey(recipeId));}catch(_){}
+  save();
+  return true;
 }
 
 // Adaptadores de compatibilidad: las reglas y constantes viven en nutrition-engine.js.
@@ -565,8 +733,12 @@ if(!state.coffeeMigrationV1){
 
 // Ajustes por fecha/receta/persona.
 if(!state.recipeAdjustments) state.recipeAdjustments={};
+// Personalizaciones locales del recetario. Nunca se publican en nutriplan-data.js.
+if(!state.recipeEdits) state.recipeEdits={};
+if(!state.recipeVariants) state.recipeVariants={};
 // Ingredientes bloqueados globalmente por receta.
 if(!state.recipeLocks) state.recipeLocks={};
+applyAllRecipeCustomizations();
 if(!state.recipeHardLockMigrationR014V1){
   if(!state.recipeLocks.R014) state.recipeLocks.R014=[];
   if(!state.recipeLocks.R014.includes("A021")) state.recipeLocks.R014.push("A021");
@@ -601,6 +773,8 @@ if(!state.evaDeficit27MigrationV1){
 let activeType="TODAS";
 let activeRecipe=null;
 let activePerson="P01";
+let recipeEditMode=false;
+let recipeEditDraft=null;
 
 function save(){
   try{
@@ -2074,9 +2248,127 @@ function alignedIngredients(r){
   return [...map.values()];
 }
 function openRecipe(id){
-  activeRecipe=id;activePerson=recipePreviewPerson(DATA.recipes[id]);renderDetail();showView("detailView");
+  activeRecipe=id;activePerson=recipePreviewPerson(DATA.recipes[id]);recipeEditMode=false;recipeEditDraft=null;renderDetail();showView("detailView");
 }
 window.openRecipe=openRecipe;
+
+function beginRecipeEdit(){
+  const r=DATA.recipes[activeRecipe];
+  if(!r)return;
+  recipeEditMode=true;
+  recipeEditDraft={
+    name:r.name||"",
+    notes:r.notes||"",
+    pid:activePerson,
+    applyOther:false,
+    items:cloneRecipeValue(r.portions?.[activePerson]||[])
+  };
+  renderDetail();
+}
+function cancelRecipeEdit(){
+  recipeEditMode=false;recipeEditDraft=null;renderDetail();
+}
+function recipeEditorFoodOptions(currentId=""){
+  const entries=Object.entries(DATA.foods||{})
+    .filter(([id,food])=>Boolean(food?.nutrition_100)||id===currentId)
+    .sort((a,b)=>(a[1].name||a[0]).localeCompare(b[1].name||b[0],"es"));
+  return `<option value="">— Selecciona alimento —</option>`+entries.map(([id,food])=>{
+    const suffix=food?.nutrition_100?` · ${fmt(food.nutrition_100.kcal)} kcal/100 g`:" · sin ficha completa";
+    return `<option value="${escapeHtml(id)}" ${id===currentId?"selected":""}>${escapeHtml(food.name||id)}${escapeHtml(suffix)}</option>`;
+  }).join("");
+}
+function recipeEditorHtml(r){
+  const d=recipeEditDraft;
+  if(!recipeEditMode||!d)return "";
+  const other=d.pid==="P01"?"P02":"P01";
+  const incomplete=(d.items||[]).filter(item=>item.food_id && !DATA.foods?.[item.food_id]?.nutrition_100);
+  return `<section class="recipe-editor no-print">
+    <div class="recipe-editor-head">
+      <div><h2>Editar receta</h2><div class="small">Los cambios se guardan solo en este dispositivo y viajan en la copia de seguridad.</div></div>
+      <button type="button" class="btn soft" id="cancelRecipeEdit">Cancelar</button>
+    </div>
+    <div class="recipe-editor-grid">
+      <label class="recipe-editor-field"><span>Nombre</span><input id="recipeEditName" type="text" maxlength="120" value="${escapeHtml(d.name)}"></label>
+      <label class="recipe-editor-field recipe-editor-wide"><span>Preparación / proceso de cocinado</span><textarea id="recipeEditNotes" rows="6" maxlength="3000">${escapeHtml(d.notes)}</textarea></label>
+    </div>
+    <h3>Ingredientes · ${escapeHtml(profileName(d.pid))}</h3>
+    <div class="recipe-editor-items">
+      ${(d.items||[]).map((item,index)=>`<div class="recipe-editor-item">
+        <select data-recipe-edit-food="${index}">${recipeEditorFoodOptions(item.food_id)}</select>
+        <div class="recipe-editor-grams"><input data-recipe-edit-grams="${index}" type="number" min="0.1" step="0.1" value="${Number(item.grams)||0}"><span>g</span></div>
+        <input data-recipe-edit-note="${index}" type="text" maxlength="180" placeholder="Nota opcional" value="${escapeHtml(item.note||"")}">
+        <button type="button" class="btn soft danger-lite" data-recipe-edit-remove="${index}" title="Eliminar ingrediente">Eliminar</button>
+      </div>`).join("")}
+    </div>
+    <button type="button" class="btn soft" id="addRecipeIngredient">+ Añadir alimento</button>
+    <label class="recipe-editor-copy">
+      <input type="checkbox" id="recipeEditApplyOther" ${d.applyOther?"checked":""}>
+      Aplicar también estos ingredientes y cantidades a ${escapeHtml(profileName(other))}
+    </label>
+    <div class="recipe-editor-info ${incomplete.length?"warn":""}">
+      ${incomplete.length
+        ? `⚠️ Hay ${incomplete.length} ingrediente${incomplete.length===1?"":"s"} sin ficha nutricional completa. La edición se guardará, pero esa ración puede seguir usando el cálculo heredado.`
+        : "✓ Todos los ingredientes seleccionados tienen ficha nutricional: kcal y macros se recalcularán desde los gramos finales."}
+    </div>
+    <div class="recipe-editor-actions">
+      <button type="button" class="btn primary" id="saveRecipeEdit">Guardar cambios</button>
+      <button type="button" class="btn soft" id="saveRecipeVariant">Guardar como variante</button>
+    </div>
+  </section>`;
+}
+function bindRecipeEditor(){
+  if(!recipeEditMode||!recipeEditDraft)return;
+  const rerender=()=>renderDetail();
+  const name=document.getElementById("recipeEditName");
+  const notes=document.getElementById("recipeEditNotes");
+  if(name)name.oninput=()=>recipeEditDraft.name=name.value;
+  if(notes)notes.oninput=()=>recipeEditDraft.notes=notes.value;
+  document.querySelectorAll("[data-recipe-edit-food]").forEach(sel=>sel.onchange=()=>{
+    const i=Number(sel.dataset.recipeEditFood),food=DATA.foods?.[sel.value];
+    recipeEditDraft.items[i]={
+      ...recipeEditDraft.items[i],
+      food_id:sel.value,
+      food:food?.name||"",
+      state:food?.state||"producto"
+    };
+    rerender();
+  });
+  document.querySelectorAll("[data-recipe-edit-grams]").forEach(inp=>inp.oninput=()=>{
+    recipeEditDraft.items[number(inp.dataset.recipeEditGrams)].grams=Number(inp.value);
+  });
+  document.querySelectorAll("[data-recipe-edit-note]").forEach(inp=>inp.oninput=()=>{
+    recipeEditDraft.items[Number(inp.dataset.recipeEditNote)].note=inp.value;
+  });
+  document.querySelectorAll("[data-recipe-edit-remove]").forEach(btn=>btn.onclick=()=>{
+    recipeEditDraft.items.splice(Number(btn.dataset.recipeEditRemove),1);rerender();
+  });
+  document.getElementById("addRecipeIngredient")?.addEventListener("click",()=>{
+    recipeEditDraft.items.push({food_id:"",food:"",grams:1,note:"",state:"producto"});rerender();
+  });
+  document.getElementById("recipeEditApplyOther")?.addEventListener("change",e=>{
+    recipeEditDraft.applyOther=e.target.checked;
+  });
+  document.getElementById("cancelRecipeEdit")?.addEventListener("click",cancelRecipeEdit);
+  document.getElementById("saveRecipeEdit")?.addEventListener("click",()=>{
+    try{
+      if(localRecipeVariant(activeRecipe))saveRecipeVariantCustomization(activeRecipe,recipeEditDraft.pid,recipeEditDraft,recipeEditDraft.applyOther);
+      else saveRecipeCustomization(activeRecipe,recipeEditDraft.pid,recipeEditDraft,recipeEditDraft.applyOther);
+      recipeEditMode=false;recipeEditDraft=null;
+      renderDetail();renderPlanner();renderWeek();renderCards();
+      if(document.getElementById("shoppingView").classList.contains("active"))renderShopping();
+      pwaToast("Receta personalizada guardada.");
+    }catch(error){alert(error.message||"No se pudo guardar la receta.");}
+  });
+  document.getElementById("saveRecipeVariant")?.addEventListener("click",()=>{
+    try{
+      const id=createRecipeVariantFromDraft(activeRecipe,recipeEditDraft.pid,recipeEditDraft,recipeEditDraft.applyOther);
+      activeRecipe=id;activePerson=recipePreviewPerson(DATA.recipes[id]);
+      recipeEditMode=false;recipeEditDraft=null;
+      renderDetail();renderPlanner();renderWeek();renderCards();
+      pwaToast("Variante creada.");
+    }catch(error){alert(error.message||"No se pudo crear la variante.");}
+  });
+}
 
 function recipeAdjustmentControls(r,pid){
   const base=scaledRecipeSummaryBase(r,pid,state.selectedDate),adj=getRecipeAdjustment(r.id,pid,state.selectedDate),cur=scaledRecipeSummary(r,pid,state.selectedDate);
@@ -2107,6 +2399,12 @@ function renderDetail(){
         <div class="person-tabs no-print">
           ${["P01","P02"].filter(pid=>recipeAvailableFor(r,pid)).map(pid=>`<button data-p="${pid}" class="${activePerson===pid?"active":""}">${escapeHtml(profileName(pid))}</button>`).join("")}
         </div>
+        <div class="recipe-edit-toolbar no-print">
+          <button type="button" class="btn soft" id="editRecipeBtn">${recipeEditMode?"Editando…":"✏️ Editar receta"}</button>
+          ${recipeCustomization(r.id)?`<button type="button" class="btn soft" id="restoreRecipeOriginal">Restaurar original</button>`:""}
+          ${localRecipeVariant(r.id)?`<button type="button" class="btn soft danger-lite" id="deleteRecipeVariant">Eliminar variante</button>`:""}
+        </div>
+        ${recipeEditorHtml(r)}
         ${macroBoxes(s)}
         ${macroBar(s)}
         ${recipeAdjustmentControls(r,activePerson)}
@@ -2189,7 +2487,22 @@ function renderDetail(){
       </div>
     </aside>
   </div>`;
-  document.querySelectorAll(".person-tabs button").forEach(b=>b.onclick=()=>{activePerson=b.dataset.p;renderDetail();});
+  document.querySelectorAll(".person-tabs button").forEach(b=>b.onclick=()=>{activePerson=b.dataset.p;recipeEditMode=false;recipeEditDraft=null;renderDetail();});
+  const editBtn=document.getElementById("editRecipeBtn");
+  if(editBtn)editBtn.onclick=()=>{if(!recipeEditMode)beginRecipeEdit();};
+  document.getElementById("restoreRecipeOriginal")?.addEventListener("click",()=>{
+    if(!confirm("¿Restaurar el nombre, preparación e ingredientes originales de esta receta?"))return;
+    restoreRecipeCatalogRecipe(r.id);recipeEditMode=false;recipeEditDraft=null;
+    renderDetail();renderPlanner();renderWeek();renderCards();
+    if(document.getElementById("shoppingView").classList.contains("active"))renderShopping();
+    pwaToast("Receta original restaurada.");
+  });
+  document.getElementById("deleteRecipeVariant")?.addEventListener("click",()=>{
+    if(!confirm("¿Eliminar esta variante local? También se quitará de los menús donde esté seleccionada."))return;
+    deleteLocalRecipeVariant(r.id);activeRecipe=null;recipeEditMode=false;recipeEditDraft=null;
+    renderPlanner();renderWeek();renderCards();showView("recipesView");pwaToast("Variante eliminada.");
+  });
+  bindRecipeEditor();
   document.querySelectorAll("[data-adjust-mode]").forEach(btn=>btn.onclick=()=>{
     const cur=getRecipeAdjustment(r.id,activePerson,state.selectedDate);setRecipeAdjustment(r.id,activePerson,{...cur,mode:btn.dataset.adjustMode},state.selectedDate);save();renderDetail();
   });

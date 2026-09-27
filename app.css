@@ -1040,3 +1040,31 @@ body.report-open{overflow:hidden}
   .menu-person-grid{grid-template-columns:1fr}
   .menu-row-split>label{margin-bottom:8px}
 }
+
+/* Editor local de recetas */
+.recipe-edit-toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.recipe-editor{margin:14px 0 18px;padding:14px;border:1px solid var(--line);border-radius:14px;background:#fbfcfb}
+.recipe-editor-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.recipe-editor-head h2{margin:0 0 3px}
+.recipe-editor-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.recipe-editor-field{display:grid;gap:5px;font-size:11px;font-weight:800}
+.recipe-editor-field input,.recipe-editor-field textarea,.recipe-editor-item select,.recipe-editor-item input{width:100%;box-sizing:border-box}
+.recipe-editor-field textarea{resize:vertical;min-height:110px}
+.recipe-editor-items{display:grid;gap:8px;margin:8px 0 10px}
+.recipe-editor-item{display:grid;grid-template-columns:minmax(180px,2fr) 110px minmax(150px,1.4fr) auto;gap:8px;align-items:center}
+.recipe-editor-grams{display:flex;align-items:center;gap:5px}
+.recipe-editor-grams input{min-width:0}
+.recipe-editor-grams span{font-size:11px;font-weight:800;color:var(--muted)}
+.recipe-editor-copy{display:flex;align-items:flex-start;gap:8px;margin:12px 0;font-size:11px;font-weight:700}
+.recipe-editor-copy input{margin-top:2px}
+.recipe-editor-info{margin-top:10px;padding:9px 10px;border-radius:10px;background:#eef6f0;color:#315b42;font-size:10px;line-height:1.45}
+.recipe-editor-info.warn{background:#fff6e8;color:#825b1d}
+.recipe-editor-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.danger-lite{color:#8b2d2d;border-color:#e5b9b9}
+@media(max-width:760px){
+  .recipe-editor{padding:11px}
+  .recipe-editor-head{align-items:center}
+  .recipe-editor-item{grid-template-columns:1fr 92px}
+  .recipe-editor-item>input[data-recipe-edit-note]{grid-column:1/3}
+  .recipe-editor-item .danger-lite{grid-column:1/3;width:100%}
+}
