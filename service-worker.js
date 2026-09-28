@@ -1,6 +1,6 @@
-const CACHE_NAME='nutriplan-shell-v11';
+const CACHE_NAME='nutriplan-shell-v12';
 const SHELL=[
-  './','./index.html','./nutriplan.html','./app.css','./app.js','./nutrition-engine.js',
+  './','./index.html','./nutriplan.html','./app.css','./app.js','./nutrition-engine.js','./cloud-sync.js',
   './nutriplan-data.js','./nutriplan-entrenamientos-data.js','./manifest.webmanifest',
   './icons/icon-192.png','./icons/icon-512.png','./icons/maskable-512.png',
   './images/REC-011.webp','./images/REC-015.webp','./images/REC-018.webp'

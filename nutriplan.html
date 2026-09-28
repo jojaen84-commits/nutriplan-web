@@ -171,6 +171,63 @@
     </div>
   </div>
 
+
+  <div class="panel sync-panel" style="margin-bottom:16px">
+    <div class="pwa-manage-head">
+      <div>
+        <h2 style="margin-bottom:3px">Sincronización entre dispositivos</h2>
+        <div class="small">Comparte menús, evolución, actividad, cafés, ajustes, recetas personalizadas y fotos entre móvil y PC.</div>
+      </div>
+      <span class="pwa-status-badge" id="cloudSyncBadge">No configurada</span>
+    </div>
+
+    <div class="sync-status-grid">
+      <div class="pwa-info-box"><b>Cuenta</b><span id="cloudSyncAccount">—</span></div>
+      <div class="pwa-info-box"><b>Última sincronización</b><span id="cloudSyncLast">—</span></div>
+    </div>
+
+    <details class="sync-setup" id="cloudSyncSetup">
+      <summary>Configurar servicio privado</summary>
+      <div class="sync-form">
+        <label><span>URL de Supabase</span><input id="cloudSyncUrl" type="url" autocomplete="off" placeholder="https://xxxx.supabase.co"></label>
+        <label><span>Clave pública (publishable / anon)</span><input id="cloudSyncAnonKey" type="password" autocomplete="off" placeholder="sb_publishable_…"></label>
+      </div>
+      <div class="config-actions no-print">
+        <button class="btn soft" id="cloudSyncSaveConfig" type="button">Guardar configuración</button>
+        <button class="btn soft danger-lite" id="cloudSyncClearConfig" type="button">Borrar configuración local</button>
+      </div>
+      <div class="small pwa-manage-help">Nunca introduzcas una <b>service_role key</b>. Nutriplan solo necesita la clave pública del proyecto; el acceso a tus datos se protege con inicio de sesión y RLS.</div>
+    </details>
+
+    <div class="sync-auth" id="cloudSyncAuth">
+      <div class="sync-form">
+        <label><span>Correo</span><input id="cloudSyncEmail" type="email" autocomplete="email" placeholder="tu@correo.es"></label>
+        <label><span>Contraseña</span><input id="cloudSyncPassword" type="password" autocomplete="current-password" placeholder="Contraseña de sincronización"></label>
+      </div>
+      <div class="config-actions no-print">
+        <button class="btn primary" id="cloudSyncLogin" type="button">Iniciar sesión</button>
+        <button class="btn soft" id="cloudSyncSignup" type="button">Crear cuenta</button>
+      </div>
+    </div>
+
+    <div class="sync-connected" id="cloudSyncConnected" hidden>
+      <div class="config-actions no-print">
+        <button class="btn primary" id="cloudSyncNow" type="button">Sincronizar ahora</button>
+        <button class="btn soft" id="cloudSyncPush" type="button">Subir este dispositivo</button>
+        <button class="btn soft" id="cloudSyncPull" type="button">Descargar nube</button>
+        <button class="btn soft" id="cloudSyncLogout" type="button">Cerrar sesión</button>
+      </div>
+      <div class="sync-conflict" id="cloudSyncConflict" hidden>
+        <b>Hay cambios distintos en este dispositivo y en la nube.</b>
+        <div class="small">Elige qué copia quieres conservar. No se sobrescribe automáticamente una copia en conflicto.</div>
+      </div>
+    </div>
+
+    <div class="small pwa-manage-help" id="cloudSyncHelp">
+      Tras vincular por primera vez cada dispositivo, Nutriplan sincroniza automáticamente al guardar cambios y al volver a abrir la app.
+    </div>
+  </div>
+
   <div class="panel" style="margin-bottom:16px">
     <h2>Cómo calcula Nutriplan</h2>
     <p class="small" style="line-height:1.55;margin:0">
@@ -215,5 +272,6 @@
 <script src="nutriplan-entrenamientos-data.js"></script>
 <script src="nutrition-engine.js"></script>
 <script src="app.js"></script>
+<script src="cloud-sync.js"></script>
 </body>
 </html>

@@ -780,6 +780,7 @@ function save(){
   try{
     localStorage.setItem(stateStorageKey, JSON.stringify(state));
     recoverySaveFailed=false;
+    if(typeof scheduleCloudSync==="function")scheduleCloudSync();
   }
   catch(error){
     // Si no hay espacio para recuperar, permitir el arranque en memoria y
@@ -2534,6 +2535,7 @@ function saveImage(id,file){
       const c=document.createElement("canvas"); c.width=im.width*scale;c.height=im.height*scale;
       c.getContext("2d").drawImage(im,0,0,c.width,c.height);
       localStorage.setItem(recipeImgKey(id),c.toDataURL("image/jpeg",.78));
+      if(typeof scheduleCloudSync==="function")scheduleCloudSync();
       renderDetail();renderCards();
     }; im.src=e.target.result;
   }; reader.readAsDataURL(file);
