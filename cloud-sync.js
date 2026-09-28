@@ -2,6 +2,10 @@
    Sincronización privada entre dispositivos (Supabase)
    ========================================================== */
 const CLOUD_SYNC_CONFIG_KEY='nutriplan_cloud_sync_config';
+const CLOUD_SYNC_DEFAULT_CONFIG={
+  url:'https://mzznmbpqfvrbswpcnzbq.supabase.co',
+  anonKey:'sb_publishable_0MRb-niAfrIoUfMUiEQGvA_pmYaP12S'
+};
 const CLOUD_SYNC_SESSION_KEY='nutriplan_cloud_sync_session';
 const CLOUD_SYNC_META_KEY='nutriplan_cloud_sync_meta';
 var cloudSyncReady=false;
@@ -16,7 +20,7 @@ function cloudReadJson(key,fallback=null){
   }catch(_){return fallback;}
 }
 function cloudSyncConfig(){
-  const raw=cloudReadJson(CLOUD_SYNC_CONFIG_KEY,null);
+  const raw=cloudReadJson(CLOUD_SYNC_CONFIG_KEY,null) || CLOUD_SYNC_DEFAULT_CONFIG;
   if(!raw?.url || !raw?.anonKey)return null;
   return {
     url:String(raw.url).trim().replace(/\/+$/,''),
@@ -480,7 +484,7 @@ function saveCloudSyncConfig(){
   pwaToast('Configuración de sincronización guardada.');
 }
 function clearCloudSyncConfig(){
-  if(!confirm('¿Borrar de este dispositivo la configuración y la sesión de sincronización? Los datos de la nube no se eliminarán.'))return;
+  if(!confirm('¿Cerrar la sesión y restaurar la configuración predeterminada de sincronización en este dispositivo? Los datos de la nube no se eliminarán.'))return;
   localStorage.removeItem(CLOUD_SYNC_CONFIG_KEY);
   localStorage.removeItem(CLOUD_SYNC_SESSION_KEY);
   localStorage.removeItem(CLOUD_SYNC_META_KEY);
