@@ -4987,3 +4987,158 @@ window.NUTRIPLAN_DATA = {
   },
   "version": "5.1 REC-041 desayuno P02 + menús separados"
 };
+
+
+/* FIX_ALIMENTOS_2026-09-28_ONLINE
+   Correcciones de la tabla de alimentos aplicadas a la versión online.
+   Mantiene separado el pollo pesado en crudo del pollo pesado ya cocinado.
+*/
+(function(){
+  const data=window.NUTRIPLAN_DATA;
+  if(!data||!data.foods||!data.recipes||data.__foodsFix20260928Online)return;
+  data.__foodsFix20260928Online=true;
+  const foods=data.foods, recipes=data.recipes;
+
+  function setNutrition(id,n,extra){
+    if(!foods[id])return;
+    foods[id]=Object.assign({},foods[id],extra||{},{nutrition_100:Object.assign({},n)});
+  }
+
+  // Pechuga de pollo cruda: etiqueta aportada (Mercadona), 28/09/2026.
+  const oldRawChicken={kcal:165,protein:31,carbs:0,fat:3.6};
+  const rawChicken={kcal:106,protein:24,carbs:0,fat:1.1};
+  setNutrition("A001",rawChicken,{
+    name:"Filete de pechuga de pollo",
+    source:"Mercadona · etiqueta aportada 2026-09-28",
+    state:"crudo",
+    pack_notes:"106 kcal · 24 g proteína · <0,5 g HC · 1,1 g grasa por 100 g. Peso en crudo."
+  });
+
+  // Pollo ya cocinado: se separa para no aplicar el valor del producto crudo
+  // a las raciones que se pesan después de cocinar. Valor provisional hasta
+  // medir la merma real de la tanda de air fryer.
+  const cookedChickenId="A073";
+  if(!foods[cookedChickenId]){
+    foods[cookedChickenId]={
+      name:"Pechuga de pollo cocinada · air fryer",
+      source:"Nutriplan · provisional hasta medir merma real",
+      pack_g:null,
+      pack_unit:null,
+      pack_notes:"Usar cuando la ración se pesa después de cocinar. Pendiente recalcular con peso crudo total y peso cocinado total.",
+      state:"cocinado",
+      nutrition_100:{kcal:165,protein:31,carbs:0,fat:3.6}
+    };
+  }
+
+  // Corregir referencias de pollo cocinado y ajustar resúmenes de las recetas
+  // que realmente usan A001 pesado en crudo.
+  Object.values(recipes).forEach(recipe=>{
+    Object.entries(recipe.portions||{}).forEach(([pid,items])=>{
+      let rawGrams=0;
+      (items||[]).forEach(item=>{
+        if(item.food_id!=="A001")return;
+        const cooked=item.state==="cocinado"||/cocinad/i.test(item.food||"")||/cocinad/i.test(item.note||"");
+        if(cooked){
+          item.food_id=cookedChickenId;
+          item.food="Pechuga de pollo cocinada";
+          item.state="cocinado";
+        }else{
+          rawGrams+=Number(item.grams||0);
+          item.food="Filete de pechuga de pollo";
+          item.state="crudo";
+        }
+      });
+      if(rawGrams>0&&recipe.summary&&recipe.summary[pid]){
+        const s=recipe.summary[pid], q=rawGrams/100;
+        s.kcal+=q*(rawChicken.kcal-oldRawChicken.kcal);
+        s.protein+=q*(rawChicken.protein-oldRawChicken.protein);
+        s.carbs+=q*(rawChicken.carbs-oldRawChicken.carbs);
+        s.fat+=q*(rawChicken.fat-oldRawChicken.fat);
+        const macroKcal=s.protein*4+s.carbs*4+s.fat*9;
+        if(macroKcal>0){
+          s.p_pct=s.protein*4/macroKcal;
+          s.c_pct=s.carbs*4/macroKcal;
+          s.f_pct=s.fat*9/macroKcal;
+        }
+        const profile=data.profiles&&data.profiles[pid];
+        if(profile&&profile.kcal)s.goal_pct=s.kcal/profile.kcal;
+      }
+    });
+  });
+
+  // Errores de identificación detectados en recetas antiguas.
+  // A005 es leche evaporada, no leche desnatada: la desnatada COVAP es A024.
+  // A021 es tortilla de avena, no copos de avena.
+  // A042 es mermelada, no melocotón fresco.
+  const oatFlakesId="A074";
+  if(!foods[oatFlakesId]){
+    foods[oatFlakesId]={
+      name:"Copos de avena",
+      source:"Mercadona · producto pendiente de confirmar por etiqueta",
+      pack_g:null,
+      pack_unit:"paquete",
+      pack_notes:"Separado de A021 (tortilla de avena). Mantener en modo legado hasta confirmar la etiqueta exacta.",
+      state:"seco"
+    };
+  }
+  Object.values(recipes).forEach(recipe=>{
+    Object.values(recipe.portions||{}).forEach(items=>{
+      (items||[]).forEach(item=>{
+        if(item.food_id==="A005"&&/leche desnatada/i.test(item.food||"")){
+          item.food_id="A024";
+          item.food="Leche desnatada COVAP";
+        }
+        if(item.food_id==="A021"&&/copos de avena/i.test(item.food||"")){
+          item.food_id=oatFlakesId;
+          item.food="Copos de avena";
+          item.state="seco";
+        }
+        if(item.food_id==="A042"&&/^melocot[oó]n$/i.test(item.food||"")){
+          item.food_id="A043";
+          item.food="Melocotón";
+          item.state="crudo";
+        }
+      });
+    });
+  });
+
+  // Valores confirmados por etiquetas ya registradas en Nutriplan o por
+  // referencias actuales del mismo producto.
+  setNutrition("A003",{kcal:21,protein:2.8,carbs:1.5,fat:0.1});
+  setNutrition("A005",{kcal:109,protein:7.4,carbs:11,fat:4});
+  setNutrition("A010",{kcal:501,protein:6,carbs:59,fat:25});
+  setNutrition("A018",{kcal:126,protein:2.7,carbs:28,fat:0.3});
+  setNutrition("A019",{kcal:45,protein:1.8,carbs:7.9,fat:0.1});
+  setNutrition("A020",{kcal:92,protein:1.3,carbs:10.4,fat:4.7});
+  setNutrition("A022",{kcal:384,protein:12.2,carbs:59.9,fat:7.1});
+  setNutrition("A024",{kcal:36,protein:3.3,carbs:4.9,fat:0.3},{
+    source:"COVAP · leche desnatada",
+    pack_notes:"36 kcal · 3,3 g proteína · 4,9 g HC · 0,3 g grasa por 100 ml."
+  });
+  setNutrition("A025",{kcal:0,protein:0,carbs:0,fat:0});
+  setNutrition("A026",{kcal:375,protein:25.5,carbs:16.3,fat:16});
+  setNutrition("A031",{kcal:361,protein:13,carbs:72,fat:1.5});
+  setNutrition("A036",{kcal:464,protein:22,carbs:2.6,fat:34});
+  setNutrition("A037",{kcal:416,protein:46.7,carbs:21,fat:13.2});
+  setNutrition("A040",{kcal:81,protein:1.4,carbs:11.6,fat:3});
+  setNutrition("A041",{kcal:98,protein:21,carbs:0.9,fat:1.2},{
+    source:"Mercadona · atún claro al natural · peso escurrido",
+    pack_notes:"98 kcal · 21 g proteína · 0,9 g HC · 1,2 g grasa por 100 g escurrido."
+  });
+  setNutrition("A048",{kcal:126,protein:2.7,carbs:28,fat:0.3});
+  setNutrition("A050",{kcal:46,protein:8,carbs:3.5,fat:0.1});
+  setNutrition("A051",{kcal:361,protein:13,carbs:72,fat:1.5});
+  setNutrition("A057",{kcal:174,protein:4.5,carbs:37.6,fat:0.4});
+  setNutrition("A058",{kcal:11,protein:0.4,carbs:0.5,fat:0.8});
+  setNutrition("A064",{kcal:92,protein:22,carbs:0.8,fat:0},{
+    source:"Mercadona · solomillo de pavo fresco · referencia 2026",
+    pack_notes:"92 kcal · 22 g proteína · 0,8 g HC · 0 g grasa por 100 g."
+  });
+
+  // No se fuerzan aún productos ambiguos o que cambian según variante:
+  // huevo A016, salmón A017, mermeladas/pan de Eva en REC-018,
+  // cereales A046, merluza A047, salsa de soja A049,
+  // tomate datterino A054 y pan de espelta A059.
+
+  data.version=String(data.version||"")+" + FIX_ALIMENTOS_2026-09-28_ONLINE";
+})();
