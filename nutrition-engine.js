@@ -53,6 +53,7 @@ function createEngine(input){
   const getRecipeAdjustment=(recipeId,pid)=>input.adjustments?.[recipeId]?.[pid]||{mode:'simple',targetKcal:null,pPct:null,cPct:null,fPct:null};
   const goalsForDate=pid=>input.goalsByPerson[pid];
   const recipeScalingGoalsForDate=pid=>input.scalingGoalsByPerson[pid];
+  const exactMacroTargetFor=pid=>Boolean(input.exactMacroTargetsByPerson?.[pid]);
   const coffeeTotalsFor=pid=>input.coffeeTotalsByPerson?.[pid]||{kcal:0,protein:0,carbs:0,fat:0};
 
 function isJointMixRecipe(recipeOrId){
@@ -269,27 +270,33 @@ function dayBalanceFactors(pid,dateKey=defaultDate){
   const raw=simulateDayTotalsForBalance(pid,dateKey,rawF);
   const f={...rawF};
 
-  // 1) Proteína: solo subir si falta. Nunca se reduce proteína por cuadrar kcal.
-  if(raw.protein<g.protein){
-    f.protein=solveBalanceFactor(f,"protein",1,1.35,g.protein,"protein",pid,dateKey);
-  }
-
-  // 2) Grasa: acercarla a su objetivo dentro de un margen prudente.
-  f.fat=solveBalanceFactor(f,"fat",0.65,1.50,g.fat,"fat",pid,dateKey);
-
-  // 3) Los hidratos absorben el ajuste energético restante.
-  f.carbs=solveBalanceFactor(f,"carbs",0.55,2.00,g.kcal,"kcal",pid,dateKey);
-
-  // Dos pasadas de refinado. Los alimentos mixtos hacen que mover un factor
-  // cambie también otros macros; se vuelve a resolver para mantener prioridad:
-  // kcal -> proteína mínima -> grasa razonable.
-  for(let i=0;i<2;i++){
-    let cur=simulateDayTotalsForBalance(pid,dateKey,f);
-    if(cur.protein<g.protein-0.25 && f.protein<1.35){
-      f.protein=solveBalanceFactor(f,"protein",f.protein,1.35,g.protein,"protein",pid,dateKey);
+  if(exactMacroTargetFor(pid)){
+    // Ajuste manual diario: P, HC y G son objetivos reales, no mínimos.
+    // Se permite reducir fuentes flexibles; los ingredientes bloqueados,
+    // raciones fijas y mezclas conjuntas siguen respetándose.
+    for(let i=0;i<4;i++){
+      f.protein=solveBalanceFactor(f,"protein",0.45,1.45,g.protein,"protein",pid,dateKey);
+      f.fat=solveBalanceFactor(f,"fat",0.45,1.65,g.fat,"fat",pid,dateKey);
+      f.carbs=solveBalanceFactor(f,"carbs",0.45,2.50,g.carbs,"carbs",pid,dateKey);
     }
+  }else{
+    // Comportamiento automático habitual: la proteína actúa como mínimo.
+    if(raw.protein<g.protein){
+      f.protein=solveBalanceFactor(f,"protein",1,1.35,g.protein,"protein",pid,dateKey);
+    }
+
+    // Grasa cerca del objetivo y HC como ajuste energético final.
     f.fat=solveBalanceFactor(f,"fat",0.65,1.50,g.fat,"fat",pid,dateKey);
     f.carbs=solveBalanceFactor(f,"carbs",0.55,2.00,g.kcal,"kcal",pid,dateKey);
+
+    for(let i=0;i<2;i++){
+      const cur=simulateDayTotalsForBalance(pid,dateKey,f);
+      if(cur.protein<g.protein-0.25 && f.protein<1.35){
+        f.protein=solveBalanceFactor(f,"protein",f.protein,1.35,g.protein,"protein",pid,dateKey);
+      }
+      f.fat=solveBalanceFactor(f,"fat",0.65,1.50,g.fat,"fat",pid,dateKey);
+      f.carbs=solveBalanceFactor(f,"carbs",0.55,2.00,g.kcal,"kcal",pid,dateKey);
+    }
   }
 
   const final=simulateDayTotalsForBalance(pid,dateKey,f);
