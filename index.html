@@ -35,8 +35,8 @@
 <main>
 <section id="plannerView" class="view active">
   <div class="hero">
-    <div><h1>Menú diario</h1><p class="sub">Selecciona un día y planifica sus comidas.</p></div>
-    <button class="btn soft no-print" id="resetMenu">Limpiar día</button>
+    <div><h1>Menú diario</h1><p class="sub">Planifica las comidas y ajusta los objetivos nutricionales de cada día.</p></div>
+    <button class="btn soft no-print" id="resetMenu">Limpiar menú</button>
   </div>
 
   <div class="panel calendar-panel" style="margin-bottom:16px">
@@ -59,13 +59,14 @@
   </div>
 
   <div id="trainingTomorrow"></div>
+  <div id="dailyMacroGoals"></div>
 
   <div class="two" id="dailySwipeArea">
     <div class="panel">
       <h2>Plan del día</h2>
       <div id="menuSlots"></div>
       <div id="coffeePanel"></div>
-      <p class="small">Las mismas recetas se aplican a los perfiles, pero con sus cantidades individuales. Los cafés se registran aparte.</p>
+      <p class="small">Cada perfil puede tener su propio menú y sus cantidades individuales. Los cafés se registran aparte.</p>
       <div class="small swipe-hint no-print">← Desliza para cambiar de día →</div>
     </div>
     <div class="panel">
@@ -232,8 +233,9 @@
     <h2>Cómo calcula Nutriplan</h2>
     <p class="small" style="line-height:1.55;margin:0">
       Metabolismo basal mediante Mifflin-St Jeor → factor de actividad → gasto de mantenimiento estimado.
-      Después se aplica el déficit elegido. La proteína y la grasa se fijan en g/kg y los hidratos completan las calorías restantes. <b>Las raciones del recetario se adaptan automáticamente</b> a estos nuevos objetivos:
-      las fuentes principales de proteína, hidratos y grasa cambian de cantidad según corresponda.
+      Después se aplica el déficit elegido. Por defecto, la proteína y la grasa se fijan en g/kg y los hidratos completan las calorías restantes.
+      En <b>Menú</b> puedes hacer un ajuste excepcional de proteína, hidratos y grasa para una fecha concreta sin modificar esta configuración general.
+      <b>Las raciones del recetario se adaptan automáticamente</b> a los objetivos efectivos del día: las fuentes principales de proteína, hidratos y grasa cambian de cantidad según corresponda.
     </p>
   </div>
 
