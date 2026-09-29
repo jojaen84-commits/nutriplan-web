@@ -62,7 +62,7 @@ window.NUTRIPLAN_DATA = {
         "P01": [
           {
             "food_id": "A001",
-            "food": "Pechuga de pollo",
+            "food": "Pechuga de pollo cruda",
             "grams": 150,
             "note": "",
             "state": "crudo"
@@ -106,7 +106,7 @@ window.NUTRIPLAN_DATA = {
         "P02": [
           {
             "food_id": "A001",
-            "food": "Pechuga de pollo",
+            "food": "Pechuga de pollo cruda",
             "grams": 105,
             "note": "",
             "state": "crudo"
@@ -372,7 +372,7 @@ window.NUTRIPLAN_DATA = {
         "P01": [
           {
             "food_id": "A001",
-            "food": "Pechuga de pollo",
+            "food": "Pechuga de pollo cruda",
             "grams": 170,
             "note": "",
             "state": "crudo"
@@ -402,7 +402,7 @@ window.NUTRIPLAN_DATA = {
         "P02": [
           {
             "food_id": "A001",
-            "food": "Pechuga de pollo",
+            "food": "Pechuga de pollo cruda",
             "grams": 110,
             "note": "",
             "state": "crudo"
@@ -993,7 +993,7 @@ window.NUTRIPLAN_DATA = {
     "R012": {
       "id": "R012",
       "version": "1.2",
-      "name": "Campero de espelta con huevo, pechuga y Havarti",
+      "name": "Campero de espelta con huevo, pollo y Havarti",
       "type": "CENA",
       "status": "ACTIVA",
       "tags": [
@@ -1004,7 +1004,7 @@ window.NUTRIPLAN_DATA = {
         "RAPIDA",
         "MERCADONA"
       ],
-      "notes": "Mantener la receta base tal como está y añadir tomate y lechuga. Si se necesita una cena con más o menos energía, utilizar el control de calorías de la propia receta en Nutriplan. Añadir 30 g de yogur griego ligero con especias como salsa. Pan integral 100% espelta: 70 g = 2 rebanadas, cantidad fija. El resultado nutricional se recalcula a partir de los gramos finales visibles.",
+      "notes": "Mantener la receta base tal como está y añadir tomate y lechuga. La pechuga de pollo se pesa ya cocinada tras pasarla por air fryer. Si se necesita una cena con más o menos energía, utilizar el control de calorías de la propia receta en Nutriplan. Añadir 30 g de yogur griego ligero con especias como salsa. Pan integral 100% espelta: 70 g = 2 rebanadas, cantidad fija. El resultado nutricional se recalcula a partir de los gramos finales visibles.",
       "image": null,
       "image_status": "PENDIENTE",
       "summary": {
@@ -1039,11 +1039,11 @@ window.NUTRIPLAN_DATA = {
             "state": "producto"
           },
           {
-            "food_id": "A028",
-            "food": "Pechuga 92% Hacendado",
+            "food_id": "A073",
+            "food": "Pechuga de pollo cocinada air fryer",
             "grams": 50,
-            "note": "Hacendado",
-            "state": "producto"
+            "note": "peso cocinado",
+            "state": "cocinado"
           },
           {
             "food_id": "A013",
@@ -1090,11 +1090,11 @@ window.NUTRIPLAN_DATA = {
             "state": "producto"
           },
           {
-            "food_id": "A028",
-            "food": "Pechuga 92% Hacendado",
+            "food_id": "A073",
+            "food": "Pechuga de pollo cocinada air fryer",
             "grams": 40,
-            "note": "",
-            "state": "producto"
+            "note": "peso cocinado",
+            "state": "cocinado"
           },
           {
             "food_id": "A013",
@@ -1189,7 +1189,7 @@ window.NUTRIPLAN_DATA = {
           },
           {
             "food_id": "A001",
-            "food": "Pechuga de pollo",
+            "food": "Pechuga de pollo cruda",
             "grams": 108.3,
             "note": "",
             "state": "crudo"
@@ -1247,7 +1247,7 @@ window.NUTRIPLAN_DATA = {
           },
           {
             "food_id": "A001",
-            "food": "Pechuga de pollo",
+            "food": "Pechuga de pollo cruda",
             "grams": 81.7,
             "note": "",
             "state": "crudo"
@@ -1357,7 +1357,7 @@ window.NUTRIPLAN_DATA = {
           },
           {
             "food_id": "A001",
-            "food": "Pechuga de pollo",
+            "food": "Pechuga de pollo cruda",
             "grams": 75,
             "note": "sustituye al pavo de la receta original",
             "state": "crudo"
@@ -1401,7 +1401,7 @@ window.NUTRIPLAN_DATA = {
           },
           {
             "food_id": "A001",
-            "food": "Pechuga de pollo",
+            "food": "Pechuga de pollo cruda",
             "grams": 60,
             "note": "",
             "state": "crudo"
@@ -3489,7 +3489,7 @@ window.NUTRIPLAN_DATA = {
           },
           {
             "food_id": "A001",
-            "food": "Pechuga de pollo",
+            "food": "Pechuga de pollo cruda",
             "grams": 100,
             "note": "picar y formar la hamburguesa",
             "state": "crudo"
@@ -3533,7 +3533,7 @@ window.NUTRIPLAN_DATA = {
           },
           {
             "food_id": "A001",
-            "food": "Pechuga de pollo",
+            "food": "Pechuga de pollo cruda",
             "grams": 100,
             "note": "picar y formar la hamburguesa",
             "state": "crudo"
@@ -4247,17 +4247,17 @@ window.NUTRIPLAN_DATA = {
   },
   "foods": {
     "A001": {
-      "name": "Pechuga de pollo",
+      "name": "Pechuga de pollo cruda",
       "source": "Tabla propia",
       "pack_g": null,
       "pack_unit": null,
-      "pack_notes": null,
+      "pack_notes": "Pesar antes de cocinar. Referencia usada en Nutriplan: 106 kcal · 24 g proteína · 0 g HC · 1,1 g grasa por 100 g.",
       "state": "crudo",
       "nutrition_100": {
-        "kcal": 165,
-        "protein": 31,
+        "kcal": 106,
+        "protein": 24,
         "carbs": 0,
-        "fat": 3.6
+        "fat": 1.1
       }
     },
     "A002": {
@@ -4980,6 +4980,20 @@ window.NUTRIPLAN_DATA = {
         "protein": 3.3,
         "carbs": 4.9,
         "fat": 0.2
+      }
+    },
+    "A073": {
+      "name": "Pechuga de pollo cocinada air fryer",
+      "source": "Tabla propia",
+      "pack_g": null,
+      "pack_unit": null,
+      "pack_notes": "Pesar después de cocinar. Referencia provisional: 165 kcal · 31 g proteína · 0 g HC · 3,6 g grasa por 100 g; ajustar si se mide una merma propia.",
+      "state": "cocinado",
+      "nutrition_100": {
+        "kcal": 165,
+        "protein": 31,
+        "carbs": 0,
+        "fat": 3.6
       }
     },
     "A072": {
