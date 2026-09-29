@@ -2480,6 +2480,34 @@ function bindRecipeEditor(){
   const rerender=()=>renderDetail();
   const name=document.getElementById("recipeEditName");
   const notes=document.getElementById("recipeEditNotes");
+
+  // Leer los valores visibles antes de guardar evita que el borrador conserve
+  // datos antiguos si un navegador no ha disparado todavía algún evento input.
+  const syncRecipeEditDraftFromForm=()=>{
+    if(name)recipeEditDraft.name=name.value;
+    if(notes)recipeEditDraft.notes=notes.value;
+    document.querySelectorAll("[data-recipe-edit-food]").forEach(sel=>{
+      const i=Number(sel.dataset.recipeEditFood),food=DATA.foods?.[sel.value];
+      if(!recipeEditDraft.items[i])return;
+      recipeEditDraft.items[i]={
+        ...recipeEditDraft.items[i],
+        food_id:sel.value,
+        food:food?.name||"",
+        state:food?.state||"producto"
+      };
+    });
+    document.querySelectorAll("[data-recipe-edit-grams]").forEach(inp=>{
+      const i=Number(inp.dataset.recipeEditGrams);
+      if(recipeEditDraft.items[i])recipeEditDraft.items[i].grams=Number(inp.value);
+    });
+    document.querySelectorAll("[data-recipe-edit-note]").forEach(inp=>{
+      const i=Number(inp.dataset.recipeEditNote);
+      if(recipeEditDraft.items[i])recipeEditDraft.items[i].note=inp.value;
+    });
+    const applyOther=document.getElementById("recipeEditApplyOther");
+    if(applyOther)recipeEditDraft.applyOther=applyOther.checked;
+  };
+
   if(name)name.oninput=()=>recipeEditDraft.name=name.value;
   if(notes)notes.oninput=()=>recipeEditDraft.notes=notes.value;
   document.querySelectorAll("[data-recipe-edit-food]").forEach(sel=>sel.onchange=()=>{
@@ -2493,7 +2521,7 @@ function bindRecipeEditor(){
     rerender();
   });
   document.querySelectorAll("[data-recipe-edit-grams]").forEach(inp=>inp.oninput=()=>{
-    recipeEditDraft.items[number(inp.dataset.recipeEditGrams)].grams=Number(inp.value);
+    recipeEditDraft.items[Number(inp.dataset.recipeEditGrams)].grams=Number(inp.value);
   });
   document.querySelectorAll("[data-recipe-edit-note]").forEach(inp=>inp.oninput=()=>{
     recipeEditDraft.items[Number(inp.dataset.recipeEditNote)].note=inp.value;
@@ -2510,6 +2538,7 @@ function bindRecipeEditor(){
   document.getElementById("cancelRecipeEdit")?.addEventListener("click",cancelRecipeEdit);
   document.getElementById("saveRecipeEdit")?.addEventListener("click",()=>{
     try{
+      syncRecipeEditDraftFromForm();
       if(localRecipeVariant(activeRecipe))saveRecipeVariantCustomization(activeRecipe,recipeEditDraft.pid,recipeEditDraft,recipeEditDraft.applyOther);
       else saveRecipeCustomization(activeRecipe,recipeEditDraft.pid,recipeEditDraft,recipeEditDraft.applyOther);
       recipeEditMode=false;recipeEditDraft=null;
@@ -2520,6 +2549,7 @@ function bindRecipeEditor(){
   });
   document.getElementById("saveRecipeVariant")?.addEventListener("click",()=>{
     try{
+      syncRecipeEditDraftFromForm();
       const id=createRecipeVariantFromDraft(activeRecipe,recipeEditDraft.pid,recipeEditDraft,recipeEditDraft.applyOther);
       activeRecipe=id;activePerson=recipePreviewPerson(DATA.recipes[id]);
       recipeEditMode=false;recipeEditDraft=null;
