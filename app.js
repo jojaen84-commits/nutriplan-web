@@ -300,8 +300,9 @@ function nutritionTrainingAdjustment(pid,dateKey=state.selectedDate){
     base
   };
 }
-// Objetivo nutricional visible: se calcula realmente en g de HC/kg.
-function goalsForDate(pid,dateKey=state.selectedDate){
+// Objetivo automático del día: configuración general + preparación nutricional
+// para la salida del día siguiente, cuando corresponda.
+function automaticGoalsForDate(pid,dateKey=state.selectedDate){
   const x=profileCalc(pid,dateKey);
   const adj=nutritionTrainingAdjustment(pid,dateKey);
   if(!adj)return {kcal:x.target,protein:x.protein,carbs:x.carbs,fat:x.fat};
@@ -312,10 +313,60 @@ function goalsForDate(pid,dateKey=state.selectedDate){
     fat:x.fat
   };
 }
-// Escalado automático de recetas: progresivo y limitado para evitar
-// que todas las raciones aumenten bruscamente al cambiar a objetivos g/kg.
+function dailyMacroOverride(pid,dateKey=state.selectedDate){
+  const rec=state.dailyMacroOverrides?.[dateKey]?.[pid];
+  if(!rec || typeof rec!=="object")return null;
+  const proteinKg=Number(rec.proteinKg);
+  const fatKg=Number(rec.fatKg);
+  const carbsKg=Number(rec.carbsKg);
+  if(!(proteinKg>0) || !(fatKg>0) || !(carbsKg>0))return null;
+  return {proteinKg,fatKg,carbsKg};
+}
+function setDailyMacroOverride(pid,dateKey,values){
+  const raw={
+    proteinKg:Number(values.proteinKg),
+    fatKg:Number(values.fatKg),
+    carbsKg:Number(values.carbsKg)
+  };
+  if(!Object.values(raw).every(Number.isFinite))return false;
+  if(!state.dailyMacroOverrides[dateKey])state.dailyMacroOverrides[dateKey]={};
+  const clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
+  state.dailyMacroOverrides[dateKey][pid]={
+    proteinKg:Math.round(clamp(raw.proteinKg,1.0,2.4)*100)/100,
+    fatKg:Math.round(clamp(raw.fatKg,0.45,1.2)*100)/100,
+    carbsKg:Math.round(clamp(raw.carbsKg,0.5,8.0)*100)/100
+  };
+  return true;
+}
+function clearDailyMacroOverride(pid,dateKey=state.selectedDate){
+  if(!state.dailyMacroOverrides?.[dateKey])return;
+  delete state.dailyMacroOverrides[dateKey][pid];
+  if(!Object.keys(state.dailyMacroOverrides[dateKey]).length)delete state.dailyMacroOverrides[dateKey];
+}
+// Objetivo nutricional efectivo. Un ajuste manual de la fecha tiene prioridad
+// sobre el cálculo automático y las kcal resultan de los tres macros elegidos.
+function goalsForDate(pid,dateKey=state.selectedDate){
+  const automatic=automaticGoalsForDate(pid,dateKey);
+  const x=profileCalc(pid,dateKey);
+  const manual=dailyMacroOverride(pid,dateKey);
+  if(!manual || !(x.weight>0))return automatic;
+  const protein=x.weight*manual.proteinKg;
+  const fat=x.weight*manual.fatKg;
+  const carbs=x.weight*manual.carbsKg;
+  return {
+    kcal:protein*4+carbs*4+fat*9,
+    protein,
+    carbs,
+    fat
+  };
+}
+// Escalado automático de recetas: progresivo y limitado para el preset de
+// entrenamiento. Si hay un ajuste manual diario, ese objetivo sí se aplica
+// directamente porque el usuario ha elegido expresamente los g/kg.
 function recipeScalingGoalsForDate(pid,dateKey=state.selectedDate){
   const x=profileCalc(pid,dateKey);
+  const manual=dailyMacroOverride(pid,dateKey);
+  if(manual && x.weight>0)return goalsForDate(pid,dateKey);
   if(pid!=="P01")return {kcal:x.target,protein:x.protein,carbs:x.carbs,fat:x.fat};
   const {training}=trainingForTomorrow(dateKey);
   if(!training || training.type!=="bike" || training.applyNutrition===false)
@@ -650,6 +701,9 @@ if(!state.manualWeightOverrides.P01) state.manualWeightOverrides.P01={};
 if(!state.manualWeightOverrides.P02) state.manualWeightOverrides.P02={};
 
 if(!state.trainingByDate) state.trainingByDate={};
+// Objetivos de macros excepcionales por fecha y perfil.
+// Permiten ajustar un día concreto sin modificar la Configuración general.
+if(!state.dailyMacroOverrides) state.dailyMacroOverrides={};
 if(!state.routeNutritionByDate) state.routeNutritionByDate={};
 
 // Actividad realmente realizada. Se registra aparte del objetivo nutricional:
@@ -773,6 +827,7 @@ if(!state.evaDeficit27MigrationV1){
 let activeType="TODAS";
 let activeRecipe=null;
 let activePerson="P01";
+let dailyMacroPerson="P01";
 let recipeEditMode=false;
 let recipeEditDraft=null;
 
@@ -1120,6 +1175,109 @@ function renderRouteNutrition(){
   if(clear)clear.onclick=()=>{delete state.routeNutritionByDate[state.selectedDate];save();renderRouteNutrition();renderTotals();};
 }
 
+function renderDailyMacroGoals(){
+  const el=document.getElementById("dailyMacroGoals");
+  if(!el)return;
+
+  const pid=["P01","P02"].includes(dailyMacroPerson)?dailyMacroPerson:"P01";
+  const ew=effectiveWeight(pid,state.selectedDate);
+  const weight=Number(ew.weight)||0;
+  const automatic=automaticGoalsForDate(pid,state.selectedDate);
+  const manual=dailyMacroOverride(pid,state.selectedDate);
+  const effective=goalsForDate(pid,state.selectedDate);
+  const normal=profileCalc(pid,state.selectedDate);
+
+  if(!(weight>0)){
+    el.innerHTML=`<div class="panel daily-macro-panel">
+      <h2>Objetivos nutricionales de hoy</h2>
+      <div class="small">Completa el perfil de ${escapeHtml(profileName(pid))} para poder ajustar los macros en g/kg.</div>
+    </div>`;
+    return;
+  }
+
+  const autoValues={
+    proteinKg:automatic.protein/weight,
+    carbsKg:automatic.carbs/weight,
+    fatKg:automatic.fat/weight
+  };
+  const values=manual||autoValues;
+  const delta=effective.kcal-normal.target;
+  const deltaText=Math.abs(delta)<1
+    ?"igual que el objetivo habitual"
+    :`${delta>0?"+":""}${fmt(delta)} kcal frente al objetivo habitual`;
+
+  const field=(key,label,min,max,step,grams)=>`<div class="daily-macro-field">
+    <div class="daily-macro-label"><label>${label}</label><b>${fmt(values[key],2)} g/kg · ${fmt(grams)} g/día</b></div>
+    <div class="range-row">
+      <input type="range" min="${min}" max="${max}" step="${step}" value="${values[key]}" data-daily-macro-key="${key}" data-daily-macro-role="range">
+      <input type="number" min="${min}" max="${max}" step="${step}" value="${values[key]}" data-daily-macro-key="${key}" data-daily-macro-role="number">
+    </div>
+  </div>`;
+
+  el.innerHTML=`<div class="panel daily-macro-panel">
+    <div class="daily-macro-head">
+      <div>
+        <h2>Objetivos nutricionales de hoy</h2>
+        <div class="small">Ajusta solo ${formatLongDate(state.selectedDate)}. La Configuración general no cambia.</div>
+      </div>
+      <span class="daily-macro-status ${manual?"manual":""}">${manual?"Ajuste manual":"Automático"}</span>
+    </div>
+
+    <div class="daily-macro-tabs no-print">
+      ${["P01","P02"].map(id=>`<button type="button" data-daily-macro-person="${id}" class="${id===pid?"active":""}">${escapeHtml(profileName(id))}</button>`).join("")}
+    </div>
+
+    <div class="daily-macro-grid">
+      ${field("proteinKg","Proteína",1.0,2.4,0.05,effective.protein)}
+      ${field("carbsKg","Hidratos de carbono",0.5,8.0,0.1,effective.carbs)}
+      ${field("fatKg","Grasa",0.45,1.2,0.01,effective.fat)}
+    </div>
+
+    <div class="daily-macro-summary">
+      <strong>Objetivo efectivo: ${fmt(effective.kcal)} kcal</strong>
+      <span>P ${fmt(effective.protein)} g · HC ${fmt(effective.carbs)} g · G ${fmt(effective.fat)} g · ${deltaText}.</span>
+      ${manual?`<small>Cálculo automático de referencia: ${fmt(autoValues.proteinKg,2)} g/kg P · ${fmt(autoValues.carbsKg,2)} g/kg HC · ${fmt(autoValues.fatKg,2)} g/kg G · ${fmt(automatic.kcal)} kcal.</small>`:""}
+    </div>
+
+    ${manual?`<div class="daily-macro-actions no-print"><button class="btn soft" type="button" id="resetDailyMacros">Volver al cálculo automático</button></div>`:""}
+  </div>`;
+
+  el.querySelectorAll("[data-daily-macro-person]").forEach(btn=>btn.onclick=()=>{
+    dailyMacroPerson=btn.dataset.dailyMacroPerson;
+    renderDailyMacroGoals();
+  });
+
+  const readValues=()=>({
+    proteinKg:Number(el.querySelector('[data-daily-macro-key="proteinKg"][data-daily-macro-role="number"]').value),
+    carbsKg:Number(el.querySelector('[data-daily-macro-key="carbsKg"][data-daily-macro-role="number"]').value),
+    fatKg:Number(el.querySelector('[data-daily-macro-key="fatKg"][data-daily-macro-role="number"]').value)
+  });
+
+  el.querySelectorAll("[data-daily-macro-key]").forEach(input=>{
+    input.oninput=()=>{
+      const peerRole=input.dataset.dailyMacroRole==="range"?"number":"range";
+      const peer=el.querySelector(`[data-daily-macro-key="${input.dataset.dailyMacroKey}"][data-daily-macro-role="${peerRole}"]`);
+      if(peer)peer.value=input.value;
+    };
+    input.onchange=()=>{
+      setDailyMacroOverride(pid,state.selectedDate,readValues());
+      save();
+      renderPlanner();
+      renderCards();
+      if(activeRecipe)renderDetail();
+    };
+  });
+
+  const reset=document.getElementById("resetDailyMacros");
+  if(reset)reset.onclick=()=>{
+    clearDailyMacroOverride(pid,state.selectedDate);
+    save();
+    renderPlanner();
+    renderCards();
+    if(activeRecipe)renderDetail();
+  };
+}
+
 function renderTrainingTomorrow(){
   const el=document.getElementById("trainingTomorrow");
   if(!el)return;
@@ -1127,6 +1285,7 @@ function renderTrainingTomorrow(){
   const trainingDate=addDays(state.selectedDate,1);
   const current=state.trainingByDate[trainingDate] || {type:"none",duration:3,intensity:"easy",applyNutrition:true};
   const dateLabel=parseDateKey(trainingDate).toLocaleDateString("es-ES",{weekday:"long",day:"numeric",month:"long"});
+  const manualToday=dailyMacroOverride("P01",state.selectedDate);
   const adj=(current.type==="bike" && current.applyNutrition!==false)
     ? (()=>{
         const base=profileCalc("P01",state.selectedDate);
@@ -1146,14 +1305,14 @@ function renderTrainingTomorrow(){
   el.innerHTML=`<div class="panel training-panel">
     <div class="training-head">
       <div>
-        <h2>🚴 Entrenamiento de mañana</h2>
-        <div class="small">${dateLabel} · afecta a la nutrición de ${escapeHtml(profileName("P01"))} de hoy</div>
+        <h2>🚴 Salida de mañana</h2>
+        <div class="small">${dateLabel} · puede ajustar automáticamente los hidratos de ${escapeHtml(profileName("P01"))} para hoy</div>
       </div>
       ${current.type==="bike"?`<button class="btn soft no-print" id="clearTraining" type="button">Borrar</button>`:""}
     </div>
 
     <div class="training-mode no-print">
-      <button type="button" data-training-type="none" class="${current.type!=="bike"?"active":""}">Sin entrenamiento</button>
+      <button type="button" data-training-type="none" class="${current.type!=="bike"?"active":""}">Sin salida</button>
       <button type="button" data-training-type="bike" class="${current.type==="bike"?"active":""}">Bicicleta</button>
     </div>
 
@@ -1173,14 +1332,14 @@ function renderTrainingTomorrow(){
       </div>
       <label class="training-apply">
         <input id="trainingApply" type="checkbox" ${current.applyNutrition!==false?"checked":""}>
-        <span><b>Aplicar preparación nutricional el día anterior.</b> Si se desactiva, el entrenamiento queda registrado pero no modifica los objetivos.</span>
+        <span><b>Usar preparación nutricional automática.</b> Si se desactiva, la salida queda registrada pero no modifica los objetivos de hoy.</span>
       </label>
       <div class="training-result">
         ${adj
-          ? `<strong>Objetivo de hoy: ${fmt(adj.gkg,1)} g HC/kg ≈ ${fmt(adj.target)} g HC</strong><br>
-             Ajuste sobre el día normal: +${fmt(adj.extra)} g HC (+${fmt(adj.extra*4)} kcal). Proteína y grasa sin cambios.<br>
-             Las raciones se escalan de forma progresiva; usa el dato HC/kg del total diario para afinar el menú.`
-          : `Preparación nutricional desactivada.`
+          ? `<strong>Propuesta automática para hoy: ${fmt(adj.gkg,1)} g HC/kg ≈ ${fmt(adj.target)} g HC</strong><br>
+             Ajuste sobre el día normal: +${fmt(adj.extra)} g HC (+${fmt(adj.extra*4)} kcal). Proteína y grasa se mantienen.<br>
+             ${manualToday?"<b>Ajuste manual activo:</b> los valores de «Objetivos nutricionales de hoy» tienen prioridad.":"Las raciones se escalan de forma progresiva; puedes afinar el reparto en «Objetivos nutricionales de hoy»."}`
+          : `Preparación nutricional automática desactivada.`
         }
       </div>`:""
     }
@@ -1223,6 +1382,7 @@ function renderPlanner(){
   const el=document.getElementById("menuSlots");
   renderMonthCalendar();
   renderTrainingTomorrow();
+  renderDailyMacroGoals();
   renderExerciseCalories();
   renderRouteNutrition();
 
@@ -1327,9 +1487,11 @@ function renderTotals(){
   const route=routeNutritionCalc(state.selectedDate);
   const balancedPeople=["P01","P02"].filter(pid=>dayCoreMenuComplete(state.selectedDate,pid));
   const dayBalanced=balancedPeople.length>0;
+  const manualToday=dailyMacroOverride("P01",state.selectedDate);
   const trainingNote=tadj?`<div class="training-day-note">
     🚴 <b>Preparación para mañana:</b> ${fmt(tadj.training.duration,1).replace(",0","")} h · ${tadj.training.intensity==="hard"?"Intenso":"Suave / Z2"}<br>
-    Objetivo de ${escapeHtml(profileName("P01"))}: <b>${fmt(tadj.targetGkg,1)} g HC/kg ≈ ${fmt(tadj.targetCarbs)} g HC</b>.
+    Propuesta automática para ${escapeHtml(profileName("P01"))}: <b>${fmt(tadj.targetGkg,1)} g HC/kg ≈ ${fmt(tadj.targetCarbs)} g HC</b>.
+    ${manualToday?"<br><b>Ajuste manual diario activo:</b> el objetivo efectivo es el que aparece en los totales.":""}
   </div>`:"";
   const routeNote=route.totalCarbs?`<div class="training-day-note" style="background:#eef4fb;color:#385475">🚴 <b>Nutrición en ruta:</b> ${formatDurationMinutes(route.durationMin)} · ${fmt(route.totalCarbs,1)} g HC · ${route.durationH?fmt(route.carbsPerHour,1):"—"} g/h · ≈ ${fmt(route.kcal)} kcal.</div>`:"";
   const balanceNote=dayBalanced?`<div class="training-day-note" style="background:#f3f7f3">
