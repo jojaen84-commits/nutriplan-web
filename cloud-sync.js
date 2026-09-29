@@ -194,12 +194,15 @@ function cloudLocalHasMeaningfulData(){
   const manualWeights=['P01','P02'].some(pid=>
     Object.keys(state.manualWeightOverrides?.[pid]||{}).length>0
   );
+  const dailyMacros=Object.values(state.dailyMacroOverrides||{}).some(day=>
+    day && Object.keys(day).length>0
+  );
   const adjustments=Object.values(state.recipeAdjustments||{}).some(day=>
     day && Object.keys(day).length>0
   );
   const checks=Object.values(state.checks||{}).some(Boolean);
   return menus || records || profileChanged || coffees || exercise || training || route ||
-    manualWeights || adjustments || checks ||
+    manualWeights || dailyMacros || adjustments || checks ||
     Object.keys(state.recipeEdits||{}).length>0 ||
     Object.keys(state.recipeVariants||{}).length>0;
 }
