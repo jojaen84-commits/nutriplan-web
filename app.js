@@ -19,6 +19,7 @@ function nutritionEngineInput(dateKey=state.selectedDate){
     adjustments:state.recipeAdjustments?.[dateKey]||{},
     goalsByPerson:{P01:goalsForDate('P01',dateKey),P02:goalsForDate('P02',dateKey)},
     scalingGoalsByPerson:{P01:recipeScalingGoalsForDate('P01',dateKey),P02:recipeScalingGoalsForDate('P02',dateKey)},
+    exactMacroTargetsByPerson:{P01:Boolean(dailyMacroOverride('P01',dateKey)),P02:Boolean(dailyMacroOverride('P02',dateKey))},
     coffeeTotalsByPerson:{P01:coffeeTotalsFor('P01',dateKey),P02:coffeeTotalsFor('P02',dateKey)}};
 }
 function nutritionEngineForDate(dateKey=state.selectedDate){
@@ -1034,10 +1035,7 @@ function renderExerciseCalories(){
 
   el.innerHTML=`<div class="panel route-panel">
     <div class="route-head">
-      <div>
-        <h2 style="margin:0 0 3px">🔥 Actividad realizada</h2>
-        <div class="small">Registra las kcal de ejercicio realmente realizadas. No modifican automáticamente el objetivo de ingesta.</div>
-      </div>
+      <div class="small">Registra las kcal del entrenamiento realmente realizado. No modifican automáticamente el objetivo de ingesta.</div>
       ${(exerciseCaloriesFor("P01")||exerciseCaloriesFor("P02"))?`<button class="btn soft no-print" id="clearExerciseCalories" type="button">Borrar</button>`:""}
     </div>
 
@@ -1138,7 +1136,7 @@ function renderRouteNutrition(){
 
   el.innerHTML=`<div class="panel route-panel">
     <div class="route-head">
-      <div><h2 style="margin:0 0 3px">🚴 Nutrición en ruta</h2><div class="small">Registra a posteriori lo que realmente tomaste durante la salida.</div></div>
+      <div class="small">Registra a posteriori lo que realmente tomaste durante la salida.</div>
       ${(c.durationMin||c.gels||c.bottles)?`<button class="btn soft no-print" id="clearRouteNutrition" type="button">Borrar</button>`:""}
     </div>
     <div class="route-grid">
@@ -1189,7 +1187,6 @@ function renderDailyMacroGoals(){
 
   if(!(weight>0)){
     el.innerHTML=`<div class="panel daily-macro-panel">
-      <h2>Objetivos nutricionales de hoy</h2>
       <div class="small">Completa el perfil de ${escapeHtml(profileName(pid))} para poder ajustar los macros en g/kg.</div>
     </div>`;
     return;
@@ -1216,10 +1213,7 @@ function renderDailyMacroGoals(){
 
   el.innerHTML=`<div class="panel daily-macro-panel">
     <div class="daily-macro-head">
-      <div>
-        <h2>Objetivos nutricionales de hoy</h2>
-        <div class="small">Ajusta solo ${formatLongDate(state.selectedDate)}. La Configuración general no cambia.</div>
-      </div>
+      <div class="small">Ajusta solo ${formatLongDate(state.selectedDate)}. La Configuración general no cambia.</div>
       <span class="daily-macro-status ${manual?"manual":""}">${manual?"Ajuste manual":"Automático"}</span>
     </div>
 
@@ -1304,15 +1298,12 @@ function renderTrainingTomorrow(){
 
   el.innerHTML=`<div class="panel training-panel">
     <div class="training-head">
-      <div>
-        <h2>🚴 Salida de mañana</h2>
-        <div class="small">${dateLabel} · puede ajustar automáticamente los hidratos de ${escapeHtml(profileName("P01"))} para hoy</div>
-      </div>
+      <div class="small">${dateLabel} · puede ajustar automáticamente los hidratos de ${escapeHtml(profileName("P01"))} para hoy</div>
       ${current.type==="bike"?`<button class="btn soft no-print" id="clearTraining" type="button">Borrar</button>`:""}
     </div>
 
     <div class="training-mode no-print">
-      <button type="button" data-training-type="none" class="${current.type!=="bike"?"active":""}">Sin salida</button>
+      <button type="button" data-training-type="none" class="${current.type!=="bike"?"active":""}">Sin entrenamiento</button>
       <button type="button" data-training-type="bike" class="${current.type==="bike"?"active":""}">Bicicleta</button>
     </div>
 
@@ -1332,7 +1323,7 @@ function renderTrainingTomorrow(){
       </div>
       <label class="training-apply">
         <input id="trainingApply" type="checkbox" ${current.applyNutrition!==false?"checked":""}>
-        <span><b>Usar preparación nutricional automática.</b> Si se desactiva, la salida queda registrada pero no modifica los objetivos de hoy.</span>
+        <span><b>Usar preparación nutricional automática.</b> Si se desactiva, el entrenamiento queda registrado pero no modifica los objetivos de hoy.</span>
       </label>
       <div class="training-result">
         ${adj
@@ -1494,8 +1485,13 @@ function renderTotals(){
     ${manualToday?"<br><b>Ajuste manual diario activo:</b> el objetivo efectivo es el que aparece en los totales.":""}
   </div>`:"";
   const routeNote=route.totalCarbs?`<div class="training-day-note" style="background:#eef4fb;color:#385475">🚴 <b>Nutrición en ruta:</b> ${formatDurationMinutes(route.durationMin)} · ${fmt(route.totalCarbs,1)} g HC · ${route.durationH?fmt(route.carbsPerHour,1):"—"} g/h · ≈ ${fmt(route.kcal)} kcal.</div>`:"";
+  const anyManual=["P01","P02"].some(pid=>dailyMacroOverride(pid,state.selectedDate));
   const balanceNote=dayBalanced?`<div class="training-day-note" style="background:#f3f7f3">
-    ⚖️ <b>Ajuste automático de los menús activos.</b> Cada persona se calcula con su propio menú. Nutriplan mantiene la proteína si ya está cubierta y ajusta principalmente hidratos y grasa para acercarse al objetivo energético. Las recetas de mezcla conjunta conservan un único reparto ${escapeHtml(profileName("P01"))}/${escapeHtml(profileName("P02"))}; el resto se compensa con las comidas individuales. Las recetas de ración fija no se modifican.
+    ⚖️ <b>Ajuste automático de los menús activos.</b> Cada persona se calcula con su propio menú.
+    ${anyManual
+      ? "Con un ajuste manual diario, proteína, hidratos y grasa se tratan como objetivos reales y Nutriplan puede subir o bajar las fuentes flexibles para aproximarse a ellos."
+      : "En modo automático, la proteína actúa como mínimo y el ajuste energético se hace principalmente con hidratos y grasa."}
+    Las recetas de mezcla conjunta, las raciones fijas y los ingredientes bloqueados se respetan, por lo que pueden impedir cuadrar un objetivo exactamente.
   </div>`:"";
   el.innerHTML=trainingNote+balanceNote+routeNote+Object.keys(DATA.profiles).map(pid=>{
     const p=DATA.profiles[pid];
