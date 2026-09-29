@@ -39,39 +39,39 @@
     <button class="btn soft no-print" id="resetMenu">Limpiar menú</button>
   </div>
 
-  <div class="panel calendar-panel" style="margin-bottom:16px">
-    <div class="calendar-head">
-      <div>
-        <h2 style="margin:0 0 3px">Calendario</h2>
-        <span class="date-title" id="selectedDateTitle"></span>
+  <details class="menu-disclosure" open>
+    <summary>Calendario</summary>
+    <div class="panel calendar-panel">
+      <div class="calendar-head">
+        <div><span class="date-title" id="selectedDateTitle"></span></div>
+        <div class="calendar-nav no-print">
+          <button class="btn" id="prevMonth">←</button>
+          <button class="btn soft" id="todayBtn">Hoy</button>
+          <button class="btn" id="nextMonth">→</button>
+        </div>
       </div>
-      <div class="calendar-nav no-print">
-        <button class="btn" id="prevMonth">←</button>
-        <button class="btn soft" id="todayBtn">Hoy</button>
-        <button class="btn" id="nextMonth">→</button>
+      <div class="calendar-month-title" id="calendarMonthTitle"></div>
+      <div class="calendar-weekdays">
+        <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
       </div>
+      <div class="calendar-grid" id="monthCalendar"></div>
     </div>
-    <div class="calendar-month-title" id="calendarMonthTitle"></div>
-    <div class="calendar-weekdays">
-      <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
-    </div>
-    <div class="calendar-grid" id="monthCalendar"></div>
-  </div>
+  </details>
 
-  <div id="trainingTomorrow"></div>
-  <div id="dailyMacroGoals"></div>
+  <details class="menu-disclosure">
+    <summary>🚴 Entrenamiento de mañana</summary>
+    <div id="trainingTomorrow"></div>
+  </details>
 
-  <div class="two" id="dailySwipeArea">
-    <div class="panel">
-      <h2>Plan del día</h2>
-      <div id="menuSlots"></div>
-      <div id="coffeePanel"></div>
-      <p class="small">Cada perfil puede tener su propio menú y sus cantidades individuales. Los cafés se registran aparte.</p>
-      <div class="small swipe-hint no-print">← Desliza para cambiar de día →</div>
-    </div>
-    <div class="panel">
-      <div class="report-head">
-        <h2>Totales del día</h2>
+  <details class="menu-disclosure" open>
+    <summary>Objetivos nutricionales de hoy</summary>
+    <div id="dailyMacroGoals"></div>
+  </details>
+
+  <details class="menu-disclosure" open>
+    <summary>Resumen de macronutrientes</summary>
+    <div class="panel macro-summary-panel">
+      <div class="report-head report-head-actions">
         <div class="report-open-actions no-print">
           <button class="btn soft" type="button" id="openDailyReport">Resumen</button>
           <button class="btn soft" type="button" id="openDetailedDailyReport">Detallado</button>
@@ -79,9 +79,27 @@
       </div>
       <div id="dayTotals"></div>
     </div>
-  </div>
+  </details>
 
-  <div id="routeNutrition" style="margin-top:16px"></div>
+  <details class="menu-disclosure" open>
+    <summary>Plan del día</summary>
+    <div class="panel" id="dailySwipeArea">
+      <div id="menuSlots"></div>
+      <div id="coffeePanel"></div>
+      <p class="small">Cada perfil puede tener su propio menú y sus cantidades individuales. Los cafés se registran aparte.</p>
+      <div class="small swipe-hint no-print">← Desliza para cambiar de día →</div>
+    </div>
+  </details>
+
+  <details class="menu-disclosure">
+    <summary>🔥 Entrenamiento realizado</summary>
+    <div id="exerciseCaloriesPanel"></div>
+  </details>
+
+  <details class="menu-disclosure">
+    <summary>🚴 Nutrición en ruta</summary>
+    <div id="routeNutrition"></div>
+  </details>
 </section>
 
 <section id="weekView" class="view">
