@@ -4243,6 +4243,236 @@ window.NUTRIPLAN_DATA = {
       "locked_portion_P01": true,
       "locked_portion_P02": true,
       "calculation_mode": "INGREDIENT_SUM"
+    },
+    "R042": {
+      "id": "R042",
+      "mix_mode": "joint",
+      "code": "REC-042",
+      "version": "1.0",
+      "name": "Pasta con merluza, verduras asadas y salsa de soja",
+      "type": "COMIDA",
+      "status": "ACTIVA",
+      "tags": [
+        "MERLUZA",
+        "PASTA",
+        "VERDURAS_ASADAS",
+        "SALSA_SOJA",
+        "COMIDA",
+        "COCINA_COMPARTIDA",
+        "MERCADONA",
+        "SIN_ACEITE"
+      ],
+      "notes": "Usar 1 bolsa completa (450 g) de salteado de verduras asadas para los dos y 30 g de salsa de soja en total. La verdura y la salsa de soja quedan fijas; Nutriplan ajusta automáticamente la pasta y la merluza según los objetivos nutricionales. Cocer la pasta aparte. Preparar las verduras según el envase, cocinar la merluza en trozos y mezclar al final con la pasta y la salsa de soja. Ajo en polvo y pimienta al gusto. No añadir sal extra ni aceite.",
+      "image": null,
+      "image_status": "PENDIENTE",
+      "summary": {
+        "P01": {
+          "kcal": 577.02,
+          "protein": 52.141,
+          "carbs": 78.67099999999999,
+          "fat": 3.535,
+          "p_pct": 0.3757483384768936,
+          "c_pct": 0.5669338435456875,
+          "f_pct": 0.057317817977418785,
+          "goal_pct": 0.2959076923076923
+        },
+        "P02": {
+          "kcal": 438.68,
+          "protein": 39.349,
+          "carbs": 60.019,
+          "fat": 2.665,
+          "p_pct": 0.3734568413859539,
+          "c_pct": 0.5696334382867054,
+          "f_pct": 0.05690972032734063,
+          "goal_pct": 0.31334285714285715
+        }
+      },
+      "portions": {
+        "P01": [
+          {
+            "food_id": "A047",
+            "food": "Lomos de merluza",
+            "grams": 200,
+            "note": "cantidad base; se ajusta automáticamente",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A051",
+            "food": "Pasta de hélices seca",
+            "grams": 80,
+            "note": "pesar en seco; cantidad base ajustable",
+            "state": "seco"
+          },
+          {
+            "food_id": "A019",
+            "food": "Salteado de verduras asadas ultracongeladas",
+            "grams": 250,
+            "note": "parte de la bolsa completa de 450 g",
+            "state": "producto"
+          },
+          {
+            "food_id": "A049",
+            "food": "Salsa de soja Hacendado",
+            "grams": 17,
+            "note": "parte de los 30 g totales; añadir al final",
+            "state": "producto"
+          }
+        ],
+        "P02": [
+          {
+            "food_id": "A047",
+            "food": "Lomos de merluza",
+            "grams": 150,
+            "note": "cantidad base; se ajusta automáticamente",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A051",
+            "food": "Pasta de hélices seca",
+            "grams": 60,
+            "note": "pesar en seco; cantidad base ajustable",
+            "state": "seco"
+          },
+          {
+            "food_id": "A019",
+            "food": "Salteado de verduras asadas ultracongeladas",
+            "grams": 200,
+            "note": "parte de la bolsa completa de 450 g",
+            "state": "producto"
+          },
+          {
+            "food_id": "A049",
+            "food": "Salsa de soja Hacendado",
+            "grams": 13,
+            "note": "parte de los 30 g totales; añadir al final",
+            "state": "producto"
+          }
+        ]
+      },
+      "locked_food_ids": [
+        "A019",
+        "A049"
+      ],
+      "hard_locked_food_ids": [
+        "A019",
+        "A049"
+      ],
+      "calculation_mode": "INGREDIENT_SUM"
+    },
+    "R043": {
+      "id": "R043",
+      "mix_mode": "joint",
+      "code": "REC-043",
+      "version": "1.0",
+      "name": "Pasta con solomillo de pavo, verduras asadas y salsa de soja",
+      "type": "COMIDA",
+      "status": "ACTIVA",
+      "tags": [
+        "PAVO",
+        "PASTA",
+        "VERDURAS_ASADAS",
+        "SALSA_SOJA",
+        "COMIDA",
+        "COCINA_COMPARTIDA",
+        "MERCADONA",
+        "SIN_ACEITE"
+      ],
+      "notes": "Usar 1 bolsa completa (450 g) de salteado de verduras asadas para los dos y 30 g de salsa de soja en total. La verdura y la salsa de soja quedan fijas; Nutriplan ajusta automáticamente la pasta y el solomillo de pavo según los objetivos nutricionales. Cocer la pasta aparte. Cortar el pavo en dados o tiras, dorarlo, preparar las verduras según el envase y mezclar al final con la pasta y la salsa de soja. Ajo en polvo, pimienta y pimentón al gusto. No añadir sal extra ni aceite.",
+      "image": null,
+      "image_status": "PENDIENTE",
+      "summary": {
+        "P01": {
+          "kcal": 580.62,
+          "protein": 55.741,
+          "carbs": 80.11099999999999,
+          "fat": 1.5350000000000001,
+          "p_pct": 0.4001342371007658,
+          "c_pct": 0.5750731753714401,
+          "f_pct": 0.024792587527794084,
+          "goal_pct": 0.29775384615384615
+        },
+        "P02": {
+          "kcal": 445.97999999999996,
+          "protein": 43.148999999999994,
+          "carbs": 61.138999999999996,
+          "fat": 1.1649999999999998,
+          "p_pct": 0.40360399123555724,
+          "c_pct": 0.5718775503522848,
+          "f_pct": 0.024518458412157974,
+          "goal_pct": 0.3185571428571428
+        }
+      },
+      "portions": {
+        "P01": [
+          {
+            "food_id": "A064",
+            "food": "Solomillo de pavo",
+            "grams": 180,
+            "note": "cantidad base; se ajusta automáticamente",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A051",
+            "food": "Pasta de hélices seca",
+            "grams": 80,
+            "note": "pesar en seco; cantidad base ajustable",
+            "state": "seco"
+          },
+          {
+            "food_id": "A019",
+            "food": "Salteado de verduras asadas ultracongeladas",
+            "grams": 250,
+            "note": "parte de la bolsa completa de 450 g",
+            "state": "producto"
+          },
+          {
+            "food_id": "A049",
+            "food": "Salsa de soja Hacendado",
+            "grams": 17,
+            "note": "parte de los 30 g totales; añadir al final",
+            "state": "producto"
+          }
+        ],
+        "P02": [
+          {
+            "food_id": "A064",
+            "food": "Solomillo de pavo",
+            "grams": 140,
+            "note": "cantidad base; se ajusta automáticamente",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A051",
+            "food": "Pasta de hélices seca",
+            "grams": 60,
+            "note": "pesar en seco; cantidad base ajustable",
+            "state": "seco"
+          },
+          {
+            "food_id": "A019",
+            "food": "Salteado de verduras asadas ultracongeladas",
+            "grams": 200,
+            "note": "parte de la bolsa completa de 450 g",
+            "state": "producto"
+          },
+          {
+            "food_id": "A049",
+            "food": "Salsa de soja Hacendado",
+            "grams": 13,
+            "note": "parte de los 30 g totales; añadir al final",
+            "state": "producto"
+          }
+        ]
+      },
+      "locked_food_ids": [
+        "A019",
+        "A049"
+      ],
+      "hard_locked_food_ids": [
+        "A019",
+        "A049"
+      ],
+      "calculation_mode": "INGREDIENT_SUM"
     }
   },
   "foods": {
@@ -4443,8 +4673,14 @@ window.NUTRIPLAN_DATA = {
       "source": "Mercadona",
       "pack_g": 450,
       "pack_unit": "bolsa",
-      "pack_notes": "Bolsa 450 g",
-      "state": "producto"
+      "pack_notes": "Bolsa 450 g. Etiqueta aportada: 46 kcal · 1,8 g proteína · 8 g HC · 0,1 g grasa por 100 g.",
+      "state": "producto",
+      "nutrition_100": {
+        "kcal": 46,
+        "protein": 1.8,
+        "carbs": 8,
+        "fat": 0.1
+      }
     },
     "A020": {
       "name": "Fritada pisto Hacendado",
@@ -4704,7 +4940,13 @@ window.NUTRIPLAN_DATA = {
       "pack_g": null,
       "pack_unit": null,
       "pack_notes": "Referencia Nutriplan: 18 g proteína y 1 g grasa por 100 g.",
-      "state": "crudo"
+      "state": "crudo",
+      "nutrition_100": {
+        "kcal": 81,
+        "protein": 18,
+        "carbs": 0,
+        "fat": 1
+      }
     },
     "A048": {
       "name": "Arroz ultracongelado Hacendado",
@@ -4720,7 +4962,13 @@ window.NUTRIPLAN_DATA = {
       "pack_g": 250,
       "pack_unit": "ml",
       "pack_notes": "Etiqueta aportada: 66 kcal · 7,3 g proteína · 6,3 g HC · <0,5 g grasa · 12,5 g sal por 100 ml.",
-      "state": "producto"
+      "state": "producto",
+      "nutrition_100": {
+        "kcal": 66,
+        "protein": 7.3,
+        "carbs": 6.3,
+        "fat": 0.5
+      }
     },
     "A050": {
       "name": "Queso fresco batido 0% Hacendado",
@@ -4742,7 +4990,13 @@ window.NUTRIPLAN_DATA = {
       "pack_g": null,
       "pack_unit": "paquete",
       "pack_notes": "Pesar en seco. Valores de referencia: 361 kcal · 13 g proteína · 72 g HC · 1,5 g grasa por 100 g.",
-      "state": "seco"
+      "state": "seco",
+      "nutrition_100": {
+        "kcal": 361,
+        "protein": 13,
+        "carbs": 72,
+        "fat": 1.5
+      }
     },
     "A052": {
       "name": "Pepino",
@@ -4878,11 +5132,17 @@ window.NUTRIPLAN_DATA = {
     },
     "A064": {
       "name": "Solomillo de pavo",
-      "source": "Genérico / Nutriplan",
+      "source": "Mercadona / Nutriplan",
       "pack_g": null,
       "pack_unit": null,
-      "pack_notes": "Usado en REC-035. Peso indicado en crudo.",
-      "state": "crudo"
+      "pack_notes": "Peso en crudo. Referencia actual usada en Nutriplan: 92 kcal · 22 g proteína · 0,8 g HC · 0 g grasa por 100 g.",
+      "state": "crudo",
+      "nutrition_100": {
+        "kcal": 92,
+        "protein": 22,
+        "carbs": 0.8,
+        "fat": 0
+      }
     },
     "A065": {
       "name": "Jamón cocido extra 92%",
@@ -5011,5 +5271,5 @@ window.NUTRIPLAN_DATA = {
       }
     }
   },
-  "version": "5.1 REC-041 desayuno P02 + menús separados"
+  "version": "5.2 REC-042/043 pasta con verduras asadas"
 };
