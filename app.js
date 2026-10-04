@@ -815,7 +815,12 @@ Object.values(DATA.recipes).forEach(r=>{
   }
 });
 
-Object.keys(state.menusByDate).forEach(k=>state.menusByDate[k]=normalizeMenusByPerson(state.menusByDate[k]));
+Object.keys(state.menusByDate).forEach(k=>{
+  state.menusByDate[k]=normalizeMenusByPerson(state.menusByDate[k]);
+  ["P01","P02"].forEach(pid=>menuSlotDefs.forEach(([slot])=>{
+    if(state.menusByDate[k]?.[pid]?.[slot]==="R027") state.menusByDate[k][pid][slot]="R042";
+  }));
+});
 
 // Ajuste moderado solicitado para Persona 2: si la instalación sigue exactamente en
 // 25 % de déficit, pasar a 27 %. No toca valores que el usuario ya haya cambiado.
