@@ -1,4 +1,4 @@
-/* Nutriplan Persona 1&Persona 2 - Base de datos actualizada */
+/* Nutriplan Jorge&Eva - Base de datos actualizada */
 window.NUTRIPLAN_DATA = {
   "profiles": {
     "P01": {
@@ -4328,6 +4328,105 @@ window.NUTRIPLAN_DATA = {
         "A049"
       ],
       "calculation_mode": "INGREDIENT_SUM"
+    },
+    "R044": {
+      "id": "R044",
+      "code": "REC-044",
+      "version": "1.0",
+      "name": "Patatas al microondas con huevo a la plancha y jamón serrano",
+      "type": "COMIDA",
+      "types": [
+        "COMIDA",
+        "CENA"
+      ],
+      "status": "ACTIVA",
+      "tags": [
+        "PATATA",
+        "HUEVO",
+        "JAMON_SERRANO",
+        "COMIDA",
+        "CENA",
+        "RAPIDA",
+        "MICROONDAS",
+        "ALTA_PROTEINA"
+      ],
+      "notes": "Solo patata, huevo y jamón serrano. Pesar la patata en crudo antes de cocinarla al microondas. Hacer 1 huevo por persona a la plancha en sartén antiadherente, sin aceite añadido o con spray no contabilizado. Retirar el tocino/grasa blanca visible del jamón y pesarlo después de retirarlo. No añadir sal extra. Para no infravalorar calorías, Nutriplan calcula el jamón con los valores completos de la etiqueta aunque se retire la grasa visible.",
+      "image": null,
+      "image_status": "PENDIENTE",
+      "summary": {
+        "P01": {
+          "kcal": 500.03000000000003,
+          "protein": 33.5,
+          "carbs": 63.325,
+          "fat": 12.97499999998,
+          "p_pct": 0.2658334573229139,
+          "c_pct": 0.50250458761115,
+          "f_pct": 0.231661955065936,
+          "goal_pct": 0.256425641025641
+        },
+        "P02": {
+          "kcal": 449.84000000000003,
+          "protein": 29.490000000000002,
+          "carbs": 57.45,
+          "fat": 11.72199999998,
+          "p_pct": 0.26024912963488095,
+          "c_pct": 0.5069960155145442,
+          "f_pct": 0.23275485485057495,
+          "goal_pct": 0.3213142857142857
+        }
+      },
+      "portions": {
+        "P01": [
+          {
+            "food_id": "A002",
+            "food": "Patata",
+            "grams": 355,
+            "note": "peso en crudo; cocinar al microondas",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A016",
+            "food": "Huevo entero",
+            "grams": 60,
+            "note": "1 huevo; a la plancha",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A074",
+            "food": "Jamón serrano",
+            "grams": 60,
+            "note": "quitar tocino/grasa blanca visible y pesar después",
+            "state": "producto"
+          }
+        ],
+        "P02": [
+          {
+            "food_id": "A002",
+            "food": "Patata",
+            "grams": 322,
+            "note": "peso en crudo; cocinar al microondas",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A016",
+            "food": "Huevo entero",
+            "grams": 60,
+            "note": "1 huevo; a la plancha",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A074",
+            "food": "Jamón serrano",
+            "grams": 50,
+            "note": "quitar tocino/grasa blanca visible y pesar después",
+            "state": "producto"
+          }
+        ]
+      },
+      "hard_locked_food_ids": [
+        "A016",
+        "A074"
+      ]
     }
   },
   "foods": {
@@ -5124,7 +5223,21 @@ window.NUTRIPLAN_DATA = {
         "carbs": 0,
         "fat": 0
       }
+    },
+    "A074": {
+      "name": "Jamón serrano",
+      "source": "Etiqueta aportada",
+      "pack_g": null,
+      "pack_unit": "paquete",
+      "pack_notes": "247,8 kcal · 33,5 g proteína · 1,0 g HC · 12,2 g grasa por 100 g. En esta receta se retira el tocino/grasa blanca visible antes de pesar y comer; por prudencia el cálculo mantiene los valores completos de la etiqueta.",
+      "state": "producto",
+      "nutrition_100": {
+        "kcal": 247.8,
+        "protein": 33.5,
+        "carbs": 1,
+        "fat": 12.2
+      }
     }
   },
-  "version": "5.3 elimina REC-027 duplicada"
+  "version": "5.4 REC-044 patatas con huevo y jamón serrano"
 };
