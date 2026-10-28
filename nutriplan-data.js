@@ -4431,8 +4431,8 @@ window.NUTRIPLAN_DATA = {
     "R045": {
       "id": "R045",
       "code": "REC-045",
-      "version": "1.0",
-      "name": "Merluza con arroz al microondas y fritada",
+      "version": "1.1",
+      "name": "Merluza con arroz al microondas, fritada y verduras asadas",
       "type": "COMIDA",
       "status": "ACTIVA",
       "tags": [
@@ -4445,32 +4445,33 @@ window.NUTRIPLAN_DATA = {
         "MICROONDAS",
         "COCINA_COMPARTIDA",
         "MERCADONA",
-        "SIN_ACEITE"
+        "SIN_ACEITE",
+        "VERDURAS_ASADAS"
       ],
-      "notes": "Receta conjunta para 2, usando 1 envase entero (380 g) de fritada pisto Hacendado, sin añadir aceite. Cantidades base para Persona 1: 200 g de merluza en crudo + 167 g de arroz ultracongelado Hacendado + 220 g de fritada. Persona 2: 150 g de merluza en crudo + 125 g de arroz + 160 g de fritada. Mezclar todo y repartir la preparación aproximadamente 57 % / 43 % (los porcentajes de la app pueden variar según los objetivos diarios). Preparación: 1) calentar toda la fritada 3 min a fuego medio-bajo; 2) añadir la merluza troceada, tapar y cocinar 5–7 min hasta que esté hecha; 3) preparar el arroz al microondas según el envase; 4) mezclar con la merluza y la fritada, y calentar 1 min. La fritada (380 g) queda fija; Nutriplan puede ajustar el arroz y la merluza según objetivos.",
+      "notes": "Receta conjunta para dos con 1 brick entero de fritada pisto Hacendado (380 g) y 1 bolsa entera de verduras asadas ultracongeladas (450 g), sin aceite añadido. Se reduce el arroz para compensar las calorías de las verduras y mantener el aporte energético cercano al de la versión anterior. Cantidades base: Persona 1: 200 g de merluza cruda, 75 g de arroz ultracongelado, 220 g de fritada y 260 g de verduras. Persona 2: 150 g de merluza cruda, 55 g de arroz, 160 g de fritada y 190 g de verduras. Mezclar todo y repartir aproximadamente un 58 % para Persona 1 y un 42 % para Persona 2; Nutriplan puede recalcular el porcentaje según los objetivos diarios. Preparación: 1) saltear las verduras congeladas sin aceite, en sartén amplia destapada, unos 8–10 minutos hasta evaporar el agua; 2) añadir los 380 g de fritada y calentar 3 minutos; 3) incorporar la merluza en trozos, tapar y cocinar 5–7 minutos o hasta que quede completamente hecha; 4) preparar el arroz al microondas según su envase; 5) mezclar el arroz con la merluza y las verduras y calentar 1 minuto. Mantener fijos los 380 g de fritada y los 450 g de verduras; el arroz y la merluza pueden ajustarse a los objetivos.",
       "image": null,
       "image_status": "PENDIENTE",
       "mix_mode": "joint",
       "summary": {
         "P01": {
-          "kcal": 574.82,
-          "protein": 43.369,
-          "carbs": 69.64,
-          "fat": 12.841,
-          "p_pct": 0.3056280335796901,
-          "c_pct": 0.49076382343354974,
-          "f_pct": 0.20360814298676014,
-          "goal_pct": 0.2947794871794872
+          "kcal": 578.5,
+          "protein": 45.565,
+          "carbs": 64.68,
+          "fat": 12.825,
+          "p_pct": 0.32756714982791313,
+          "c_pct": 0.464985037877086,
+          "f_pct": 0.20744781229500095,
+          "goal_pct": 0.2966666666666667
         },
         "P02": {
-          "kcal": 426.2,
-          "protein": 32.455,
-          "carbs": 51.64,
-          "fat": 9.395,
-          "p_pct": 0.308408661669854,
-          "c_pct": 0.4907170940881609,
-          "f_pct": 0.20087424424198508,
-          "goal_pct": 0.30442857142857144
+          "kcal": 425.4,
+          "protein": 33.985,
+          "carbs": 47.24,
+          "fat": 9.375,
+          "p_pct": 0.3321483110378108,
+          "c_pct": 0.46169445971535034,
+          "f_pct": 0.20615722924683894,
+          "goal_pct": 0.3038571428571428
         }
       },
       "portions": {
@@ -4479,21 +4480,28 @@ window.NUTRIPLAN_DATA = {
             "food_id": "A047",
             "food": "Lomos de merluza",
             "grams": 200,
-            "note": "merluza pesada en crudo; ajustable",
+            "note": "Pesar en crudo; cantidad base ajustable",
             "state": "crudo"
           },
           {
             "food_id": "A048",
             "food": "Arroz ultracongelado Hacendado",
-            "grams": 167,
-            "note": "arroz ultracongelado Hacendado; peso de producto; ajustable",
+            "grams": 75,
+            "note": "Arroz ultracongelado Hacendado; cantidad base reducida para compensar las verduras; ajustable",
             "state": "cocido"
           },
           {
             "food_id": "A020",
             "food": "Fritada pisto Hacendado",
             "grams": 220,
-            "note": "parte del envase completo de 380 g; cantidad bloqueada en el lote",
+            "note": "Parte del envase completo de 380 g; cantidad fija",
+            "state": "producto"
+          },
+          {
+            "food_id": "A019",
+            "food": "Salteado de verduras asadas ultracongeladas",
+            "grams": 260,
+            "note": "Parte de la bolsa completa de 450 g; cantidad fija",
             "state": "producto"
           }
         ],
@@ -4502,30 +4510,39 @@ window.NUTRIPLAN_DATA = {
             "food_id": "A047",
             "food": "Lomos de merluza",
             "grams": 150,
-            "note": "merluza pesada en crudo; ajustable",
+            "note": "Pesar en crudo; cantidad base ajustable",
             "state": "crudo"
           },
           {
             "food_id": "A048",
             "food": "Arroz ultracongelado Hacendado",
-            "grams": 125,
-            "note": "arroz ultracongelado Hacendado; peso de producto; ajustable",
+            "grams": 55,
+            "note": "Arroz ultracongelado Hacendado; cantidad base reducida para compensar las verduras; ajustable",
             "state": "cocido"
           },
           {
             "food_id": "A020",
             "food": "Fritada pisto Hacendado",
             "grams": 160,
-            "note": "parte del envase completo de 380 g; cantidad bloqueada en el lote",
+            "note": "Parte del envase completo de 380 g; cantidad fija",
+            "state": "producto"
+          },
+          {
+            "food_id": "A019",
+            "food": "Salteado de verduras asadas ultracongeladas",
+            "grams": 190,
+            "note": "Parte de la bolsa completa de 450 g; cantidad fija",
             "state": "producto"
           }
         ]
       },
       "locked_food_ids": [
-        "A020"
+        "A020",
+        "A019"
       ],
       "hard_locked_food_ids": [
-        "A020"
+        "A020",
+        "A019"
       ],
       "calculation_mode": "INGREDIENT_SUM"
     }
@@ -5352,5 +5369,5 @@ window.NUTRIPLAN_DATA = {
       }
     }
   },
-  "version": "5.5 REC-045 merluza con arroz y fritada"
+  "version": "5.6 REC-045 merluza con arroz, fritada y verduras"
 };
