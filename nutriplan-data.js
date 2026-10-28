@@ -4427,6 +4427,107 @@ window.NUTRIPLAN_DATA = {
         "A016",
         "A074"
       ]
+    },
+    "R045": {
+      "id": "R045",
+      "code": "REC-045",
+      "version": "1.0",
+      "name": "Merluza con arroz al microondas y fritada",
+      "type": "COMIDA",
+      "status": "ACTIVA",
+      "tags": [
+        "MERLUZA",
+        "ARROZ",
+        "FRITADA",
+        "PISTO",
+        "COMIDA",
+        "RAPIDA",
+        "MICROONDAS",
+        "COCINA_COMPARTIDA",
+        "MERCADONA",
+        "SIN_ACEITE"
+      ],
+      "notes": "Receta conjunta para 2, usando 1 envase entero (380 g) de fritada pisto Hacendado, sin añadir aceite. Cantidades base para Persona 1: 200 g de merluza en crudo + 167 g de arroz ultracongelado Hacendado + 220 g de fritada. Persona 2: 150 g de merluza en crudo + 125 g de arroz + 160 g de fritada. Mezclar todo y repartir la preparación aproximadamente 57 % / 43 % (los porcentajes de la app pueden variar según los objetivos diarios). Preparación: 1) calentar toda la fritada 3 min a fuego medio-bajo; 2) añadir la merluza troceada, tapar y cocinar 5–7 min hasta que esté hecha; 3) preparar el arroz al microondas según el envase; 4) mezclar con la merluza y la fritada, y calentar 1 min. La fritada (380 g) queda fija; Nutriplan puede ajustar el arroz y la merluza según objetivos.",
+      "image": null,
+      "image_status": "PENDIENTE",
+      "mix_mode": "joint",
+      "summary": {
+        "P01": {
+          "kcal": 574.82,
+          "protein": 43.369,
+          "carbs": 69.64,
+          "fat": 12.841,
+          "p_pct": 0.3056280335796901,
+          "c_pct": 0.49076382343354974,
+          "f_pct": 0.20360814298676014,
+          "goal_pct": 0.2947794871794872
+        },
+        "P02": {
+          "kcal": 426.2,
+          "protein": 32.455,
+          "carbs": 51.64,
+          "fat": 9.395,
+          "p_pct": 0.308408661669854,
+          "c_pct": 0.4907170940881609,
+          "f_pct": 0.20087424424198508,
+          "goal_pct": 0.30442857142857144
+        }
+      },
+      "portions": {
+        "P01": [
+          {
+            "food_id": "A047",
+            "food": "Lomos de merluza",
+            "grams": 200,
+            "note": "merluza pesada en crudo; ajustable",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A048",
+            "food": "Arroz ultracongelado Hacendado",
+            "grams": 167,
+            "note": "arroz ultracongelado Hacendado; peso de producto; ajustable",
+            "state": "cocido"
+          },
+          {
+            "food_id": "A020",
+            "food": "Fritada pisto Hacendado",
+            "grams": 220,
+            "note": "parte del envase completo de 380 g; cantidad bloqueada en el lote",
+            "state": "producto"
+          }
+        ],
+        "P02": [
+          {
+            "food_id": "A047",
+            "food": "Lomos de merluza",
+            "grams": 150,
+            "note": "merluza pesada en crudo; ajustable",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A048",
+            "food": "Arroz ultracongelado Hacendado",
+            "grams": 125,
+            "note": "arroz ultracongelado Hacendado; peso de producto; ajustable",
+            "state": "cocido"
+          },
+          {
+            "food_id": "A020",
+            "food": "Fritada pisto Hacendado",
+            "grams": 160,
+            "note": "parte del envase completo de 380 g; cantidad bloqueada en el lote",
+            "state": "producto"
+          }
+        ]
+      },
+      "locked_food_ids": [
+        "A020"
+      ],
+      "hard_locked_food_ids": [
+        "A020"
+      ],
+      "calculation_mode": "INGREDIENT_SUM"
     }
   },
   "foods": {
@@ -4641,8 +4742,14 @@ window.NUTRIPLAN_DATA = {
       "source": "Mercadona",
       "pack_g": 380,
       "pack_unit": "brick",
-      "pack_notes": "Brick 380 g",
-      "state": "producto"
+      "pack_notes": "Brick 380 g. Etiqueta aportada: 92 kcal · 1,3 g proteína · 10,4 g HC · 4,7 g grasa por 100 g.",
+      "state": "producto",
+      "nutrition_100": {
+        "kcal": 92,
+        "protein": 1.3,
+        "carbs": 10.4,
+        "fat": 4.7
+      }
     },
     "A021": {
       "name": "Tortillas de avena 51% Hacendado",
@@ -4908,7 +5015,13 @@ window.NUTRIPLAN_DATA = {
       "pack_g": 167,
       "pack_unit": "bolsita",
       "pack_notes": "Paquete 1 kg: 6 bolsitas de aprox. 167 g. Etiqueta aportada: 126 kcal · 2,7 g proteína · 28 g HC · 0,3 g grasa por 100 g.",
-      "state": "cocido"
+      "state": "cocido",
+      "nutrition_100": {
+        "kcal": 126,
+        "protein": 2.7,
+        "carbs": 28,
+        "fat": 0.3
+      }
     },
     "A049": {
       "name": "Salsa de soja Hacendado",
@@ -5239,5 +5352,5 @@ window.NUTRIPLAN_DATA = {
       }
     }
   },
-  "version": "5.4 REC-044 patatas con huevo y jamón serrano"
+  "version": "5.5 REC-045 merluza con arroz y fritada"
 };
