@@ -4431,47 +4431,46 @@ window.NUTRIPLAN_DATA = {
     "R045": {
       "id": "R045",
       "code": "REC-045",
-      "version": "1.1",
-      "name": "Merluza con arroz al microondas, fritada y verduras asadas",
+      "version": "1.2",
+      "name": "Merluza con arroz al microondas, tomate con albahaca y verduras asadas",
       "type": "COMIDA",
       "status": "ACTIVA",
       "tags": [
         "MERLUZA",
         "ARROZ",
-        "FRITADA",
-        "PISTO",
         "COMIDA",
         "RAPIDA",
         "MICROONDAS",
         "COCINA_COMPARTIDA",
         "MERCADONA",
         "SIN_ACEITE",
-        "VERDURAS_ASADAS"
+        "VERDURAS_ASADAS",
+        "TOMATE_ALBAHACA"
       ],
-      "notes": "Receta conjunta para dos con 1 brick entero de fritada pisto Hacendado (380 g) y 1 bolsa entera de verduras asadas ultracongeladas (450 g), sin aceite añadido. Se reduce el arroz para compensar las calorías de las verduras y mantener el aporte energético cercano al de la versión anterior. Cantidades base: Persona 1: 200 g de merluza cruda, 75 g de arroz ultracongelado, 220 g de fritada y 260 g de verduras. Persona 2: 150 g de merluza cruda, 55 g de arroz, 160 g de fritada y 190 g de verduras. Mezclar todo y repartir aproximadamente un 58 % para Persona 1 y un 42 % para Persona 2; Nutriplan puede recalcular el porcentaje según los objetivos diarios. Preparación: 1) saltear las verduras congeladas sin aceite, en sartén amplia destapada, unos 8–10 minutos hasta evaporar el agua; 2) añadir los 380 g de fritada y calentar 3 minutos; 3) incorporar la merluza en trozos, tapar y cocinar 5–7 minutos o hasta que quede completamente hecha; 4) preparar el arroz al microondas según su envase; 5) mezclar el arroz con la merluza y las verduras y calentar 1 minuto. Mantener fijos los 380 g de fritada y los 450 g de verduras; el arroz y la merluza pueden ajustarse a los objetivos.",
+      "notes": "Receta para los dos con 1 tarro completo (400 g) de salsa de tomate datterino con albahaca Hacendado y 1 bolsa completa (450 g) de verduras asadas ultracongeladas Hacendado; no añadir aceite. Se conserva el arroz reducido que se utilizó al preparar esta versión. Cantidades base: Persona 1: 200 g de merluza (cruda), 75 g de arroz ultracongelado, 260 g de verduras y 230 g de tomate con albahaca. Persona 2: 150 g de merluza (cruda), 55 g de arroz, 190 g de verduras y 170 g de salsa de tomate. Preparación: 1) saltear las verduras asadas aún congeladas en sartén amplia, sin aceite añadido, 8-10 min destapadas hasta evaporar el exceso de agua; 2) añadir el bote entero de tomate con albahaca y calentar 2-3 min; 3) incorporar la merluza en trozos, tapar y cocinar 5-7 min hasta que esté hecha; 4) preparar el arroz al microondas según las instrucciones del envase; 5) añadirlo al conjunto y mezclar con cuidado 1 min más. El tarro completo de salsa (400 g) y la bolsa de verduras (450 g) quedan fijos; Nutriplan ajusta las fuentes de proteína e hidratos según los objetivos diarios. Esta variante es menos calórica que la anterior con fritada. Mezcla conjunta: reparto base aproximado 57,5 % / 42,5 %, recalculable por los objetivos.",
       "image": null,
       "image_status": "PENDIENTE",
       "mix_mode": "joint",
       "summary": {
         "P01": {
-          "kcal": 578.5,
-          "protein": 45.565,
-          "carbs": 64.68,
-          "fat": 12.825,
-          "p_pct": 0.32756714982791313,
-          "c_pct": 0.464985037877086,
-          "f_pct": 0.20744781229500095,
-          "goal_pct": 0.2966666666666667
+          "kcal": 454.3,
+          "protein": 45.235,
+          "carbs": 55.14,
+          "fat": 3.635,
+          "p_pct": 0.4167060096956577,
+          "c_pct": 0.5079511302004768,
+          "f_pct": 0.0753428601038656,
+          "goal_pct": 0.23297435897435897
         },
         "P02": {
-          "kcal": 425.4,
-          "protein": 33.985,
-          "carbs": 47.24,
-          "fat": 9.375,
-          "p_pct": 0.3321483110378108,
-          "c_pct": 0.46169445971535034,
-          "f_pct": 0.20615722924683894,
-          "goal_pct": 0.3038571428571428
+          "kcal": 336,
+          "protein": 33.775,
+          "carbs": 40.46,
+          "fat": 2.705,
+          "p_pct": 0.42049893396828364,
+          "c_pct": 0.503727220380659,
+          "f_pct": 0.07577384565105748,
+          "goal_pct": 0.24
         }
       },
       "portions": {
@@ -4480,28 +4479,28 @@ window.NUTRIPLAN_DATA = {
             "food_id": "A047",
             "food": "Lomos de merluza",
             "grams": 200,
-            "note": "Pesar en crudo; cantidad base ajustable",
+            "note": "Pesar merluza en crudo; ajustable",
             "state": "crudo"
           },
           {
             "food_id": "A048",
             "food": "Arroz ultracongelado Hacendado",
             "grams": 75,
-            "note": "Arroz ultracongelado Hacendado; cantidad base reducida para compensar las verduras; ajustable",
+            "note": "Arroz ultracongelado Hacendado; peso de producto; ajustable",
             "state": "cocido"
-          },
-          {
-            "food_id": "A020",
-            "food": "Fritada pisto Hacendado",
-            "grams": 220,
-            "note": "Parte del envase completo de 380 g; cantidad fija",
-            "state": "producto"
           },
           {
             "food_id": "A019",
             "food": "Salteado de verduras asadas ultracongeladas",
             "grams": 260,
-            "note": "Parte de la bolsa completa de 450 g; cantidad fija",
+            "note": "Bolsa completa de 450 g para los dos; cantidad fija",
+            "state": "producto"
+          },
+          {
+            "food_id": "A054",
+            "food": "Salsa de tomate datterino con albahaca",
+            "grams": 230,
+            "note": "Tarro completo de 400 g de tomate con albahaca para los dos; cantidad fija",
             "state": "producto"
           }
         ],
@@ -4510,38 +4509,38 @@ window.NUTRIPLAN_DATA = {
             "food_id": "A047",
             "food": "Lomos de merluza",
             "grams": 150,
-            "note": "Pesar en crudo; cantidad base ajustable",
+            "note": "Pesar merluza en crudo; ajustable",
             "state": "crudo"
           },
           {
             "food_id": "A048",
             "food": "Arroz ultracongelado Hacendado",
             "grams": 55,
-            "note": "Arroz ultracongelado Hacendado; cantidad base reducida para compensar las verduras; ajustable",
+            "note": "Arroz ultracongelado Hacendado; peso de producto; ajustable",
             "state": "cocido"
-          },
-          {
-            "food_id": "A020",
-            "food": "Fritada pisto Hacendado",
-            "grams": 160,
-            "note": "Parte del envase completo de 380 g; cantidad fija",
-            "state": "producto"
           },
           {
             "food_id": "A019",
             "food": "Salteado de verduras asadas ultracongeladas",
             "grams": 190,
-            "note": "Parte de la bolsa completa de 450 g; cantidad fija",
+            "note": "Bolsa completa de 450 g para los dos; cantidad fija",
+            "state": "producto"
+          },
+          {
+            "food_id": "A054",
+            "food": "Salsa de tomate datterino con albahaca",
+            "grams": 170,
+            "note": "Tarro completo de 400 g de tomate con albahaca para los dos; cantidad fija",
             "state": "producto"
           }
         ]
       },
       "locked_food_ids": [
-        "A020",
+        "A054",
         "A019"
       ],
       "hard_locked_food_ids": [
-        "A020",
+        "A054",
         "A019"
       ],
       "calculation_mode": "INGREDIENT_SUM"
@@ -5107,10 +5106,16 @@ window.NUTRIPLAN_DATA = {
     "A054": {
       "name": "Salsa de tomate datterino con albahaca",
       "source": "Mercadona",
-      "pack_g": null,
+      "pack_g": 400,
       "pack_unit": "tarro",
-      "pack_notes": "Etiqueta aportada: 34 kcal · 1,1 g proteína · 5,8 g HC · <0,5 g grasa por 100 g.",
-      "state": "producto"
+      "pack_notes": "Tarro 400 g. Salsa de tomate datterino con albahaca Hacendado: 34 kcal · 1,1 g proteína · 5,8 g HC · 0,5 g grasas por 100 g. Valores de la etiqueta del producto.",
+      "state": "producto",
+      "nutrition_100": {
+        "kcal": 34,
+        "protein": 1.1,
+        "carbs": 5.8,
+        "fat": 0.5
+      }
     },
     "A055": {
       "name": "Pimiento verde",
@@ -5369,5 +5374,5 @@ window.NUTRIPLAN_DATA = {
       }
     }
   },
-  "version": "5.6 REC-045 merluza con arroz, fritada y verduras"
+  "version": "5.7 REC-045 merluza arroz tomate albahaca y verduras"
 };
