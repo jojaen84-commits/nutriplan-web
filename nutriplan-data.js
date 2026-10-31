@@ -1,4 +1,4 @@
-/* Nutriplan Jorge&Eva - Base de datos actualizada */
+/* Nutriplan Persona 1&Persona 2 - Base de datos actualizada */
 window.NUTRIPLAN_DATA = {
   "profiles": {
     "P01": {
@@ -4544,6 +4544,167 @@ window.NUTRIPLAN_DATA = {
         "A019"
       ],
       "calculation_mode": "INGREDIENT_SUM"
+    },
+    "R046": {
+      "id": "R046",
+      "code": "REC-046",
+      "version": "1.0",
+      "name": "Paella de pavo con sofrito triturado (Castey 28 cm)",
+      "type": "COMIDA",
+      "status": "ACTIVA",
+      "tags": [
+        "PAELLA",
+        "ARROZ",
+        "PAVO",
+        "COCINA_COMPARTIDA",
+        "MERCADONA",
+        "SOFRITO_TRITURADO"
+      ],
+      "notes": "Receta base para dos adultos, mezcla conjunta. Lote: 300 g solomillo de pavo crudo, 160 g arroz redondo Hacendado en seco, 150 g pimiento rojo/verde ultracongelado Hacendado, 80 g cebolla, 160 g tomate frito con aceite de oliva Hacendado, 800 ml de caldo Paella Fácil de carne Gallina Blanca y 5 g AOVE. Condimentos sin impacto nutricional significativo: 1 diente de ajo, 1/2 cucharadita de pimentón dulce, unas hebras de azafrán y pimienta. No añadir sal hasta probar: Paella Fácil ya lleva sal.\nPREPARACIÓN: 1) Dorar el solomillo cortado en dados 3-4 min a 7/9 con parte del aceite; reservar. 2) En la Castey de 28 cm saltear los pimientos SIN descongelar 6-8 min destapados a 5/9 hasta evaporar el agua; añadir cebolla y ajo y pochar otros 6-8 min. 3) Añadir pimentón 10 s, seguido inmediatamente de tomate; reducir 4-5 min. Triturar el sofrito, devolverlo a la sartén y reducir 2 min. 4) Incorporar arroz seco, remover 1 min y repartir. Añadir 650 ml de caldo caliente, distribuyendo de manera uniforme; guardar 150 ml calientes. Cocer 4 min a 6/9 y después a 3-4/9, siempre con un hervor moderado, sin remover. 5) Comprobar centro y bordes desde el minuto 20. Si se seca antes de estar tierno, añadir de 50 en 50 ml del caldo reservado en las zonas más secas. Incorporar el pavo cuando falten unos 8-10 min, comprobar que queda completamente cocido por dentro (74 ºC). No cocinar 45 min por sistema: la Castey ha requerido 35-45 min en las pruebas realizadas, pero apagar si el arroz está tierno antes. 6) Dejar reposar 5 min. Para terminar un lote con bordes duros se puede tapar brevemente al final y repartir suavemente el arroz; resultará más meloso.\nOPCIÓN PARA LA HIJA: cuando también coma una ración pequeña, cocinar 210 g de arroz seco, 400 g pavo, 200 g pimientos, 90 g cebolla, 200 g tomate frito, 1 litro de Paella Fácil de carne y hasta 100 ml extra de agua caliente si hiciera falta; 8 g AOVE. Esta tercera ración NO se incluye en las dos raciones de Nutriplan; calcular aparte si se añade. El volumen de caldo consumido puede variar con la evaporación de la sartén.",
+      "image": null,
+      "image_status": "PENDIENTE",
+      "mix_mode": "joint",
+      "summary": {
+        "P01": {
+          "kcal": 661.3000000000001,
+          "protein": 49.59,
+          "carbs": 89.38,
+          "fat": 10.955,
+          "p_pct": 0.30308262347683257,
+          "c_pct": 0.5462699109973642,
+          "f_pct": 0.15064746552580313,
+          "goal_pct": 0.3391282051282052
+        },
+        "P02": {
+          "kcal": 511.29999999999995,
+          "protein": 38.16,
+          "carbs": 69.61,
+          "fat": 8.325,
+          "p_pct": 0.30165709825001724,
+          "c_pct": 0.5502712423790279,
+          "f_pct": 0.14807165937095482,
+          "goal_pct": 0.36521428571428566
+        }
+      },
+      "portions": {
+        "P01": [
+          {
+            "food_id": "A064",
+            "food": "Solomillo de pavo",
+            "grams": 170,
+            "note": "Pesar antes de cocinar; fuente principal de proteína",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A075",
+            "food": "Arroz redondo Hacendado (seco)",
+            "grams": 90,
+            "note": "Pesar en seco; fuente principal de hidratos",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A076",
+            "food": "Pimiento rojo y verde ultracongelado Hacendado",
+            "grams": 85,
+            "note": "Pesar congelado; mezcla de ambos pimientos",
+            "state": "congelado"
+          },
+          {
+            "food_id": "A004",
+            "food": "Cebolla",
+            "grams": 45,
+            "note": "Para triturar en el sofrito",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A066",
+            "food": "Tomate frito con aceite de oliva",
+            "grams": 90,
+            "note": "Hacendado; triturar con las verduras",
+            "state": "producto"
+          },
+          {
+            "food_id": "A077",
+            "food": "Caldo Paella Fácil de carne Gallina Blanca",
+            "grams": 440,
+            "note": "Equivalencia nutricional aprox. 1 g = 1 ml; 650 ml iniciales y 150 ml reservados",
+            "state": "producto"
+          },
+          {
+            "food_id": "A006",
+            "food": "Aceite de oliva virgen extra",
+            "grams": 3,
+            "note": "Para dorar y preparar el sofrito",
+            "state": "producto"
+          }
+        ],
+        "P02": [
+          {
+            "food_id": "A064",
+            "food": "Solomillo de pavo",
+            "grams": 130,
+            "note": "Pesar antes de cocinar; fuente principal de proteína",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A075",
+            "food": "Arroz redondo Hacendado (seco)",
+            "grams": 70,
+            "note": "Pesar en seco; fuente principal de hidratos",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A076",
+            "food": "Pimiento rojo y verde ultracongelado Hacendado",
+            "grams": 65,
+            "note": "Pesar congelado; mezcla de ambos pimientos",
+            "state": "congelado"
+          },
+          {
+            "food_id": "A004",
+            "food": "Cebolla",
+            "grams": 35,
+            "note": "Para triturar en el sofrito",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A066",
+            "food": "Tomate frito con aceite de oliva",
+            "grams": 70,
+            "note": "Hacendado; triturar con las verduras",
+            "state": "producto"
+          },
+          {
+            "food_id": "A077",
+            "food": "Caldo Paella Fácil de carne Gallina Blanca",
+            "grams": 360,
+            "note": "Equivalencia nutricional aprox. 1 g = 1 ml; 650 ml iniciales y 150 ml reservados",
+            "state": "producto"
+          },
+          {
+            "food_id": "A006",
+            "food": "Aceite de oliva virgen extra",
+            "grams": 2,
+            "note": "Para dorar y preparar el sofrito",
+            "state": "producto"
+          }
+        ]
+      },
+      "locked_food_ids": [
+        "A076",
+        "A004",
+        "A066",
+        "A077",
+        "A006"
+      ],
+      "hard_locked_food_ids": [
+        "A076",
+        "A004",
+        "A066",
+        "A077",
+        "A006"
+      ],
+      "calculation_mode": "INGREDIENT_SUM"
     }
   },
   "foods": {
@@ -5372,7 +5533,49 @@ window.NUTRIPLAN_DATA = {
         "carbs": 1,
         "fat": 12.2
       }
+    },
+    "A075": {
+      "name": "Arroz redondo Hacendado (seco)",
+      "source": "Mercadona / etiqueta 2026",
+      "pack_g": 1000,
+      "pack_unit": "paquete",
+      "pack_notes": "Pesar en seco. 344 kcal · 8,2 g proteínas · 75 g HC · 1 g grasas por 100 g. Tiempo orientativo envase: 15-20 min; en Castey se ha observado 35-45 min.",
+      "state": "crudo",
+      "nutrition_100": {
+        "kcal": 344,
+        "protein": 8.2,
+        "carbs": 75,
+        "fat": 1
+      }
+    },
+    "A076": {
+      "name": "Pimiento rojo y verde ultracongelado Hacendado",
+      "source": "Mercadona / etiqueta 2026",
+      "pack_g": 450,
+      "pack_unit": "bolsa",
+      "pack_notes": "Bolsa de mezcla de pimiento rojo y verde, pesar congelado. 28 kcal · 0,9 g proteínas · 4,5 g HC · 0,4 g grasas por 100 g.",
+      "state": "congelado",
+      "nutrition_100": {
+        "kcal": 28,
+        "protein": 0.9,
+        "carbs": 4.5,
+        "fat": 0.4
+      }
+    },
+    "A077": {
+      "name": "Caldo Paella Fácil de carne Gallina Blanca",
+      "source": "Gallina Blanca / ficha del fabricante",
+      "pack_g": 1000,
+      "pack_unit": "ml",
+      "pack_notes": "Registrar 1 g aproximadamente por 1 ml de caldo. 13 kcal · 0,5 g proteína · 0,9 g HC · 0,8 g grasa por 100 ml. Contiene aproximadamente 0,9 g de sal por 100 ml; no salar automáticamente.",
+      "state": "producto",
+      "nutrition_100": {
+        "kcal": 13,
+        "protein": 0.5,
+        "carbs": 0.9,
+        "fat": 0.8
+      }
     }
   },
-  "version": "5.7 REC-045 merluza arroz tomate albahaca y verduras"
+  "version": "5.8 REC-046 paella pavo sofrito triturado"
 };
