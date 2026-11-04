@@ -4705,6 +4705,138 @@ window.NUTRIPLAN_DATA = {
         "A006"
       ],
       "calculation_mode": "INGREDIENT_SUM"
+    },
+    "R047": {
+      "id": "R047",
+      "code": "REC-047",
+      "version": "1.0",
+      "name": "Tallarines con salmón, pimientos y tomate con albahaca",
+      "type": "COMIDA",
+      "status": "ACTIVA",
+      "tags": [
+        "SALMON",
+        "PASTA",
+        "TALLARINES",
+        "PIMIENTOS",
+        "TOMATE_ALBAHACA",
+        "COMIDA",
+        "COCINA_COMPARTIDA",
+        "MERCADONA",
+        "SIN_ACEITE"
+      ],
+      "notes": "Receta de mezcla conjunta para dos. INGREDIENTES TOTALES: 260 g de salmón en lomos (en crudo), 140 g de tallarines Hacendado (en seco), 150 g de pimiento rojo y verde ultracongelado Hacendado (pesado congelado), 80 g de cebolla y 200 g de salsa de tomate datterino con albahaca Hacendado. No añadir aceite: el salmón aporta grasa suficiente. Reparto inicial aproximado 57 % Persona 1 y 43 % Persona 2. El sofrito (pimiento, cebolla y tomate) mantiene cantidades fijas de lote; Nutriplan ajusta automáticamente el salmón y los tallarines según los objetivos del día.\nPREPARACIÓN: 1) Cocer los tallarines en agua hirviendo con un poco de sal según el tiempo del envase; reservar una pequeña taza del agua de cocción y escurrir. 2) En una sartén antiadherente amplia, cocinar 150 g de pimientos congelados a fuego medio-alto durante 6-8 min, destapados, hasta evaporar el agua. Añadir 80 g de cebolla picada y pochar otros 5-7 min, añadiendo un chorrito de agua si se pega. 3) Añadir los 200 g de tomate con albahaca, pimienta negra y ajo en polvo al gusto. Cocinar 2-3 min. Se puede triturar el sofrito si se prefiere una salsa homogénea. 4) Incorporar el salmón en dados medianos y cocinar 4-6 min a fuego medio, moviendo suavemente, hasta que quede hecho; evitar sobrecocer. 5) Mezclar los tallarines con la salsa y el salmón durante 1-2 min; añadir solo un poco del agua de cocción reservada si queda demasiado espeso. Rectificar de sal si hace falta. Pesar la preparación final si se desea repartir con precisión tras la mezcla. Sin AOVE añadido.\nNOTA NUTRICIONAL: los valores del salmón se basan en lomos congelados Hacendado (223 kcal / 100 g); si se utiliza salmón fresco u otro tipo, comprobar la etiqueta.",
+      "image": null,
+      "image_status": "PENDIENTE",
+      "mix_mode": "joint",
+      "summary": {
+        "P01": {
+          "kcal": 704.1999999999999,
+          "protein": 42.925,
+          "carbs": 72.28,
+          "fat": 26.16,
+          "p_pct": 0.24660328038376467,
+          "c_pct": 0.41524717777841613,
+          "f_pct": 0.3381495418378192,
+          "goal_pct": 0.3611282051282051
+        },
+        "P02": {
+          "kcal": 523,
+          "protein": 31.705000000000002,
+          "carbs": 54.309999999999995,
+          "fat": 19.220000000000002,
+          "p_pct": 0.2452808293362216,
+          "c_pct": 0.4201609159832895,
+          "f_pct": 0.334558254680489,
+          "goal_pct": 0.37357142857142855
+        }
+      },
+      "portions": {
+        "P01": [
+          {
+            "food_id": "A017",
+            "food": "Salmón en lomos",
+            "grams": 150,
+            "note": "Peso del salmón en crudo, sin piel/espinas; fuente principal de proteína y grasa ajustable",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A031",
+            "food": "Tallarines secos",
+            "grams": 80,
+            "note": "Pesar los tallarines en seco; fuente principal de hidratos ajustable",
+            "state": "seco"
+          },
+          {
+            "food_id": "A076",
+            "food": "Pimiento rojo y verde ultracongelado Hacendado",
+            "grams": 85,
+            "note": "Pesar aún congelado; cantidad fija del sofrito para ambos",
+            "state": "congelado"
+          },
+          {
+            "food_id": "A004",
+            "food": "Cebolla",
+            "grams": 45,
+            "note": "Peso en crudo; pochar con los pimientos; cantidad fija",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A054",
+            "food": "Salsa de tomate datterino con albahaca",
+            "grams": 115,
+            "note": "Tomate datterino con albahaca Hacendado; cantidad fija",
+            "state": "producto"
+          }
+        ],
+        "P02": [
+          {
+            "food_id": "A017",
+            "food": "Salmón en lomos",
+            "grams": 110,
+            "note": "Peso del salmón en crudo, sin piel/espinas; fuente principal de proteína y grasa ajustable",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A031",
+            "food": "Tallarines secos",
+            "grams": 60,
+            "note": "Pesar los tallarines en seco; fuente principal de hidratos ajustable",
+            "state": "seco"
+          },
+          {
+            "food_id": "A076",
+            "food": "Pimiento rojo y verde ultracongelado Hacendado",
+            "grams": 65,
+            "note": "Pesar aún congelado; cantidad fija del sofrito para ambos",
+            "state": "congelado"
+          },
+          {
+            "food_id": "A004",
+            "food": "Cebolla",
+            "grams": 35,
+            "note": "Peso en crudo; pochar con los pimientos; cantidad fija",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A054",
+            "food": "Salsa de tomate datterino con albahaca",
+            "grams": 85,
+            "note": "Tomate datterino con albahaca Hacendado; cantidad fija",
+            "state": "producto"
+          }
+        ]
+      },
+      "locked_food_ids": [
+        "A076",
+        "A004",
+        "A054"
+      ],
+      "hard_locked_food_ids": [
+        "A076",
+        "A004",
+        "A054"
+      ],
+      "calculation_mode": "INGREDIENT_SUM"
     }
   },
   "foods": {
@@ -4889,8 +5021,14 @@ window.NUTRIPLAN_DATA = {
       "source": "Mercadona",
       "pack_g": null,
       "pack_unit": "bandeja",
-      "pack_notes": "Completar peso neto del envase si interesa para compra",
-      "state": "producto"
+      "pack_notes": "Valor de referencia de lomos de salmón congelados Hacendado: 223 kcal, 20 g proteína, 0 g HC y 16 g grasas / 100 g. Pesar en crudo; revisar la etiqueta si se usa salmón fresco u otro formato.",
+      "state": "producto",
+      "nutrition_100": {
+        "kcal": 223,
+        "protein": 20,
+        "carbs": 0,
+        "fat": 16
+      }
     },
     "A018": {
       "name": "Arroz ultracongelado",
@@ -5038,7 +5176,13 @@ window.NUTRIPLAN_DATA = {
       "pack_g": 500,
       "pack_unit": "paquete",
       "pack_notes": "361 kcal · 13 g proteína · 72 g HC · 1,5 g grasa por 100 g. Valores de la etiqueta aportada.",
-      "state": "seco"
+      "state": "seco",
+      "nutrition_100": {
+        "kcal": 361,
+        "protein": 13,
+        "carbs": 72,
+        "fat": 1.5
+      }
     },
     "A032": {
       "name": "Pimienta negra",
@@ -5577,5 +5721,5 @@ window.NUTRIPLAN_DATA = {
       }
     }
   },
-  "version": "5.8 REC-046 paella pavo sofrito triturado"
+  "version": "5.9 REC-047 tallarines salmon pimientos tomate albahaca"
 };
