@@ -4548,42 +4548,42 @@ window.NUTRIPLAN_DATA = {
     "R046": {
       "id": "R046",
       "code": "REC-046",
-      "version": "1.0",
-      "name": "Paella de pavo con sofrito triturado (Castey 28 cm)",
+      "version": "1.1",
+      "name": "Arroz meloso de pavo con sofrito triturado (Castey 28 cm)",
       "type": "COMIDA",
       "status": "ACTIVA",
       "tags": [
-        "PAELLA",
+        "ARROZ_MELOSO",
         "ARROZ",
         "PAVO",
         "COCINA_COMPARTIDA",
         "MERCADONA",
         "SOFRITO_TRITURADO"
       ],
-      "notes": "Receta base para dos adultos, mezcla conjunta. Lote: 300 g solomillo de pavo crudo, 160 g arroz redondo Hacendado en seco, 150 g pimiento rojo/verde ultracongelado Hacendado, 80 g cebolla, 160 g tomate frito con aceite de oliva Hacendado, 800 ml de caldo Paella Fácil de carne Gallina Blanca y 5 g AOVE. Condimentos sin impacto nutricional significativo: 1 diente de ajo, 1/2 cucharadita de pimentón dulce, unas hebras de azafrán y pimienta. No añadir sal hasta probar: Paella Fácil ya lleva sal.\nPREPARACIÓN: 1) Dorar el solomillo cortado en dados 3-4 min a 7/9 con parte del aceite; reservar. 2) En la Castey de 28 cm saltear los pimientos SIN descongelar 6-8 min destapados a 5/9 hasta evaporar el agua; añadir cebolla y ajo y pochar otros 6-8 min. 3) Añadir pimentón 10 s, seguido inmediatamente de tomate; reducir 4-5 min. Triturar el sofrito, devolverlo a la sartén y reducir 2 min. 4) Incorporar arroz seco, remover 1 min y repartir. Añadir 650 ml de caldo caliente, distribuyendo de manera uniforme; guardar 150 ml calientes. Cocer 4 min a 6/9 y después a 3-4/9, siempre con un hervor moderado, sin remover. 5) Comprobar centro y bordes desde el minuto 20. Si se seca antes de estar tierno, añadir de 50 en 50 ml del caldo reservado en las zonas más secas. Incorporar el pavo cuando falten unos 8-10 min, comprobar que queda completamente cocido por dentro (74 ºC). No cocinar 45 min por sistema: la Castey ha requerido 35-45 min en las pruebas realizadas, pero apagar si el arroz está tierno antes. 6) Dejar reposar 5 min. Para terminar un lote con bordes duros se puede tapar brevemente al final y repartir suavemente el arroz; resultará más meloso.\nOPCIÓN PARA LA HIJA: cuando también coma una ración pequeña, cocinar 210 g de arroz seco, 400 g pavo, 200 g pimientos, 90 g cebolla, 200 g tomate frito, 1 litro de Paella Fácil de carne y hasta 100 ml extra de agua caliente si hiciera falta; 8 g AOVE. Esta tercera ración NO se incluye en las dos raciones de Nutriplan; calcular aparte si se añade. El volumen de caldo consumido puede variar con la evaporación de la sartén.",
+      "notes": "Versión ajustada tras la prueba real del 5/11/2026 en Castey 28 cm e inducción Teka. Para dos adultos, mezcla conjunta: 300 g solomillo de pavo crudo, 160 g arroz redondo Hacendado seco, 150 g pimiento rojo/verde ultracongelado, 80 g cebolla, 160 g TOMATE FRITO CON ACEITE DE OLIVA Hacendado, 500 ml de caldo Paella Fácil de carne Gallina Blanca, 5 g de AOVE. Tener aparte 50-100 ml de caldo de pollo caliente como RESERVA OPCIONAL; no se conoce la cantidad exacta utilizada en la prueba, por lo que no se contabiliza en los macros fijos. Condimentos: ajo, pimentón dulce, azafrán y pimienta. Probar antes de salar.\nPREPARACIÓN (placa Teka 1-9): 1) Dorar el pavo en dados con parte del aceite a 7/9 durante unos 4-5 min; reservar. 2) Pochar los pimientos congelados destapados a 5-6/9 unos 8-10 min, hasta evaporar el agua; añadir la cebolla y el ajo y cocinar hasta ablandar. 3) Añadir pimentón brevemente y enseguida el tomate frito; reducir unos 3-4 min y triturar el sofrito, como habitualmente. No dejarlo secar demasiado. 4) Agregar el arroz seco al sofrito y remover 1 min. Incorporar 500 ml de Paella Fácil caliente y el azafrán. Mantener hervor suave en torno a 5/9 (ajustar según burbujeo real), DESTAPADO y removiendo cada 3-4 min, mezclando centro y bordes. 5) Desde min 20 comprobar el grano y el líquido; si sigue duro y la salsa se espesa, añadir de 30 a 50 ml de caldo de pollo caliente por vez, solo si hace falta. Añadir el pavo reservado en los últimos 5-8 min y garantizar su cocción completa (interior 74 ºC). 6) PRUEBA REAL: tras unos 35 min de cocción, el arroz seguía ligeramente firme; se apagó la placa, se tapó y tras 20 min de reposo quedó en su punto. Como pauta, apagar cuando esté CASI tierno y aún húmedo, retirar la sartén de la zona caliente y dejar reposar tapado unos 15-20 min; ajustar según el punto. El tiempo total es anómalo para arroz redondo, asociado probablemente a la distribución de calor de esta combinación sartén/placa: no imponer 35 min si el grano se hace antes. Resultado buscado: arroz jugoso o ligeramente meloso, no paella seca.\nOPCIÓN TRES PERSONAS (estimación NO probada): 210 g arroz, 400 g pavo, 200 g pimientos, 90 g cebolla, 200 g tomate frito, 650 ml Paella Fácil de partida y 75-125 ml de caldo de pollo caliente de reserva si fuera preciso; 8 g AOVE. La tercera ración no está incluida en el cálculo para dos adultos. Ajustar la cantidad final de líquido de acuerdo con la textura observada.",
       "image": null,
       "image_status": "PENDIENTE",
       "mix_mode": "joint",
       "summary": {
         "P01": {
-          "kcal": 661.3000000000001,
-          "protein": 49.59,
-          "carbs": 89.38,
-          "fat": 10.955,
-          "p_pct": 0.30308262347683257,
-          "c_pct": 0.5462699109973642,
-          "f_pct": 0.15064746552580313,
-          "goal_pct": 0.3391282051282052
+          "kcal": 639.85,
+          "protein": 48.765,
+          "carbs": 87.895,
+          "fat": 9.635,
+          "p_pct": 0.3079789375626623,
+          "c_pct": 0.5551073252757142,
+          "f_pct": 0.13691373716162342,
+          "goal_pct": 0.3281282051282051
         },
         "P02": {
-          "kcal": 511.29999999999995,
-          "protein": 38.16,
-          "carbs": 69.61,
-          "fat": 8.325,
-          "p_pct": 0.30165709825001724,
-          "c_pct": 0.5502712423790279,
-          "f_pct": 0.14807165937095482,
-          "goal_pct": 0.36521428571428566
+          "kcal": 493.74999999999994,
+          "protein": 37.485,
+          "carbs": 68.39500000000001,
+          "fat": 7.245,
+          "p_pct": 0.30679830170341194,
+          "c_pct": 0.5597831091104405,
+          "f_pct": 0.13341858918614763,
+          "goal_pct": 0.3526785714285714
         }
       },
       "portions": {
@@ -4626,8 +4626,8 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A077",
             "food": "Caldo Paella Fácil de carne Gallina Blanca",
-            "grams": 440,
-            "note": "Equivalencia nutricional aprox. 1 g = 1 ml; 650 ml iniciales y 150 ml reservados",
+            "grams": 275,
+            "note": "Equivalencia 1 g≈1 ml; 500 ml iniciales en el lote total. Caldo de pollo extra opcional no contabilizado",
             "state": "producto"
           },
           {
@@ -4677,8 +4677,8 @@ window.NUTRIPLAN_DATA = {
           {
             "food_id": "A077",
             "food": "Caldo Paella Fácil de carne Gallina Blanca",
-            "grams": 360,
-            "note": "Equivalencia nutricional aprox. 1 g = 1 ml; 650 ml iniciales y 150 ml reservados",
+            "grams": 225,
+            "note": "Equivalencia 1 g≈1 ml; 500 ml iniciales en el lote total. Caldo de pollo extra opcional no contabilizado",
             "state": "producto"
           },
           {
@@ -5721,5 +5721,5 @@ window.NUTRIPLAN_DATA = {
       }
     }
   },
-  "version": "5.9 REC-047 tallarines salmon pimientos tomate albahaca"
+  "version": "5.10 ajuste REC-046 arroz meloso con sofrito triturado"
 };
