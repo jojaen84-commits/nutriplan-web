@@ -809,6 +809,13 @@ if(!state.recipeLockMigrationR012BreadV1){
   if(!state.recipeLocks.R012.includes("A059")) state.recipeLocks.R012.push("A059");
   state.recipeLockMigrationR012BreadV1=true;
 }
+// Migración REC-046: liberar salsa y caldos bloqueados en versiones anteriores.
+// Solo se ejecuta una vez para respetar posteriores bloqueos manuales.
+if(!state.recipeRiceLinkedMigrationR046V1){
+  const formerlyFixed=new Set(["A076","A004","A066","A077","A058"]);
+  state.recipeLocks.R046=(state.recipeLocks.R046||[]).filter(fid=>!formerlyFixed.has(fid));
+  state.recipeRiceLinkedMigrationR046V1=true;
+}
 Object.values(DATA.recipes).forEach(r=>{
   if(Array.isArray(r.locked_food_ids) && state.recipeLocks[r.id]==null){
     state.recipeLocks[r.id]=[...r.locked_food_ids];
