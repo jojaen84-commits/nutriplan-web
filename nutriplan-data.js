@@ -4548,7 +4548,7 @@ window.NUTRIPLAN_DATA = {
     "R046": {
       "id": "R046",
       "code": "REC-046",
-      "version": "1.2",
+      "version": "1.3",
       "name": "Arroz meloso de pavo con sofrito triturado (Castey 28 cm)",
       "type": "COMIDA",
       "status": "ACTIVA",
@@ -4560,7 +4560,7 @@ window.NUTRIPLAN_DATA = {
         "MERCADONA",
         "SOFRITO_TRITURADO"
       ],
-      "notes": "Receta validada en DOS pruebas de cocción con la Castey 28 cm y la inducción Teka. La más reciente (8/11/2026): 160 g arroz Hacendado seco, 300 g solomillo de pavo crudo, 150 g pimiento rojo/verde congelado Hacendado, 80 g cebolla, 160 g tomate frito CON ACEITE DE OLIVA Hacendado, 500 ml de Paella Fácil de carne Gallina Blanca + 100 ml de caldo de pollo (usar Hacendado como referencia nutricional, comprobar la marca si cambia) y 5 g de AOVE; 1 diente de ajo, pimentón dulce, azafrán y pimienta al gusto. No añadir sal sin probar los caldos.\nPREPARACIÓN EN CASTEY 28 CM (inducción Teka escala 1-9): 1) Cortar y dorar el pavo con parte del aceite a potencia 7; reservar. 2) Sofreír pimientos y cebolla hasta evaporar el agua, añadir ajo, pimentón y tomate frito; reducir un poco y triturar las verduras como habitualmente. 3) Añadir los 160 g de arroz al sofrito y remover 1 minuto. 4) Calentar juntos los 500 ml de Paella Fácil y 100 ml de caldo de pollo (en la prueba se calentaron 3 min en microondas). Verter TODOS los 600 ml al empezar, añadir azafrán. Subir a potencia 6 hasta obtener hervor visible y luego bajar a 4 (o 4-5 según burbujeo real) para mantener hervor suave, sin tapar al principio. Remover cada 3-4 minutos, llevando arroz del centro a los bordes y viceversa. 5) Al minuto 20, el arroz estaba todavía algo firme y con salsa suficiente; tapar parcialmente los últimos minutos para mantener humedad. Incorporar el pavo reservado hacia el final y comprobar su cocción completa (74 °C en el centro). 6) En la PRUEBA SATISFACTORIA: apagar al minuto 29 de cocción cuando aún le faltaba un poco; apartar la sartén de la zona de inducción, tapar completamente y dejar reposar unos 13 minutos. Servir al minuto 42 desde el inicio de la cocción: arroz EN SU PUNTO. Si sigue firme, ajustar el reposo 3-5 minutos; si se seca antes, añadir un poco de caldo caliente. Contar el tiempo de cocción desde el comienzo de hervor. Objetivo: arroz jugoso/meloso, NO paella seca. En la primera prueba se usaron 500 ml de Paella Fácil + un añadido no medido de caldo de pollo; 35 min cocción y 20 min reposo dieron también buen resultado.\nPARA TRES PERSONAS, NO PROBADO: arroz 210 g, pavo 400 g, pimientos 200 g, cebolla 90 g, tomate 200 g y AOVE 8 g; empezar con unos 750-800 ml de caldo total según el hervor, y ajustar en pequeñas adiciones si hiciera falta. La tercera ración no se incluye en los macros de esta receta.",
+      "notes": "Arroz meloso con sofrito triturado, preparación conjunta de dos adultos en Castey de 28 cm y placa Teka (1-9). BASE VALIDADA: 160 g de arroz redondo Hacendado seco, 300 g de solomillo de pavo crudo, 150 g de pimientos rojo/verde congelados, 80 g de cebolla, 160 g de tomate frito con aceite de oliva Mercadona, 500 ml de Paella Fácil de carne + 100 ml de caldo de pollo y 5 g de AOVE; ajo, pimentón dulce, azafrán y pimienta. Probar antes de salar.\nAJUSTE AUTOMÁTICO: consultar SIEMPRE la tabla «Ingredientes · mezcla completa» o «Total a cocinar», que muestra las cantidades efectivas para los dos. El arroz varía con el objetivo de hidratos y el pavo con el de proteínas. Pimientos, cebolla y tomate se ajustan proporcionalmente al TOTAL de arroz. Los caldos se adaptan a la misma Castey con una pauta ORIENTATIVA: 600 ml para 160 g de arroz, sumando o restando 3 ml por cada gramo de arroz de diferencia, y conservando proporción 5:1 (Paella Fácil:pollo). Fuera de 160 g este caldo es una estimación; controlar hervor, evaporación y punto del arroz. Aceite fijo 5 g.\nPREPARACIÓN: 1) Dorar el pavo en dados a potencia 7 con parte del aceite y reservar. 2) Sofreír los pimientos, cebolla y ajo hasta evaporar el agua; añadir pimentón y el tomate frito, reducir ligeramente y triturar. 3) Incorporar TODO el arroz indicado en la tabla y remover 1 min. 4) Calentar y añadir TODOS los caldos indicados en la tabla (en prueba base, 3 min al microondas), con azafrán. Inducción 6 hasta hervor visible; luego 4–5 para hervor suave y continuo. Mantener destapado al principio y remover cada 3–4 min del centro a los bordes. 5) Hacia el minuto 20 comprobar el grano y humedad; tapar parcialmente si sigue firme. Añadir el pavo reservado hacia el final, asegurando cocción completa (74 °C en el centro). 6) PRUEBA BASE: apagar a los 29 min de cocción, cuando faltaba un poco; apartar la Castey de la zona de inducción, reposar tapado 13 min y servir al minuto 42, en su punto. Ajustar tiempos al arroz y cantidad real, sin imponer siempre 29 min. Resultado buscado: jugoso/meloso, NO paella seca.\nPRUEBA ANTERIOR: 500 ml Paella Fácil + cantidad no medida de caldo de pollo, 35 min cocción y 20 min reposo también dieron buen resultado. Ración adicional de otra persona no incluida en los dos perfiles; recalcular manualmente si se necesita.",
       "image": null,
       "image_status": "PENDIENTE",
       "mix_mode": "joint",
@@ -4705,22 +4705,25 @@ window.NUTRIPLAN_DATA = {
         ]
       },
       "locked_food_ids": [
-        "A076",
-        "A004",
-        "A066",
-        "A077",
-        "A006",
-        "A058"
+        "A006"
       ],
       "hard_locked_food_ids": [
-        "A076",
-        "A004",
-        "A066",
-        "A077",
-        "A006",
-        "A058"
+        "A006"
       ],
-      "calculation_mode": "INGREDIENT_SUM"
+      "calculation_mode": "INGREDIENT_SUM",
+      "batch_scaling": {
+        "driver_food_id": "A075",
+        "proportional_food_ids": [
+          "A076",
+          "A004",
+          "A066"
+        ],
+        "broth_food_ids": [
+          "A077",
+          "A058"
+        ],
+        "broth_extra_ml_per_rice_g": 3
+      }
     },
     "R047": {
       "id": "R047",
@@ -5743,5 +5746,5 @@ window.NUTRIPLAN_DATA = {
       }
     }
   },
-  "version": "5.11 REC-046 arroz meloso 600 ml validado"
+  "version": "5.12 REC-046 sofrito y caldo vinculados al arroz total"
 };
