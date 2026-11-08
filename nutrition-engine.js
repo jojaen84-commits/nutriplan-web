@@ -389,6 +389,36 @@ function jointMixShare(recipe,pid,dateKey=defaultDate){
 }
 
 function jointMixBatchIngredientGrams(recipe,foodId,dateKey=defaultDate){
+  // Algunas recetas enlazan el sofrito y el caldo al arroz TOTAL del lote.
+  // El pavo conserva su escalado propio según objetivos de proteínas.
+  const link=recipe.batch_scaling;
+  const linkedProportional=link?.proportional_food_ids?.includes(foodId);
+  const linkedBroth=link?.broth_food_ids?.includes(foodId);
+  if(link && isJointMixRecipe(recipe) && (linkedProportional||linkedBroth)
+     && !isFoodLocked(recipe.id,foodId)){
+    let baseRice=0,adjustedRice=0,baseFood=0,baseBroth=0;
+    ["P01","P02"].forEach(pid=>{
+      (recipe.portions?.[pid]||[]).forEach(item=>{
+        const grams=Number(item.grams)||0;
+        if(item.food_id===link.driver_food_id){
+          baseRice+=grams;
+          adjustedRice+=preDayBalanceIngredientGrams(item,pid,dateKey,recipe.id);
+        }
+        if(item.food_id===foodId)baseFood+=grams;
+        if(link.broth_food_ids?.includes(item.food_id))baseBroth+=grams;
+      });
+    });
+    if(baseRice>0){
+      if(linkedProportional)return Math.max(0,baseFood*adjustedRice/baseRice);
+      if(linkedBroth && baseBroth>0){
+        // La evaporación en la misma sartén no crece estrictamente con el arroz:
+        // modelo empírico editable, anclado al lote base de 160 g y 600 ml.
+        const slope=Number(link.broth_extra_ml_per_rice_g)||0;
+        const totalBroth=Math.max(0,baseBroth+slope*(adjustedRice-baseRice));
+        return baseFood*totalBroth/baseBroth;
+      }
+    }
+  }
   let total=0;
   ["P01","P02"].forEach(pid=>{
     (recipe.portions?.[pid]||[]).forEach(item=>{
