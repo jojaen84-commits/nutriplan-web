@@ -816,6 +816,14 @@ if(!state.recipeRiceLinkedMigrationR046V1){
   state.recipeLocks.R046=(state.recipeLocks.R046||[]).filter(fid=>!formerlyFixed.has(fid));
   state.recipeRiceLinkedMigrationR046V1=true;
 }
+// REC-048 v1.1: los ingredientes pasan a ser variables por defecto.
+// Se desbloquean una sola vez las tres cantidades previamente obligatorias;
+// futuros cambios de «Fijo» hechos por el usuario se conservan.
+if(!state.recipePastaLinkedMigrationR048V1){
+  const formerlyFixed=new Set(["A076","A004","A066"]);
+  state.recipeLocks.R048=(state.recipeLocks.R048||[]).filter(fid=>!formerlyFixed.has(fid));
+  state.recipePastaLinkedMigrationR048V1=true;
+}
 Object.values(DATA.recipes).forEach(r=>{
   if(Array.isArray(r.locked_food_ids) && state.recipeLocks[r.id]==null){
     state.recipeLocks[r.id]=[...r.locked_food_ids];
