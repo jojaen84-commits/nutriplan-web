@@ -4856,6 +4856,138 @@ window.NUTRIPLAN_DATA = {
         "A054"
       ],
       "calculation_mode": "INGREDIENT_SUM"
+    },
+    "R048": {
+      "id": "R048",
+      "code": "REC-048",
+      "version": "1.0",
+      "name": "Tallarines con solomillo de pavo, pimientos y tomate frito",
+      "type": "COMIDA",
+      "status": "ACTIVA",
+      "tags": [
+        "PAVO",
+        "PASTA",
+        "TALLARINES",
+        "PIMIENTOS",
+        "TOMATE_FRITO",
+        "COMIDA",
+        "COCINA_COMPARTIDA",
+        "MERCADONA",
+        "SIN_ACEITE_ADICIONAL"
+      ],
+      "notes": "Receta conjunta para dos personas. INGREDIENTES TOTALES BASE: 320 g de solomillo de pavo crudo, 140 g de tallarines secos Hacendado, 150 g de pimiento rojo y verde ultracongelado Hacendado, 80 g de cebolla y 210 g (1 brick completo) de tomate frito con aceite de oliva Mercadona. No añadir aceite adicional: el tomate frito ya contiene aceite. Nutriplan ajusta automáticamente el pavo y los tallarines según los objetivos nutricionales diarios; pimientos, cebolla y tomate frito permanecen fijos. Las cantidades de proteína e hidratos que muestre la app para cada día prevalecen sobre los valores base.\nPREPARACIÓN: 1) Cocer los tallarines en agua hirviendo ligeramente salada según el envase, reservar un poco de agua de cocción y escurrir. 2) Cocinar los 150 g de pimientos congelados destapados en sartén antiadherente a fuego medio-alto durante 6-8 minutos, hasta evaporar la mayor parte del agua. 3) Añadir la cebolla picada (80 g) y pochar 5-7 minutos, añadiendo un poco de agua si se pega. 4) Incorporar los 210 g de tomate frito con aceite de oliva y cocinar 2-3 minutos; triturar si se quiere una salsa fina. 5) Cortar el solomillo de pavo en dados, cocinarlo por completo en la salsa (temperatura interna orientativa de 74 °C), unos 6-8 minutos según el grosor. 6) Mezclar con los tallarines durante 1-2 minutos, aligerar con el agua reservada si es necesario y ajustar pimienta, ajo en polvo y sal al gusto.\nREPARTO BASE: Persona 1: 180 g pavo y 80 g tallarines; Persona 2: 140 g pavo y 60 g tallarines. Para la salsa común: P01 85 g pimientos, 45 g cebolla y 120 g tomate; P02 65 g pimientos, 35 g cebolla y 90 g tomate. Pesar en crudo o seco, como indique cada ingrediente. Al mezclarlo todo, repartir de forma proporcional al tamaño de las raciones.",
+      "image": null,
+      "image_status": "PENDIENTE",
+      "mix_mode": "joint",
+      "summary": {
+        "P01": {
+          "kcal": 588.6,
+          "protein": 53.06,
+          "carbs": 78.45,
+          "fat": 5.785,
+          "p_pct": 0.3671305385699829,
+          "c_pct": 0.5428079674107645,
+          "f_pct": 0.09006149401925255,
+          "goal_pct": 0.3018461538461539
+        },
+        "P02": {
+          "kcal": 446.9,
+          "protein": 40.92,
+          "carbs": 59.05,
+          "fat": 4.345,
+          "p_pct": 0.37286012050525646,
+          "c_pct": 0.5380593869949998,
+          "f_pct": 0.08908049249974372,
+          "goal_pct": 0.3192142857142857
+        }
+      },
+      "portions": {
+        "P01": [
+          {
+            "food_id": "A064",
+            "food": "Solomillo de pavo",
+            "grams": 180,
+            "note": "Pesar en crudo; fuente principal de proteína que ajusta Nutriplan",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A031",
+            "food": "Tallarines secos",
+            "grams": 80,
+            "note": "Pesar en seco; fuente principal de hidratos que ajusta Nutriplan",
+            "state": "seco"
+          },
+          {
+            "food_id": "A076",
+            "food": "Pimiento rojo y verde ultracongelado Hacendado",
+            "grams": 85,
+            "note": "Pesar congelado; cantidad fija para el sofrito conjunto",
+            "state": "congelado"
+          },
+          {
+            "food_id": "A004",
+            "food": "Cebolla",
+            "grams": 45,
+            "note": "Pesar en crudo; cantidad fija para el sofrito conjunto",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A066",
+            "food": "Tomate frito con aceite de oliva",
+            "grams": 120,
+            "note": "Tomate frito con aceite de oliva Mercadona; el brick completo de 210 g para los dos, cantidad fija",
+            "state": "producto"
+          }
+        ],
+        "P02": [
+          {
+            "food_id": "A064",
+            "food": "Solomillo de pavo",
+            "grams": 140,
+            "note": "Pesar en crudo; fuente principal de proteína que ajusta Nutriplan",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A031",
+            "food": "Tallarines secos",
+            "grams": 60,
+            "note": "Pesar en seco; fuente principal de hidratos que ajusta Nutriplan",
+            "state": "seco"
+          },
+          {
+            "food_id": "A076",
+            "food": "Pimiento rojo y verde ultracongelado Hacendado",
+            "grams": 65,
+            "note": "Pesar congelado; cantidad fija para el sofrito conjunto",
+            "state": "congelado"
+          },
+          {
+            "food_id": "A004",
+            "food": "Cebolla",
+            "grams": 35,
+            "note": "Pesar en crudo; cantidad fija para el sofrito conjunto",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A066",
+            "food": "Tomate frito con aceite de oliva",
+            "grams": 90,
+            "note": "Tomate frito con aceite de oliva Mercadona; el brick completo de 210 g para los dos, cantidad fija",
+            "state": "producto"
+          }
+        ]
+      },
+      "locked_food_ids": [
+        "A076",
+        "A004",
+        "A066"
+      ],
+      "hard_locked_food_ids": [
+        "A076",
+        "A004",
+        "A066"
+      ],
+      "calculation_mode": "INGREDIENT_SUM"
     }
   },
   "foods": {
@@ -5746,5 +5878,5 @@ window.NUTRIPLAN_DATA = {
       }
     }
   },
-  "version": "5.12 REC-046 sofrito y caldo vinculados al arroz total"
+  "version": "5.13 REC-048 tallarines con pavo y tomate frito"
 };
