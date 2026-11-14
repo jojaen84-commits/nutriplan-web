@@ -4860,7 +4860,7 @@ window.NUTRIPLAN_DATA = {
     "R048": {
       "id": "R048",
       "code": "REC-048",
-      "version": "1.0",
+      "version": "1.1",
       "name": "Tallarines con solomillo de pavo, pimientos y tomate frito",
       "type": "COMIDA",
       "status": "ACTIVA",
@@ -4875,7 +4875,7 @@ window.NUTRIPLAN_DATA = {
         "MERCADONA",
         "SIN_ACEITE_ADICIONAL"
       ],
-      "notes": "Receta conjunta para dos personas. INGREDIENTES TOTALES BASE: 320 g de solomillo de pavo crudo, 140 g de tallarines secos Hacendado, 150 g de pimiento rojo y verde ultracongelado Hacendado, 80 g de cebolla y 210 g (1 brick completo) de tomate frito con aceite de oliva Mercadona. No añadir aceite adicional: el tomate frito ya contiene aceite. Nutriplan ajusta automáticamente el pavo y los tallarines según los objetivos nutricionales diarios; pimientos, cebolla y tomate frito permanecen fijos. Las cantidades de proteína e hidratos que muestre la app para cada día prevalecen sobre los valores base.\nPREPARACIÓN: 1) Cocer los tallarines en agua hirviendo ligeramente salada según el envase, reservar un poco de agua de cocción y escurrir. 2) Cocinar los 150 g de pimientos congelados destapados en sartén antiadherente a fuego medio-alto durante 6-8 minutos, hasta evaporar la mayor parte del agua. 3) Añadir la cebolla picada (80 g) y pochar 5-7 minutos, añadiendo un poco de agua si se pega. 4) Incorporar los 210 g de tomate frito con aceite de oliva y cocinar 2-3 minutos; triturar si se quiere una salsa fina. 5) Cortar el solomillo de pavo en dados, cocinarlo por completo en la salsa (temperatura interna orientativa de 74 °C), unos 6-8 minutos según el grosor. 6) Mezclar con los tallarines durante 1-2 minutos, aligerar con el agua reservada si es necesario y ajustar pimienta, ajo en polvo y sal al gusto.\nREPARTO BASE: Persona 1: 180 g pavo y 80 g tallarines; Persona 2: 140 g pavo y 60 g tallarines. Para la salsa común: P01 85 g pimientos, 45 g cebolla y 120 g tomate; P02 65 g pimientos, 35 g cebolla y 90 g tomate. Pesar en crudo o seco, como indique cada ingrediente. Al mezclarlo todo, repartir de forma proporcional al tamaño de las raciones.",
+      "notes": "Receta conjunta para dos. INGREDIENTES BASE DEL LOTE (ANTES DE AJUSTES): 320 g de solomillo de pavo crudo, 140 g de tallarines secos Hacendado, 150 g de pimiento rojo y verde ultracongelado Hacendado, 80 g de cebolla y 210 g de tomate frito con aceite de oliva Mercadona. Son cantidades de referencia, NO obligatorias: Nutriplan ajusta los tallarines a los objetivos de hidratos y el solomillo de pavo a los de proteínas. El pimiento, la cebolla y el tomate siguen automáticamente la proporción del TOTAL de tallarines de los dos (base: por cada 140 g de pasta, 150 g pimientos, 80 g cebolla, 210 g tomate). TODOS los ingredientes son variables por defecto. En la tabla de ingredientes de la app puedes activar la casilla «Fijo» de cualquiera de ellos para conservar sus gramos base, o desactivarla para volver al ajuste automático. El bloqueo es global para esta receta y se aplica al lote conjunto, no solo a una persona. No hace falta usar el brick de 210 g entero: ajustar la cantidad según indique Nutriplan. No añadir aceite adicional; el tomate frito ya contiene aceite. Las kcal y macros se recalculan desde los gramos efectivos.\nPREPARACIÓN: 1) Consultar la tabla «Ingredientes · mezcla completa» para ver las cantidades reales del día y pesar los tallarines en seco. Cocerlos siguiendo el envase; reservar un poco de agua de cocción. 2) Cocinar los pimientos congelados en sartén antiadherente destapada a fuego medio-alto durante 6–8 min hasta evaporar el agua. 3) Añadir la cebolla picada y pochar 5–7 min, con un poco de agua si se pega. 4) Incorporar el tomate frito, reducir 2–3 min y triturar el sofrito si se prefiere una salsa fina. 5) Cortar el pavo y cocinarlo por completo en la salsa hasta alcanzar 74 °C en el centro (el tiempo depende del grosor). 6) Mezclar con los tallarines 1–2 min y usar el agua reservada para ajustar la textura. Pimienta, ajo en polvo y sal al gusto. Si se mezcla todo, repartir la preparación final según los porcentajes indicados por Nutriplan.\nREPARTO BASE: Persona 1: 180 g de pavo y 80 g de tallarines. Persona 2: 140 g de pavo y 60 g de tallarines. Ingredientes del sofrito de referencia: pimientos 85/65 g, cebolla 45/35 g y tomate 120/90 g. Los valores pueden variar con los objetivos de cada día.",
       "image": null,
       "image_status": "PENDIENTE",
       "mix_mode": "joint",
@@ -4907,35 +4907,35 @@ window.NUTRIPLAN_DATA = {
             "food_id": "A064",
             "food": "Solomillo de pavo",
             "grams": 180,
-            "note": "Pesar en crudo; fuente principal de proteína que ajusta Nutriplan",
+            "note": "Pesar en crudo; ajustable por objetivos de proteína. Marca «Fijo» para mantener su cantidad base.",
             "state": "crudo"
           },
           {
             "food_id": "A031",
             "food": "Tallarines secos",
             "grams": 80,
-            "note": "Pesar en seco; fuente principal de hidratos que ajusta Nutriplan",
+            "note": "Pesar en seco; ajustable por objetivos de hidratos. Marca «Fijo» para mantener la pasta base.",
             "state": "seco"
           },
           {
             "food_id": "A076",
             "food": "Pimiento rojo y verde ultracongelado Hacendado",
             "grams": 85,
-            "note": "Pesar congelado; cantidad fija para el sofrito conjunto",
+            "note": "Pesar congelado; ajustable proporcionalmente a la pasta total. Puede fijarse manualmente.",
             "state": "congelado"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
             "grams": 45,
-            "note": "Pesar en crudo; cantidad fija para el sofrito conjunto",
+            "note": "Pesar en crudo; ajustable proporcionalmente a la pasta total. Puede fijarse manualmente.",
             "state": "crudo"
           },
           {
             "food_id": "A066",
             "food": "Tomate frito con aceite de oliva",
             "grams": 120,
-            "note": "Tomate frito con aceite de oliva Mercadona; el brick completo de 210 g para los dos, cantidad fija",
+            "note": "Tomate frito con aceite de oliva Mercadona; ajustable a la pasta total. No es obligatorio usar el brick completo; puede fijarse manualmente.",
             "state": "producto"
           }
         ],
@@ -4944,50 +4944,50 @@ window.NUTRIPLAN_DATA = {
             "food_id": "A064",
             "food": "Solomillo de pavo",
             "grams": 140,
-            "note": "Pesar en crudo; fuente principal de proteína que ajusta Nutriplan",
+            "note": "Pesar en crudo; ajustable por objetivos de proteína. Marca «Fijo» para mantener su cantidad base.",
             "state": "crudo"
           },
           {
             "food_id": "A031",
             "food": "Tallarines secos",
             "grams": 60,
-            "note": "Pesar en seco; fuente principal de hidratos que ajusta Nutriplan",
+            "note": "Pesar en seco; ajustable por objetivos de hidratos. Marca «Fijo» para mantener la pasta base.",
             "state": "seco"
           },
           {
             "food_id": "A076",
             "food": "Pimiento rojo y verde ultracongelado Hacendado",
             "grams": 65,
-            "note": "Pesar congelado; cantidad fija para el sofrito conjunto",
+            "note": "Pesar congelado; ajustable proporcionalmente a la pasta total. Puede fijarse manualmente.",
             "state": "congelado"
           },
           {
             "food_id": "A004",
             "food": "Cebolla",
             "grams": 35,
-            "note": "Pesar en crudo; cantidad fija para el sofrito conjunto",
+            "note": "Pesar en crudo; ajustable proporcionalmente a la pasta total. Puede fijarse manualmente.",
             "state": "crudo"
           },
           {
             "food_id": "A066",
             "food": "Tomate frito con aceite de oliva",
             "grams": 90,
-            "note": "Tomate frito con aceite de oliva Mercadona; el brick completo de 210 g para los dos, cantidad fija",
+            "note": "Tomate frito con aceite de oliva Mercadona; ajustable a la pasta total. No es obligatorio usar el brick completo; puede fijarse manualmente.",
             "state": "producto"
           }
         ]
       },
-      "locked_food_ids": [
-        "A076",
-        "A004",
-        "A066"
-      ],
-      "hard_locked_food_ids": [
-        "A076",
-        "A004",
-        "A066"
-      ],
-      "calculation_mode": "INGREDIENT_SUM"
+      "locked_food_ids": [],
+      "hard_locked_food_ids": [],
+      "calculation_mode": "INGREDIENT_SUM",
+      "batch_scaling": {
+        "driver_food_id": "A031",
+        "proportional_food_ids": [
+          "A076",
+          "A004",
+          "A066"
+        ]
+      }
     }
   },
   "foods": {
@@ -5878,5 +5878,5 @@ window.NUTRIPLAN_DATA = {
       }
     }
   },
-  "version": "5.13 REC-048 tallarines con pavo y tomate frito"
+  "version": "5.14 REC-048 ingredientes variables y salsa ligada a pasta"
 };
