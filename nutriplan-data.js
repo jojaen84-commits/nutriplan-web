@@ -4992,7 +4992,7 @@ window.NUTRIPLAN_DATA = {
     "R049": {
       "id": "R049",
       "code": "REC-049",
-      "version": "1.0",
+      "version": "1.1",
       "name": "Carrilladas al vino con patatas al microondas",
       "type": "COMIDA",
       "types": [
@@ -5008,9 +5008,11 @@ window.NUTRIPLAN_DATA = {
         "MERCADONA",
         "COMIDA",
         "CENA",
-        "PRECOCINADO"
+        "PRECOCINADO",
+        "COCINA_COMPARTIDA",
+        "REPARTO_PORCENTUAL"
       ],
-      "notes": "Carrilladas al vino Hacendado ya cocinadas y con salsa. Las cantidades son solo una base de cálculo para dos personas: Nutriplan debe ajustar individualmente las carrilladas a la proteína, las patatas a los hidratos y el aceite a las grasas. TODOS los ingredientes son variables de inicio; puedes usar la casilla «Fijo» voluntariamente. No se exige gastar los 700 g del envase. Pesa la cantidad de carrilladas CON su salsa que vas a comer, porque los valores nutricionales de la etiqueta son del producto completo. PREPARACIÓN: 1) Pesar y pelar las patatas en crudo, cortarlas en trozos o rodajas homogéneos. 2) Ponerlas en un recipiente apto para microondas con tapa ventilada, añadir el aceite pesado, mezclar y cocinar unos 7–12 min a potencia alta (según cantidad y potencia), removiendo a mitad y verificando que estén tiernas. 3) Sacar las carrilladas del envase y calentarlas con su salsa: según etiqueta, en cazuela a fuego bajo durante unos 15 min removiendo; alternativamente, horno a 180 ºC 25 min o air fryer a 180 ºC 20 min. Si solo se calienta una parte del envase, ajustar el tiempo hasta que esté bien caliente por dentro. 4) Servir la cantidad calculada de carrilladas con salsa y patatas. No añadir sal por defecto: el preparado tiene 1,3 g de sal por 100 g; pimienta al gusto. Conservar refrigerado y consumir en las 48 horas posteriores a la apertura según el envase. Contiene sulfitos.",
+      "notes": "RECETA CONJUNTA PARA DOS PERSONAS Y REPARTO PORCENTUAL. Preparar una sola cantidad total de carrilladas al vino Hacendado con salsa y patatas al microondas, y repartir el mismo porcentaje de cada componente ya cocinado entre las dos personas. Los tres ingredientes (carrilladas, patatas y aceite) son variables: Nutriplan ajusta la cantidad total de carrilladas según proteína, patatas según hidratos y aceite según grasas; no hay cantidades fijas ni hay que usar el envase entero de 700 g. Los porcentajes de Jorge y Eva que muestra la app se aplican por separado al peso final de las carrilladas CON salsa y al peso final de las patatas, para que la composición sea proporcional sin tener que mezclar ambos alimentos. INGREDIENTES BASE DE TODO EL LOTE (antes de ajustes): 500 g de carrilladas con salsa, 520 g de patata pesada pelada en crudo y 4 g de aceite de oliva. Las cantidades reales del día son las de «Ingredientes · receta conjunta», no las cifras base. PREPARACIÓN: 1) Pelar y pesar en crudo toda la patata indicada para los dos; cortarla en rodajas o dados parecidos. 2) Añadir el aceite indicado, mezclar en recipiente apto para microondas con tapa ventilada y cocinar aproximadamente 7–12 minutos a potencia alta, removiendo a mitad, hasta que esté tierna (ajustar al peso y la potencia). 3) Calentar las carrilladas con TODA su salsa correspondiente a la cantidad pesada. Según el envase, en cazuela a fuego bajo durante unos 15 min removiendo; alternativamente horno a 180 ºC durante 25 min o air fryer a 180 ºC durante 20 min. Al recalentar una cantidad menor, ajustar el tiempo hasta que quede bien caliente por dentro. 4) Pesar las carrilladas ya calientes con su salsa, y por separado las patatas ya cocinadas. 5) Repartir de CADA componente el porcentaje para Jorge y Eva mostrado por Nutriplan. Ejemplo: si el reparto es 56 % / 44 %, servir el 56 % de las carrilladas con salsa y el 56 % de las patatas a Jorge, y el resto a Eva. No es necesario mezclarlo todo en una sola fuente. Se puede activar manualmente «Fijo» en cualquier ingrediente, pero todos comienzan desbloqueados. No añadir sal de entrada: el preparado tiene 1,3 g de sal por 100 g. Conservar refrigerado y consumir dentro de 48 horas tras abrir el envase según la etiqueta. Contiene sulfitos.",
       "image": null,
       "image_status": "PENDIENTE",
       "summary": {
@@ -5085,7 +5087,9 @@ window.NUTRIPLAN_DATA = {
       },
       "locked_food_ids": [],
       "hard_locked_food_ids": [],
-      "calculation_mode": "INGREDIENT_SUM"
+      "calculation_mode": "INGREDIENT_SUM",
+      "mix_mode": "joint",
+      "joint_serving_mode": "components"
     }
   },
   "foods": {
@@ -6004,5 +6008,5 @@ window.NUTRIPLAN_DATA = {
       }
     }
   },
-  "version": "5.15 REC-049 carrilladas al vino y patatas variables"
+  "version": "5.16 REC-049 receta conjunta con reparto porcentual"
 };

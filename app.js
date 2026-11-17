@@ -2617,7 +2617,7 @@ function renderDetail(){
         ${macroBoxes(s)}
         ${macroBar(s)}
         ${recipeAdjustmentControls(r,activePerson)}
-        <h2 style="margin-top:22px">${isJointMixRecipe(r)?"Ingredientes · mezcla completa":`Ingredientes · ${who}`}</h2>
+        <h2 style="margin-top:22px">${isJointMixRecipe(r)?(r.joint_serving_mode==="components"?"Ingredientes · receta conjunta":"Ingredientes · mezcla completa"):`Ingredientes · ${who}`}</h2>
         <table class="ingredient-table"><thead><tr><th>Ingrediente</th><th>Cantidad</th><th>Nota</th><th>Fijo</th></tr></thead>
         <tbody>${rows.map(row=>{
           const x=isJointMixRecipe(r)?(row.p1||row.p2):(activePerson==="P01"?row.p1:row.p2);
@@ -2648,7 +2648,7 @@ function renderDetail(){
       <div class="detail-cover">${img?`<img src="${img}" alt="">`:`<div class="recipe-placeholder">🍽️</div>`}</div>
       <label class="btn soft filelab no-print">Añadir/cambiar foto<input type="file" accept="image/*" id="recipePhoto"></label>
       <div class="panel" style="margin-top:14px">
-        <h2>Cantidades para los dos${isJointMixRecipe(r)?" · mezcla conjunta":" · reparto individual"}</h2>
+        <h2>Cantidades para los dos${isJointMixRecipe(r)?" · receta conjunta":" · reparto individual"}</h2>
         ${(()=>{
           const joint=isJointMixRecipe(r);
           if(joint){
@@ -2668,11 +2668,11 @@ function renderDetail(){
               </table>
             </div>
             <div class="mix-final-share">
-              <strong>Reparto del peso final cocinado</strong>
+              <strong>${r.joint_serving_mode==="components"?"Porcentaje de reparto de cada componente":"Reparto del peso final cocinado"}</strong>
               <span>${escapeHtml(profileName("P01"))}: <b>${fmt(shareJ,1).replace(",0","")}%</b></span>
               <span>${escapeHtml(profileName("P02"))}: <b>${fmt(shareE,1).replace(",0","")}%</b></span>
             </div>
-            <div class="mix-help"><b>Mezcla conjunta.</b> Cocina todos los ingredientes juntos, incluida la fuente de hidratos, la proteína y la salsa. Al terminar, pesa toda la preparación y sirve esos porcentajes del peso final. No hay que separar ingredientes por persona.</div>`;
+            <div class="mix-help">${r.joint_serving_mode==="components"?"<b>Receta conjunta.</b> Cocina la proteína con su salsa y las patatas por separado. Pesa cada preparación ya cocinada y sirve de CADA una el porcentaje indicado para cada persona. No es necesario mezclar las patatas con la salsa; reparte también el aceite junto con las patatas.":"<b>Mezcla conjunta.</b> Cocina todos los ingredientes juntos, incluida la fuente de hidratos, la proteína y la salsa. Al terminar, pesa toda la preparación y sirve esos porcentajes del peso final. No hay que separar ingredientes por persona."}</div>`;
           }
 
           const mixRows=rows.map(row=>{
