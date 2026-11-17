@@ -4988,6 +4988,104 @@ window.NUTRIPLAN_DATA = {
           "A066"
         ]
       }
+    },
+    "R049": {
+      "id": "R049",
+      "code": "REC-049",
+      "version": "1.0",
+      "name": "Carrilladas al vino con patatas al microondas",
+      "type": "COMIDA",
+      "types": [
+        "COMIDA",
+        "CENA"
+      ],
+      "status": "ACTIVA",
+      "tags": [
+        "CARRILLADAS",
+        "CERDO",
+        "PATATA",
+        "MICROONDAS",
+        "MERCADONA",
+        "COMIDA",
+        "CENA",
+        "PRECOCINADO"
+      ],
+      "notes": "Carrilladas al vino Hacendado ya cocinadas y con salsa. Las cantidades son solo una base de cálculo para dos personas: Nutriplan debe ajustar individualmente las carrilladas a la proteína, las patatas a los hidratos y el aceite a las grasas. TODOS los ingredientes son variables de inicio; puedes usar la casilla «Fijo» voluntariamente. No se exige gastar los 700 g del envase. Pesa la cantidad de carrilladas CON su salsa que vas a comer, porque los valores nutricionales de la etiqueta son del producto completo. PREPARACIÓN: 1) Pesar y pelar las patatas en crudo, cortarlas en trozos o rodajas homogéneos. 2) Ponerlas en un recipiente apto para microondas con tapa ventilada, añadir el aceite pesado, mezclar y cocinar unos 7–12 min a potencia alta (según cantidad y potencia), removiendo a mitad y verificando que estén tiernas. 3) Sacar las carrilladas del envase y calentarlas con su salsa: según etiqueta, en cazuela a fuego bajo durante unos 15 min removiendo; alternativamente, horno a 180 ºC 25 min o air fryer a 180 ºC 20 min. Si solo se calienta una parte del envase, ajustar el tiempo hasta que esté bien caliente por dentro. 4) Servir la cantidad calculada de carrilladas con salsa y patatas. No añadir sal por defecto: el preparado tiene 1,3 g de sal por 100 g; pimienta al gusto. Conservar refrigerado y consumir en las 48 horas posteriores a la apertura según el envase. Contiene sulfitos.",
+      "image": null,
+      "image_status": "PENDIENTE",
+      "summary": {
+        "P01": {
+          "kcal": 593.4,
+          "protein": 45.2,
+          "carbs": 56.04,
+          "fat": 21.900000000000002,
+          "p_pct": 0.3003022954522805,
+          "c_pct": 0.37232169551207517,
+          "f_pct": 0.3273760090356443,
+          "goal_pct": 0.3043076923076923
+        },
+        "P02": {
+          "kcal": 458,
+          "protein": 35.2,
+          "carbs": 41.36,
+          "fat": 17.62,
+          "p_pct": 0.30291295555268705,
+          "c_pct": 0.35592272277440723,
+          "f_pct": 0.3411643216729056,
+          "goal_pct": 0.3271428571428571
+        }
+      },
+      "portions": {
+        "P01": [
+          {
+            "food_id": "A078",
+            "food": "Carrilladas de cerdo al vino Hacendado (con salsa)",
+            "grams": 280,
+            "note": "Peso de carrilladas preparadas con salsa; cantidad variable, no se obliga a usar los 700 g del envase.",
+            "state": "producto"
+          },
+          {
+            "food_id": "A079",
+            "food": "Patata fresca para microondas (peso en crudo)",
+            "grams": 300,
+            "note": "Pesar pelada y cruda; cocer tapada en recipiente apto para microondas.",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A006",
+            "food": "Aceite de oliva virgen extra",
+            "grams": 2,
+            "note": "Medir el aceite añadido a las patatas; también es variable.",
+            "state": "producto"
+          }
+        ],
+        "P02": [
+          {
+            "food_id": "A078",
+            "food": "Carrilladas de cerdo al vino Hacendado (con salsa)",
+            "grams": 220,
+            "note": "Peso de carrilladas preparadas con salsa; cantidad variable, no se obliga a usar los 700 g del envase.",
+            "state": "producto"
+          },
+          {
+            "food_id": "A079",
+            "food": "Patata fresca para microondas (peso en crudo)",
+            "grams": 220,
+            "note": "Pesar pelada y cruda; cocer tapada en recipiente apto para microondas.",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A006",
+            "food": "Aceite de oliva virgen extra",
+            "grams": 2,
+            "note": "Medir el aceite añadido a las patatas; también es variable.",
+            "state": "producto"
+          }
+        ]
+      },
+      "locked_food_ids": [],
+      "hard_locked_food_ids": [],
+      "calculation_mode": "INGREDIENT_SUM"
     }
   },
   "foods": {
@@ -5876,7 +5974,35 @@ window.NUTRIPLAN_DATA = {
         "carbs": 0.9,
         "fat": 0.8
       }
+    },
+    "A078": {
+      "name": "Carrilladas de cerdo al vino Hacendado (con salsa)",
+      "source": "Mercadona / etiqueta fotografiada 17-11-2026",
+      "pack_g": 700,
+      "pack_unit": "envase",
+      "pack_notes": "Plato preparado refrigerado; peso neto 700 g (carrilladas y salsa). Por 100 g: 123 kcal, 14 g proteínas, 1,8 g HC, 7 g grasa, 2,3 g saturadas, 1,3 g sal. Contiene sulfitos. Pesar el producto con salsa en la proporción servida. No es obligatorio usar el envase entero.",
+      "state": "producto",
+      "nutrition_100": {
+        "kcal": 123,
+        "protein": 14,
+        "carbs": 1.8,
+        "fat": 7
+      }
+    },
+    "A079": {
+      "name": "Patata fresca para microondas (peso en crudo)",
+      "source": "Tabla nutricional genérica / estimación para patata cruda",
+      "pack_g": null,
+      "pack_unit": null,
+      "pack_notes": "Pesar pelada y en crudo, antes de cocerla al microondas. Valores genéricos aproximados por 100 g; no se añade aceite salvo el ingrediente A006 de la receta.",
+      "state": "crudo",
+      "nutrition_100": {
+        "kcal": 77,
+        "protein": 2,
+        "carbs": 17,
+        "fat": 0.1
+      }
     }
   },
-  "version": "5.14 REC-048 ingredientes variables y salsa ligada a pasta"
+  "version": "5.15 REC-049 carrilladas al vino y patatas variables"
 };
