@@ -4331,8 +4331,9 @@ window.NUTRIPLAN_DATA = {
     },
     "R044": {
       "id": "R044",
+      "mix_mode": "joint",
       "code": "REC-044",
-      "version": "1.0",
+      "version": "1.1",
       "name": "Patatas al microondas con huevo a la plancha y jamón serrano",
       "type": "COMIDA",
       "types": [
@@ -4348,9 +4349,11 @@ window.NUTRIPLAN_DATA = {
         "CENA",
         "RAPIDA",
         "MICROONDAS",
-        "ALTA_PROTEINA"
+        "ALTA_PROTEINA",
+        "COCINA_COMPARTIDA",
+        "REPARTO_PORCENTUAL"
       ],
-      "notes": "Solo patata, huevo y jamón serrano. Pesar la patata en crudo antes de cocinarla al microondas. Hacer 1 huevo por persona a la plancha en sartén antiadherente, sin aceite añadido o con spray no contabilizado. Retirar el tocino/grasa blanca visible del jamón y pesarlo después de retirarlo. No añadir sal extra. Para no infravalorar calorías, Nutriplan calcula el jamón con los valores completos de la etiqueta aunque se retire la grasa visible.",
+      "notes": "RECETA CONJUNTA PARA DOS CON REPARTO PORCENTUAL. Preparar todas las patatas de la cantidad indicada en «Ingredientes · mezcla completa» (pesadas peladas y crudas antes de cocinarlas al microondas). Cocinar los huevos a la plancha en sartén antiadherente, sin aceite añadido o con un poco de spray no contabilizado; trocearlos. Retirar el tocino/grasa blanca visible del jamón y pesarlo después de retirarlo; cortarlo en trozos. Juntar las patatas cocidas, el huevo y el jamón, mezclar para repartir los tres ingredientes proporcionalmente, pesar el total preparado y servir los porcentajes de Jorge y Eva indicados por Nutriplan, que se recalculan según los objetivos del día. Cantidades base de todo el lote antes de ajustes: 677 g de patata cruda, 120 g de huevo (2 huevos de unos 60 g) y 110 g de jamón serrano. La patata se ajusta automáticamente; el total de huevo y jamón sigue fijado como en la receta original. No añadir sal extra. Para no infravalorar calorías, se mantienen los valores completos de la etiqueta del jamón aunque se retire la grasa visible.",
       "image": null,
       "image_status": "PENDIENTE",
       "summary": {
