@@ -791,8 +791,37 @@ if(!state.recipeAdjustments) state.recipeAdjustments={};
 // Personalizaciones locales del recetario. Nunca se publican en nutriplan-data.js.
 if(!state.recipeEdits) state.recipeEdits={};
 if(!state.recipeVariants) state.recipeVariants={};
+// REC-044 v1.2: una edición local antigua sustituyó el jamón serrano por
+// pechuga de pollo cocinada. Corregir solo ese ingrediente, en cada perfil,
+// conservando el resto de personalizaciones, y hacerlo también tras restaurar
+// una copia de la nube. La migración es idempotente.
+function repairR044SerranoCustomization(){
+  const edit=state.recipeEdits?.R044;
+  const canonical=BASE_RECIPES.R044;
+  if(!edit?.portions || !canonical)return false;
+  let changed=false;
+  ["P01","P02"].forEach(pid=>{
+    const items=edit.portions[pid];
+    if(!Array.isArray(items) || !items.some(item=>item.food_id==="A073"))return;
+    const ham=canonical.portions?.[pid]?.find(item=>item.food_id==="A074");
+    if(!ham)return;
+    if(items.some(item=>item.food_id==="A074")){
+      edit.portions[pid]=items.filter(item=>item.food_id!=="A073");
+    }else{
+      edit.portions[pid]=items.map(item=>item.food_id==="A073"?cloneRecipeValue(ham):item);
+    }
+    changed=true;
+  });
+  if(changed){
+    state.recipeLocks.R044=(state.recipeLocks.R044||[]).filter(id=>id!=="A073");
+    if(/pollo/i.test(String(edit.name||"")))edit.name=canonical.name;
+    if(/pollo/i.test(String(edit.notes||"")))edit.notes=canonical.notes;
+  }
+  return changed;
+}
 // Ingredientes bloqueados globalmente por receta.
 if(!state.recipeLocks) state.recipeLocks={};
+if(repairR044SerranoCustomization())save();
 applyAllRecipeCustomizations();
 if(!state.recipeHardLockMigrationR014V1){
   if(!state.recipeLocks.R014) state.recipeLocks.R014=[];
