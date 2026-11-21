@@ -579,7 +579,8 @@ function normalizeOldMenu(menu){
   x.comida=menu.comida||"";
   x.postreFruta=menu.postreFruta||"";
   x.merienda=menu.merienda||"";
-  x.cena=menu.cena||"";
+  // REC-048 pasa a ser solo comida; preservar selecciones antiguas de cena con su variante individual.
+  x.cena=menu.cena==="R048"?"R048C":(menu.cena||"");
   x.suplementacion=menu.suplementacion||menu.extra||"";
   return x;
 }
