@@ -4863,12 +4863,11 @@ window.NUTRIPLAN_DATA = {
     "R048": {
       "id": "R048",
       "code": "REC-048",
-      "version": "1.2",
+      "version": "1.3",
       "name": "Tallarines con solomillo de pavo, pimientos y tomate frito",
       "type": "COMIDA",
       "types": [
-        "COMIDA",
-        "CENA"
+        "COMIDA"
       ],
       "status": "ACTIVA",
       "tags": [
@@ -4878,7 +4877,6 @@ window.NUTRIPLAN_DATA = {
         "PIMIENTOS",
         "TOMATE_FRITO",
         "COMIDA",
-        "CENA",
         "COCINA_COMPARTIDA",
         "MERCADONA",
         "SIN_ACEITE_ADICIONAL"
@@ -4996,6 +4994,133 @@ window.NUTRIPLAN_DATA = {
           "A066"
         ]
       }
+    },
+    "R048C": {
+      "id": "R048C",
+      "code": "REC-048-CENA",
+      "version": "1.0",
+      "name": "Tallarines con solomillo de pavo, pimientos y tomate frito (cena individual)",
+      "type": "CENA",
+      "types": [
+        "CENA"
+      ],
+      "status": "ACTIVA",
+      "tags": [
+        "PAVO",
+        "PASTA",
+        "TALLARINES",
+        "PIMIENTOS",
+        "TOMATE_FRITO",
+        "CENA",
+        "MERCADONA",
+        "SIN_ACEITE_ADICIONAL",
+        "RACIONES_INDIVIDUALES"
+      ],
+      "notes": "VARIANTE DE CENA INDIVIDUAL DE REC-048. Se calculan y pesan por separado los ingredientes de Persona 1 y Persona 2; NO se utiliza mezcla conjunta ni reparto porcentual. Los tallarines (pesar en seco), el solomillo de pavo (pesar en crudo), los pimientos congelados, la cebolla y el tomate frito son variables por defecto, con ajuste automático individual según los objetivos y la distribución del día. Cada ingrediente puede marcarse como «Fijo» de forma independiente. No añadir aceite adicional, ya que el tomate frito ya lleva aceite. PREPARACIÓN: 1) Consultar los gramos individuales calculados para cada persona y pesar por separado los ingredientes. 2) Cocer los tallarines en agua y reservar algo de su cocción. 3) Saltear los pimientos hasta evaporar el agua, añadir cebolla y pochar. 4) Incorporar el tomate frito, reducir y, si se desea, triturar. 5) Cocinar completamente el solomillo de pavo en la salsa hasta 74 °C en el centro. 6) Montar cada plato con los gramos individuales de pasta, pavo y salsa; se pueden cocinar varios ingredientes a la vez siempre que se conserven las cantidades asignadas a cada persona y NO se reparta la mezcla final por un porcentaje. REFERENCIAS BASE (antes de ajustar): Persona 1: 180 g pavo, 80 g tallarines, 85 g pimientos, 45 g cebolla, 120 g tomate frito. Persona 2: 140 g pavo, 60 g tallarines, 65 g pimientos, 35 g cebolla, 90 g tomate frito. Las cantidades finales las determina Nutriplan por persona.",
+      "image": null,
+      "image_status": "PENDIENTE",
+      "mix_mode": "individual",
+      "summary": {
+        "P01": {
+          "kcal": 588.6,
+          "protein": 53.06,
+          "carbs": 78.45,
+          "fat": 5.785,
+          "p_pct": 0.3671305385699829,
+          "c_pct": 0.5428079674107645,
+          "f_pct": 0.09006149401925255,
+          "goal_pct": 0.3018461538461539
+        },
+        "P02": {
+          "kcal": 446.9,
+          "protein": 40.92,
+          "carbs": 59.05,
+          "fat": 4.345,
+          "p_pct": 0.37286012050525646,
+          "c_pct": 0.5380593869949998,
+          "f_pct": 0.08908049249974372,
+          "goal_pct": 0.3192142857142857
+        }
+      },
+      "portions": {
+        "P01": [
+          {
+            "food_id": "A064",
+            "food": "Solomillo de pavo",
+            "grams": 180,
+            "note": "Pesar en crudo; ajustable por objetivos de proteína. Marca «Fijo» para mantener su cantidad base.",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A031",
+            "food": "Tallarines secos",
+            "grams": 80,
+            "note": "Pesar en seco; ajustable por objetivos de hidratos. Marca «Fijo» para mantener la pasta base.",
+            "state": "seco"
+          },
+          {
+            "food_id": "A076",
+            "food": "Pimiento rojo y verde ultracongelado Hacendado",
+            "grams": 85,
+            "note": "Pesar congelado; ajustable proporcionalmente a la pasta total. Puede fijarse manualmente.",
+            "state": "congelado"
+          },
+          {
+            "food_id": "A004",
+            "food": "Cebolla",
+            "grams": 45,
+            "note": "Pesar en crudo; ajustable proporcionalmente a la pasta total. Puede fijarse manualmente.",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A066",
+            "food": "Tomate frito con aceite de oliva",
+            "grams": 120,
+            "note": "Tomate frito con aceite de oliva Mercadona; ajustable a la pasta total. No es obligatorio usar el brick completo; puede fijarse manualmente.",
+            "state": "producto"
+          }
+        ],
+        "P02": [
+          {
+            "food_id": "A064",
+            "food": "Solomillo de pavo",
+            "grams": 140,
+            "note": "Pesar en crudo; ajustable por objetivos de proteína. Marca «Fijo» para mantener su cantidad base.",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A031",
+            "food": "Tallarines secos",
+            "grams": 60,
+            "note": "Pesar en seco; ajustable por objetivos de hidratos. Marca «Fijo» para mantener la pasta base.",
+            "state": "seco"
+          },
+          {
+            "food_id": "A076",
+            "food": "Pimiento rojo y verde ultracongelado Hacendado",
+            "grams": 65,
+            "note": "Pesar congelado; ajustable proporcionalmente a la pasta total. Puede fijarse manualmente.",
+            "state": "congelado"
+          },
+          {
+            "food_id": "A004",
+            "food": "Cebolla",
+            "grams": 35,
+            "note": "Pesar en crudo; ajustable proporcionalmente a la pasta total. Puede fijarse manualmente.",
+            "state": "crudo"
+          },
+          {
+            "food_id": "A066",
+            "food": "Tomate frito con aceite de oliva",
+            "grams": 90,
+            "note": "Tomate frito con aceite de oliva Mercadona; ajustable a la pasta total. No es obligatorio usar el brick completo; puede fijarse manualmente.",
+            "state": "producto"
+          }
+        ]
+      },
+      "locked_food_ids": [],
+      "hard_locked_food_ids": [],
+      "calculation_mode": "INGREDIENT_SUM"
     },
     "R049": {
       "id": "R049",
@@ -6016,5 +6141,5 @@ window.NUTRIPLAN_DATA = {
       }
     }
   },
-  "version": "5.16 REC-049 receta conjunta con reparto porcentual"
+  "version": "5.17 REC-048: comida conjunta y cena individual"
 };
