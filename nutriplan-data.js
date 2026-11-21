@@ -4863,9 +4863,13 @@ window.NUTRIPLAN_DATA = {
     "R048": {
       "id": "R048",
       "code": "REC-048",
-      "version": "1.1",
+      "version": "1.2",
       "name": "Tallarines con solomillo de pavo, pimientos y tomate frito",
       "type": "COMIDA",
+      "types": [
+        "COMIDA",
+        "CENA"
+      ],
       "status": "ACTIVA",
       "tags": [
         "PAVO",
@@ -4874,6 +4878,7 @@ window.NUTRIPLAN_DATA = {
         "PIMIENTOS",
         "TOMATE_FRITO",
         "COMIDA",
+        "CENA",
         "COCINA_COMPARTIDA",
         "MERCADONA",
         "SIN_ACEITE_ADICIONAL"
